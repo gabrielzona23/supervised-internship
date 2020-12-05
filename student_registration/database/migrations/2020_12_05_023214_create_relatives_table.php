@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateRelativesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('relatives', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('email')->unique();
-            $table->string('nickname')->unique()->nullable();
-            $table->enum('status', ['active', 'inactive']);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('type',32);
+            $table->string('education_level',32);
+            $table->string('schooling',32);
+            $table->string('kinship',32);
+            $table->boolean('working')->default(0);
+            $table->foreignId('person_id');
+            $table->foreignId('created_by');
             $table->foreignId('deleted_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->foreignId('created_by');
             $table->timestamps();
 
-            $table->foreign('deleted_by')->references('id')->on('users');
+            $table->foreign('person_id')->references('id')->on('persons');
             $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('deleted_by')->references('id')->on('users');
         });
     }
 
@@ -39,6 +39,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('relatives');
     }
 }
