@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrueFalseAnswersTable extends Migration
+class CreateBooleanAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTrueFalseAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('true_false_answers', function (Blueprint $table) {
+        Schema::create('boolean_answers', function (Blueprint $table) {
             $table->id();
             $table->boolean('value')->default(0);
             $table->foreignId('question_id');
@@ -32,6 +32,6 @@ class CreateTrueFalseAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('true_false_answers');
+        Schema::dropIfExists('boolean_answers');
     }
 }

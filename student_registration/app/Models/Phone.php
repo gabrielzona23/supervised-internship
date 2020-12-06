@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Address extends Model
+class Phone extends Model
 {
-    public function schools(){
-        return $this->hasOne(School::class);
-    }
 
-    public function persons(){
-        return $this->belongsToMany(Person::class);
+    public function person(){
+        return $this->belongsTo(Person::class);
     }
 
     use SoftDeletes;

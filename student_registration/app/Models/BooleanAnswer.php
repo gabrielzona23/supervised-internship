@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TextualAnswer extends Model
+class BooleanAnswer extends Model
 {
     public function question(){
         return $this->belongsTo(Question::class);

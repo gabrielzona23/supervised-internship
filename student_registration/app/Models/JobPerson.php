@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class JobPerson extends Model
 {
     protected $table = 'job_person';
+    public function hours(){
+        return $this->hasMany(OfficeHour::class,'job_person_id');
+    }
     use HasFactory;
 }
