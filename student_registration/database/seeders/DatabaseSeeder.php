@@ -14,5 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        \App\Models\Program::factory(10)->create();
+        \App\Models\SpecialNeed::factory(10)->create();
+        $this->call([
+            ProgramSeeder::class,
+            SpecialNeedSeeder::class,
+        ]);
     }
 }

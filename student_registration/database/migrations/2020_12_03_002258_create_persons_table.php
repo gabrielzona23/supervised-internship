@@ -17,7 +17,8 @@ class CreatePersonsTable extends Migration
             $table->id();
             $table->string('name',64);
             $table->string('image')->nullable();
-            $table->string('born_state',64);
+            $table->string('born_state',64)->nullable();
+            $table->string('born_city', 64)->nullable();
             $table->string('cpf', 32);
             $table->string('rg', 32);
             $table->string('emitter_rg', 32);
