@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('layouts.home');
+        //
     }
 
     /**
@@ -25,7 +23,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('layouts.home');
+        return view('addresses.create');
+
     }
 
     /**
@@ -34,9 +33,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
-        $user = User::create($request->all());
+        //
     }
 
     /**

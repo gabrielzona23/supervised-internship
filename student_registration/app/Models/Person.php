@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
+    protected $fillable = ['name', 'image', 'born_state','cpf','rg','emitter_rg', 'gender'];
+
     public function addresses(){
         return $this->belongsToMany(Address::class);
     }

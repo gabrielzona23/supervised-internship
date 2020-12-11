@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+
+    protected $fillable = ['born_date','nationality','born_city','ethnicity','breed', 'color', 'number_card_sus', 'inep_code'];
+
     public function programs(){
         return $this->belongsToMany(Program::class);
     }
