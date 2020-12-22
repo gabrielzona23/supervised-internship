@@ -15,12 +15,9 @@ class CreateRelativeStudentTable extends Migration
     {
         Schema::create('relative_student', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id');
-            $table->foreignId('relative_id');
+            $table->foreignId('student_id')->constrained('students');
+            $table->foreignId('relative_id')->constrained('relatives');
             $table->timestamps();
-
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('relative_id')->references('id')->on('relatives');
         });
     }
 

@@ -15,12 +15,9 @@ class CreateRegistrationStudentHealthTable extends Migration
     {
         Schema::create('registration_student_health', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_health_id');
-            $table->foreignId('registration_id');
+            $table->foreignId('student_health_id')->constrained('student_healths');
+            $table->foreignId('registration_id')->constrained('registrations');
             $table->timestamps();
-
-            $table->foreign('registration_id')->references('id')->on('registrations');
-            $table->foreign('student_health_id')->references('id')->on('student_healths');
         });
     }
 

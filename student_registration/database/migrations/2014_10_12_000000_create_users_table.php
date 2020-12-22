@@ -18,17 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('nickname')->unique()->nullable();
-            $table->enum('status', ['active', 'inactive']);
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('deleted_by')->nullable();
-            $table->timestamp('deleted_at')->nullable();
-            $table->foreignId('created_by');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('deleted_by')->references('id')->on('users');
-            $table->foreign('created_by')->references('id')->on('users');
         });
     }
 

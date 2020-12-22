@@ -15,13 +15,10 @@ class CreateRegistrationResponsiblyTable extends Migration
     {
         Schema::create('registration_responsibly', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('registration_id');
             $table->boolean('current')->default(1);
-            $table->foreignId('responsibly_id');
+            $table->foreignId('registration_id')->constrained('registrations');
+            $table->foreignId('responsibly_id')->constrained('responsiblies');
             $table->timestamps();
-
-            $table->foreign('responsibly_id')->references('id')->on('responsiblies');
-            $table->foreign('registration_id')->references('id')->on('registrations');
         });
     }
 

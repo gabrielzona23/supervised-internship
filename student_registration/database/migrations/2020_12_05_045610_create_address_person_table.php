@@ -15,12 +15,9 @@ class CreateAddressPersonTable extends Migration
     {
         Schema::create('address_person', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id');
-            $table->foreignId('address_id');
+            $table->foreignId('person_id')->constrained('persons');
+            $table->foreignId('address_id')->constrained('addresses');
             $table->timestamps();
-
-            $table->foreign('address_id')->references('id')->on('addresses');
-            $table->foreign('person_id')->references('id')->on('persons');
         });
     }
 

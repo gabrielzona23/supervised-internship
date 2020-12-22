@@ -16,13 +16,11 @@ class CreateSchoolsTable extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name',64);
-            $table->string('phone_number',16);
-            $table->string('email', 16);
-            $table->string('regional_organization', 64);
-            $table->foreignId('address_id');
+            $table->string('phone_number',16)->nullable();
+            $table->string('email', 16)->nullable();
+            $table->string('regional_organization', 64)->nullable();
+            $table->foreignId('address_id')->constrained('addresses');
             $table->timestamps();
-
-            $table->foreign('address_id')->references('id')->on('addresses');
         });
     }
 

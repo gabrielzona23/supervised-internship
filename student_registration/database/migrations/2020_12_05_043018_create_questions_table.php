@@ -17,11 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('description');
             $table->enum('type',['scalar1','trueFalse','scalar2','scalar3','numeric', 'textual'])->default('textual');
-            $table->foreignId('module_question_id');
-            $table->timestamp('deleted_at');
+            $table->foreignId('module_question_id')->constrained('module_questions');
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('module_question_id')->references('id')->on('module_questions');
         });
     }
 

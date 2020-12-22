@@ -15,13 +15,11 @@ class CreatePhonesTable extends Migration
     {
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('type',['home', 'personal', 'work']);
+            $table->string('number');
+            $table->enum('type',['home', 'personal', 'work'])->default('personal');
             $table->string('description')->nullable();
-            $table->foreignId('person_id');
+            $table->foreignId('person_id')->constrained('persons');
             $table->timestamps();
-
-            $table->foreign('person_id')->references('id')->on('persons');
         });
     }
 

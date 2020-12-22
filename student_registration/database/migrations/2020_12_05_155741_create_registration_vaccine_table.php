@@ -16,12 +16,9 @@ class CreateRegistrationVaccineTable extends Migration
         Schema::create('registration_vaccine', function (Blueprint $table) {
             $table->id();
             $table->string('expiration',16);
-            $table->foreignId('vaccine_id');
-            $table->foreignId('registration_id');
+            $table->foreignId('vaccine_id')->constrained('vaccines');
+            $table->foreignId('registration_id')->constrained('registrations');
             $table->timestamps();
-
-            $table->foreign('vaccine_id')->references('id')->on('vaccines');
-            $table->foreign('registration_id')->references('id')->on('registrations');
         });
     }
 

@@ -20,15 +20,11 @@ class CreateRelativesTable extends Migration
             $table->string('schooling',32);
             $table->string('kinship',32);
             $table->boolean('working')->default(0);
-            $table->foreignId('person_id');
-            $table->foreignId('created_by');
-            $table->foreignId('deleted_by')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->foreignId('person_id')->constrained('persons');
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('deleted_by')->constrained('users')->nullable();
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('person_id')->references('id')->on('persons');
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('deleted_by')->references('id')->on('users');
         });
     }
 

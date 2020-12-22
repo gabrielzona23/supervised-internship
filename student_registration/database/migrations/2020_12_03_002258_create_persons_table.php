@@ -19,17 +19,14 @@ class CreatePersonsTable extends Migration
             $table->string('image')->nullable();
             $table->string('born_state',64)->nullable();
             $table->string('born_city', 64)->nullable();
-            $table->string('cpf', 32);
-            $table->string('rg', 32);
+            $table->string('cpf', 32)->nullable();
+            $table->string('rg', 32)->nullable();
             $table->string('emitter_rg', 32);
-            $table->string('gender', 32)->default('others');
-            $table->foreignId('deleted_by')->nullable();
-            $table->foreignId('created_by');
-            $table->timestamp('deleted_at')->nullable();
+            $table->string('gender', 32)->default('others')->nullable();
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users');
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('deleted_by')->references('id')->on('users');
         });
     }
 

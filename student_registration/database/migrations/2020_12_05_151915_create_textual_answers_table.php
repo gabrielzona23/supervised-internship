@@ -15,13 +15,10 @@ class CreateTextualAnswersTable extends Migration
     {
         Schema::create('textual_answers', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->foreignId('question_id');
-            $table->foreignId('registration_id');
+            $table->text('value');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->foreignId('registration_id')->constrained('registrations');
             $table->timestamps();
-
-            $table->foreign('question_id')->references('id')->on('questions');
-            $table->foreign('registration_id')->references('id')->on('registrations');
         });
     }
 

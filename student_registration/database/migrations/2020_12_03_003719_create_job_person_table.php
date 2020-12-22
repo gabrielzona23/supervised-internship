@@ -15,15 +15,12 @@ class CreateJobPersonTable extends Migration
     {
         Schema::create('job_person', function (Blueprint $table) {
             $table->id();
-            $table->string('workplace_name',64);
-            $table->string('length_of_service',64);
-            $table->string('hours_worked_daily',32);
-            $table->foreignId('job_id');
-            $table->foreignId('person_id');
+            $table->string('workplace_name',64)->nullable();
+            $table->string('length_of_service',64)->nullable();
+            $table->string('hours_worked_daily',32)->nullable();
+            $table->foreignId('job_id')->constrained('jobs');
+            $table->foreignId('person_id')->constrained('persons');
             $table->timestamps();
-
-            $table->foreign('person_id')->references('id')->on('persons');
-            $table->foreign('job_id')->references('id')->on('jobs');
         });
     }
 

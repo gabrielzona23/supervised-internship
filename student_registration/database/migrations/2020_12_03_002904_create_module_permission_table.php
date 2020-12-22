@@ -15,12 +15,9 @@ class CreateModulePermissionTable extends Migration
     {
         Schema::create('module_permission', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('module_id');
-            $table->foreignId('permission_id');
+            $table->foreignId('module_id')->constrained('modules');
+            $table->foreignId('permission_id')->constrained('permissions');
             $table->timestamps();
-
-            $table->foreign('module_id')->references('id')->on('modules');
-            $table->foreign('permission_id')->references('id')->on('permissions');
         });
     }
 

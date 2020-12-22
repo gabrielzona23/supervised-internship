@@ -18,10 +18,8 @@ class CreateOfficeHoursTable extends Migration
             $table->integer('total');
             $table->string('init');
             $table->string('end');
-            $table->foreignId('job_person_id');
+            $table->foreignId('job_person_id')->constrained('job_person');
             $table->timestamps();
-
-            $table->foreign('job_person_id')->references('id')->on('job_person');
         });
     }
 

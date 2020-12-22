@@ -20,12 +20,9 @@ class CreateResponsibliesTable extends Migration
             $table->string('number_card_family_bag',32);
             $table->string('nis',32);
             $table->string('kinship',32);
-            $table->foreignId('created_by');
-            $table->foreignId('person_id');
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('person_id')->constrained('persons');
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('person_id')->references('id')->on('persons');
         });
     }
 

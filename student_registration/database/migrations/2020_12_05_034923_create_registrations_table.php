@@ -15,23 +15,18 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('status_progress',32);
-            $table->string('status',32);
-            $table->boolean('image_authorization');
-            $table->boolean('parents_divorced');
-            $table->boolean('guard_document');
-            $table->string('student_custody',32);
-            $table->string('nis',32);
-            $table->string('number_card_family_bag',32);
-            $table->foreignId('student_id');
-            $table->foreignId('updated_by');
-            $table->foreignId('created_by');
+            $table->string('status_progress',32)->nullable();
+            $table->string('status',32)->nullable();
+            $table->boolean('image_authorization')->nullable();
+            $table->boolean('parents_divorced')->nullable();
+            $table->boolean('guard_document')->nullable();
+            $table->string('student_custody',32)->nullable();
+            $table->string('nis',32)->nullable();
+            $table->string('number_card_family_bag',32)->nullable();
+            $table->foreignId('student_id')->constrained('students');
+            $table->foreignId('updated_by')->constrained('users');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('updated_by')->references('id')->on('users');
-            $table->foreign('student_id')->references('id')->on('students');
-
         });
     }
 

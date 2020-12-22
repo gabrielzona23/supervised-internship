@@ -16,12 +16,9 @@ class CreateBooleanAnswersTable extends Migration
         Schema::create('boolean_answers', function (Blueprint $table) {
             $table->id();
             $table->boolean('value')->default(0);
-            $table->foreignId('question_id');
-            $table->foreignId('registration_id');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->foreignId('registration_id')->constrained('registrations');
             $table->timestamps();
-
-            $table->foreign('question_id')->references('id')->on('questions');
-            $table->foreign('registration_id')->references('id')->on('registrations');
         });
     }
 
