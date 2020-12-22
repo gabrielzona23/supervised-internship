@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StudentRequest;
+use App\Models\Job;
+use App\Models\Person;
+use App\Models\Phone;
 use App\Models\Program;
+use App\Models\Registration;
 use App\Models\SpecialNeed;
+use App\Models\Student;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class StudentController extends Controller
 {
@@ -14,9 +23,10 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $students = Student::paginate();
+        return view('students.index')->with('students', $students);
     }
 
     /**
@@ -37,9 +47,80 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentRequest $request)
+    public function store(Request $request)
     {
-        dd($request);
+        $request->session()->reflash();
+        try {
+            $validator = Validator::make($request->all(), Student::VALIDATORS_STORE);
+
+            if ($validator->fails()) {
+                Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+                return redirect()->route('students.create')->withErrors($validator)->withInput();
+            }
+
+            DB::beginTransaction();
+            $person = new Person();
+            $person->name = $request->input('name');
+            $person->born_state = $request->input('born_state');
+            $person->born_city = $request->input('born_city');
+            $person->cpf = $request->input('cpf');
+            $person->rg = $request->input('rg');
+            $person->emitter_rg = $request->input('emitter_rg');
+            $person->gender = $request->input('gender');
+            $person->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $person->save();
+
+            $student = new Student();
+            $inputStudent = $request->only(['born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'nis']);
+            $inputStudent['person_id'] = $person->id;
+            $inputStudent['status'] = 'studying';
+            $inputStudent['created_by'] = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $student->fill($inputStudent);
+            $student->save();
+
+            $student->specialNeeds()->attach($request->input('special_needs'));
+
+            $student->programs()->attach($request->input('programs'));
+
+            $registration = new Registration();
+            $registration->image_authorization = $request->input('image_authorization');
+            $registration->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $registration->updated_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $registration->student_id = $student->id;
+
+            // $student->programs()->attach($request->input('programs'));
+
+            if ($request->input('job') != null) {
+                $job = new Job();
+                $job->name = $request->input('job');
+                $job->save();
+                $person->jobs()->attach($job->id);
+            }
+
+            $phone1 = new Phone();
+            $phone1->number = $request->input('phone1');
+            $phone1->person_id = $person->id;
+            $phone1->save();
+
+            if ($request->input('phone2') != null) {
+                $phone2 = new Phone();
+                $phone2->number = $request->input('phone2');
+                $phone2->person_id = $person->id;
+                $phone2->save();
+            }
+
+            DB::commit();
+            Log::info('Successfully created Estudante');
+            return redirect()->route('students.create')->with('message', 'Cadastro realizado com sucesso!')->withInput()->with('student', $student);
+        } catch (QueryException $q) {
+            DB::rollBack();
+            Log::error('Internal Server Error', ['errors' => $q]);
+            return redirect()->route('students.create')->with('problem', $q);
+        } catch (\Throwable $t) {
+            DB::rollBack();
+            Log::critical('Internal Server Error', ['errors' => $t]);
+            return redirect()->route('students.create')->with('problem', $t);
+        }
     }
 
     /**

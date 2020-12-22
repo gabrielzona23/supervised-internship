@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
 {
@@ -23,5 +24,5 @@ class Question extends Model
         return $this->belongsToMany(ScaleAnswer::class);
     }
 
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 }

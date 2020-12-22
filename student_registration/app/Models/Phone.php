@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Phone extends Model
 {
 
+    protected $fillable = ['number', 'name', 'description', 'type'];
+    
     public function person(){
         return $this->belongsTo(Person::class);
     }
 
-    use SoftDeletes;
     use HasFactory;
 }

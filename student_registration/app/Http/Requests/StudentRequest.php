@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class StudentRequest extends FormRequest
 {
@@ -11,8 +12,9 @@ class StudentRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Request $request)
     {
+        $request->session()->reflash();
         return true;
     }
 
@@ -23,28 +25,29 @@ class StudentRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'special_needs' => ['bail','required_if:special_needs_check,true', 'string', 'max:64'],
-            'name' => ['bail','required', 'string', 'max:64', 'alpha'],
-            'programs' => ['bail','string', 'max:64'],
-            'nationality' => ['bail','string', 'max:32', 'alpha'],
-            'born_city' => ['bail','string', 'max:32', 'alpha'],
-            'born_state' => ['bail','string', 'max:32', 'alpha'],
-            'job' => ['bail','string', 'max:32', 'alpha'],
-            'number_car_sus' => ['bail','string', 'max:32'],
-            'inep_code' => ['bail','string', 'max:32'],
-            'nis' => ['bail','string', 'max:32'],
-            'color' => ['bail','string', 'max:32'],
-            'breed' => ['bail','string', 'max:32'],
+            'special_needs' => ['bail','required_if:special_needs_check,1', 'string', 'max:64'],
+            'name' => ['bail','required', 'string', 'max:64'],
+            'programs' => ['bail', 'max:64'],
+            'nationality' => ['bail', 'max:32'],
+            'born_city' => ['bail', 'max:32'],
+            'born_state' => ['bail', 'max:32'],
+            'job' => ['bail', 'max:32'],
+            'number_car_sus' => ['bail', 'max:32'],
+            'inep_code' => ['bail', 'max:32'],
+            'nis' => ['bail', 'max:32'],
+            'color' => ['bail', 'max:32'],
+            'breed' => ['bail', 'max:32'],
             'image_authorization' => ['bail','required', 'boolean'],
             'special_needs_check' => ['bail','required', 'boolean'],
-            'gender' => ['bail','string', 'max:64'],
+            'gender' => ['bail', 'max:64'],
             'born_date' => ['bail','required', 'date', 'min:10' ,'max:10'],
-            'cpf' => ['bail','required', 'string', 'min:14', 'max:14'],
-            'rg' => ['bail','required', 'string','numeric', 'min:5', 'max:20'],
-            'emitter_rg' => ['bail','string', 'max:16', 'alpha'],
-            'phone1' => ['bail','required', 'string', 'min:7', 'max:15'],
-            'phone2' => ['bail','string', 'min:7', 'max:15'],
+            'cpf' => ['bail','required', 'min:14', 'max:14'],
+            'rg' => ['bail','required', 'min:5', 'max:20'],
+            'emitter_rg' => ['bail', 'max:16'],
+            'phone1' => ['bail','required', 'min:7', 'max:15'],
+            'phone2' => ['bail', 'max:15'],
         ];
     }
 }

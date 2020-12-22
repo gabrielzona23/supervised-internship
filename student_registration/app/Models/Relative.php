@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Relative extends Model
 {
@@ -26,5 +27,5 @@ class Relative extends Model
     public function deletedBy(){
         return $this->belongsTo(User::class,'deleted_by');
     }
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 }

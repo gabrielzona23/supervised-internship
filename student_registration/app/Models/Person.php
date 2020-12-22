@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Person extends Model
 {
+    use SoftDeletes, HasFactory;
+
+    protected $table = 'persons';
+
     protected $fillable = ['name', 'image', 'born_state','cpf','rg','emitter_rg', 'gender'];
 
     public function addresses(){
@@ -40,6 +45,4 @@ class Person extends Model
     public function lastUpdatedBy(){
         return $this->belongsTo(User::class,'updated_by');
     }
-
-    use HasFactory;
 }
