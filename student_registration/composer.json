@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Cadastro de Alunos do Dom Bosco",
     "keywords": [
         "framework",
         "laravel"
@@ -12,15 +12,25 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "knplabs/knp-snappy": "^1.2",
+        "fideloper/proxy": "^4.2",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.0",
+        "lucascudo/laravel-pt-br-localization": "^1.0",
+        "barryvdh/laravel-snappy": "^0.4.7"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "friendsofphp/php-cs-fixer": "^2.16"
+
     },
     "config": {
         "optimize-autoloader": true,
