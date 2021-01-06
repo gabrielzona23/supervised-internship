@@ -7,14 +7,12 @@ use App\Models\Person;
 use App\Models\Phone;
 use App\Models\Program;
 use App\Models\Registration;
-use App\Models\SpecialNeed;
 use App\Models\Student;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\Response;
 
 class StudentController extends Controller
 {
@@ -37,8 +35,7 @@ class StudentController extends Controller
     public function create()
     {
         $programs = Program::all();
-        $special_needs = SpecialNeed::all();
-        return view('students.create')->with('programs', $programs)->with('special_needs', $special_needs);
+        return view('students.create')->with('programs', $programs);
     }
 
     /**
@@ -49,7 +46,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->session()->reflash();
         try {
             $validator = Validator::make($request->all(), Student::VALIDATORS_STORE);
 
@@ -140,9 +136,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        dd($student);
     }
 
     /**

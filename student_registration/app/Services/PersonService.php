@@ -3,27 +3,28 @@
 namespace App\Services;
 
 use App\Models\Person;
-use Illuminate\Http\Request;
 
 class PersonService
 {
-    private $person;
-
-    public function __construct(Person $person)
+    public function store($data)
     {
-        $this->person = $person;
+        $data['created_by'] =  1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+        $person = new Person();
+        $person->fill($data);
+        $person->save();
+        return $person;
     }
 
-    public function store(Request $request)
+    public function storeResponsibly($request)
     {
-        $this->person->name = $request->input('name');
-        $this->person->born_state = $request->input('born_state');
-        $this->person->born_city = $request->input('born_city');
-        $this->person->cpf = $request->input('cpf');
-        $this->person->rg = $request->input('rg');
-        $this->person->emitter_rg = $request->input('emitter_rg');
-        $this->person->gender = $request->input('gender');
-        $this->person->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
-        $this->person->save();
+        $person = new Person();
+        $person->name = $request->name1;
+        $person->cpf = $request->cpf1;
+        $person->rg = $request->rg1;
+        $person->emitter_rg = $request->emitter_rg1;
+        $person->nis = $request->nis1;
+        $person->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+        $person->save();
+        return $person;
     }
 }

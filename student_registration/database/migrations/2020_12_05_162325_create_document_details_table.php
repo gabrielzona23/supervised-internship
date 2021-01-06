@@ -15,14 +15,14 @@ class CreateDocumentDetailsTable extends Migration
     {
         Schema::create('document_details', function (Blueprint $table) {
             $table->id();
-            $table->string('type_of_certificate',64);
-            $table->string('term_number',64);
-            $table->string('name_registry',64);
-            $table->string('city_registry',64);
-            $table->string('stage_registry',64);
-            $table->string('emission_date',32);
-            $table->integer('sheet_number');
-            $table->integer('book_number');
+            $table->string('type_of_certificate', 64)->nullable();
+            $table->string('name_registry')->nullable();
+            $table->string('city_registry', 64)->nullable();
+            $table->string('state_registry', 64)->nullable();
+            $table->string('term_number', 64)->nullable();
+            $table->string('sheet_number')->nullable();
+            $table->string('book_number')->nullable();
+            $table->string('emission_date', 32)->nullable();
             $table->foreignId('document_type_id');
             $table->timestamps();
 

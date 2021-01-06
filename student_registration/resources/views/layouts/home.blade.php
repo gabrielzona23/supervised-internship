@@ -53,8 +53,16 @@
             $("[name=cpf]").mask('000.000.000-00', {
                 reverse: true
             });
+            $("[name=cpf1]").mask('000.000.000-00', {
+                reverse: true
+            });
+            $("[name=cep]").mask('00000-000', {
+                reverse: true
+            });
             $("[name=phone2]").mask('(00) 00000-0000');
             $("[name=phone1]").mask('(00) 00000-0000');
+            $("[name=phone3]").mask('(00) 00000-0000');
+            $("[name=phone4]").mask('(00) 00000-0000');
         });
 
     </script>

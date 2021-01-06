@@ -17,9 +17,8 @@ class CreateResponsibliesTable extends Migration
             $table->id();
             $table->boolean('family_bag')->default(0);
             $table->boolean('active')->default(1);
-            $table->string('number_card_family_bag',32);
-            $table->string('nis',32);
-            $table->string('kinship',32);
+            $table->string('number_card_family_bag',32)->nullable();
+            $table->string('kinship',32)->nullable();
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('person_id')->constrained('persons');
             $table->timestamps();

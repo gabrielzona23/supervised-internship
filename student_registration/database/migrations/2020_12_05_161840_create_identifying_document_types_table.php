@@ -15,9 +15,9 @@ class CreateIdentifyingDocumentTypesTable extends Migration
     {
         Schema::create('identifying_document_types', function (Blueprint $table) {
             $table->id();
-            $table->string('another_document',64);
-            $table->boolean('model');
-            $table->string('document_number',32);
+            $table->string('another_document', 64)->nullable();
+            $table->enum('model', ['new', 'old', 'others'])->default('new_model');
+            $table->string('document_number', 32);
             $table->foreignId('registration_id');
             $table->timestamps();
 

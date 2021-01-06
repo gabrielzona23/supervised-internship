@@ -15,14 +15,14 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('status_progress',32)->nullable();
-            $table->string('status',32)->nullable();
+            $table->string('status_progress', 32)->nullable(); //porcentagem da matricula respondida
+            $table->string('status', 32)->nullable(); //acho que é transferido, trancado, desistência
             $table->boolean('image_authorization')->nullable();
             $table->boolean('parents_divorced')->nullable();
             $table->boolean('guard_document')->nullable();
-            $table->string('student_custody',32)->nullable();
-            $table->string('nis',32)->nullable();
-            $table->string('number_card_family_bag',32)->nullable();
+            $table->string('student_custody', 32)->nullable();
+            $table->timestamp('school_year', 16)->nullable();
+            $table->string('number_card_family_bag', 32)->nullable();
             $table->foreignId('student_id')->constrained('students');
             $table->foreignId('updated_by')->constrained('users');
             $table->foreignId('created_by')->constrained('users');

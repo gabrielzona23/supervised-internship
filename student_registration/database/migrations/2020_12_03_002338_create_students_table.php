@@ -15,15 +15,17 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['studying','concluded', 'inactive'])->default('studying');
             $table->date('born_date')->nullable();
+            $table->string('color', 32)->nullable();
+            $table->string('breed', 32)->nullable();
+            $table->string('ethnicity', 32)->nullable();
+            $table->string('inep_code', 32)->nullable();
             $table->string('nationality', 64)->nullable();
-            $table->string('ethnicity',32)->nullable();
-            $table->string('breed',32)->nullable();
-            $table->string('color',32)->nullable();
-            $table->string('number_card_sus',32)->nullable();
-            $table->string('inep_code',32)->nullable();
-            $table->string('nis',32)->nullable();
+            $table->string('number_card_sus', 64)->nullable();
+            $table->string('g_mus', 64)->nullable();
+            $table->text('special_educational_needs')->nullable();
+            $table->boolean('has_special_needs')->nullable();
+            $table->enum('status', ['studying', 'concluded', 'inactive'])->default('studying');
             $table->foreignId('person_id')->constrained('persons');
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();

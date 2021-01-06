@@ -4,19 +4,21 @@
     <div class="side-content-wrap">
         <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar="" data-suppress-scroll-x="true">
             <ul class="navigation-left">
-                <li class="nav-item" data-item=""><a class="nav-item-hold" href="{{ route('students.create') }}"><i
-                            class="nav-icon i-File-Clipboard-File--Text"></i><span class="nav-text">Cadastro de
+                <li class="nav-item" data-item=""><a class="nav-item-hold" href="{{ route('registrations.create') }}"><i
+                            class="nav-icon i-File-Clipboard-File--Text"></i><span class="nav-text">Matriculas dos
                             Alunos</span></a>
                     <div class="triangle"></div>
                 </li>
                 <li class="nav-item"><a class="nav-item-hold" href="{{ route('students.index') }}"><i
-                            class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">Listagem de Alunos</span></a>
+                            class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">Listagem de
+                            Alunos</span></a>
                     <div class="triangle"></div>
                 </li>
-                {{-- <li class="nav-item" data-item="dashboard"><a class="nav-item-hold"
-                        href="#"><i class="nav-icon i-Bar-Chart"></i><span class="nav-text">Dashboard</span></a>
+                <li class="nav-item" data-item="dashboard"><a class="nav-item-hold" href="#"><i
+                            class="nav-icon i-Bar-Chart"></i><span class="nav-text">Listagem de Matriculas</span></a>
                     <div class="triangle"></div>
                 </li>
+                {{--
                 <li class="nav-item" data-item="uikits"><a class="nav-item-hold" href="#"><i
                             class="nav-icon i-Library"></i><span class="nav-text">UI kits</span></a>
                     <div class="triangle"></div>

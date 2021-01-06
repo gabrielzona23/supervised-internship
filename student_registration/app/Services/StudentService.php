@@ -2,20 +2,15 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentService
 {
-    private $student;
 
-    public function __construct($student)
+    public function store($data)
     {
-        $this->student = $student;
-    }
-
-    public function store(Request $request)
-    {
-
-
+        $data['created_by'] =  1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+        $student = Student::create($data);
+        return $student;
     }
 }
