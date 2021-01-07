@@ -17,16 +17,16 @@ class CreateAddressesTable extends Migration
             $table->id();
             $table->string('city')->default('Rio Branco');
             $table->string('number')->nullable();
-            $table->string('street', 64)->nullable();
+            $table->string('street', 255)->nullable();
             $table->string('branch_line')->nullable();
-            $table->string('residential_area', 32)->nullable();
-            $table->string('state', 32)->default('Acre');
-            $table->string('country', 32)->default('Brasil');
-            $table->string('neighborhood', 32);
+            $table->enum('residential_area', ['Rural', 'Urbana'])->default('Urbana')->nullable();
+            $table->string('state', 64)->default('Acre');
+            $table->string('country', 64)->default('Brasil');
+            $table->string('neighborhood', 64);
             $table->string('cep', 32);
-            $table->string('complement', 64)->nullable();
+            $table->string('complement', 255)->nullable();
             $table->string('electrical_installation_core', 32)->nullable();
-            $table->string('reference', 64)->nullable();
+            $table->string('reference', 255)->nullable();
             $table->timestamps();
         });
     }

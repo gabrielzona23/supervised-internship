@@ -49,7 +49,7 @@
     <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            // $("[name=born_date]").mask('00/00/00');
+            $("[name=school_year]").mask('0000');
             $("[name=cpf]").mask('000.000.000-00', {
                 reverse: true
             });

@@ -13,7 +13,7 @@ class Person extends Model
     protected $table = 'persons';
 
     protected $fillable = [
-        'name', 'image', 'born_state', 'born_city', 'cpf', 'rg', 'emitter_rg', 'gender', 'created_by'
+        'name', 'image', 'born_state', 'born_city', 'cpf', 'rg', 'emitter_rg', 'gender', 'created_by', 'phone1', 'phone2'
     ];
 
     public function addresses()
@@ -21,14 +21,9 @@ class Person extends Model
         return $this->belongsToMany(Address::class, 'address_person', 'person_id');
     }
 
-    public function jobs()
+    public function job()
     {
-        return $this->belongsToMany(Job::class, 'job_person', 'person_id', 'job_id')->withPivot('workplace_name', 'length_of_service', 'hours_worked_daily');
-    }
-
-    public function phones()
-    {
-        return $this->hasMany(Phone::class);
+        return $this->hasOne(Job::class, 'person_id');
     }
 
     public function relative()

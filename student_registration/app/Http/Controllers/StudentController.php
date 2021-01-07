@@ -47,12 +47,12 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Student::VALIDATORS_STORE);
+            // $validator = Validator::make($request->all(), Student::VALIDATORS_STORE);
 
-            if ($validator->fails()) {
-                Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
-                return redirect()->route('students.create')->withErrors($validator)->withInput();
-            }
+            // if ($validator->fails()) {
+            //     Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+            //     return redirect()->route('students.create')->withErrors($validator)->withInput();
+            // }
 
             DB::beginTransaction();
             $person = new Person();
@@ -93,18 +93,6 @@ class StudentController extends Controller
                 $person->jobs()->attach($job->id);
             }
 
-            $phone1 = new Phone();
-            $phone1->number = $request->input('phone1');
-            $phone1->person_id = $person->id;
-            $phone1->save();
-
-            if ($request->input('phone2') != null) {
-                $phone2 = new Phone();
-                $phone2->number = $request->input('phone2');
-                $phone2->person_id = $person->id;
-                $phone2->save();
-            }
-
             DB::commit();
             Log::info('Successfully created Estudante');
             return redirect()->route('students.create')->with('message', 'Cadastro realizado com sucesso!')->withInput()->with('student', $student);
@@ -125,9 +113,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
+        dd('oi');
+        return view('students.show')->with('student', $student);
     }
 
     /**
@@ -138,7 +127,19 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        dd($student);
+        $programsStudent = false;
+        $programs = Program::all();
+        $programsStudent = $student->programs->first();
+        return view('students.edit-basic')->with('student', $student)->with('programs', $programs)->with('programsStudent', $programsStudent);
+    }
+
+    public function editRegistrationStudent(Student $student, Registration $registration)
+    {
+        $programsStudent = false;
+        $programs = Program::all();
+        $programsStudent = $student->programs->first();
+        $student = $registration->student;
+        return view('students.edit')->with('student', $student)->with('programs', $programs)->with('programsStudent', $programsStudent)->with('registration', $registration);
     }
 
     /**
@@ -148,9 +149,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        dd($request, $student);
     }
 
     /**

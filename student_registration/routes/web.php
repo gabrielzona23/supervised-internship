@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AnamneseController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResponsiblyController;
 use App\Http\Controllers\StudentController;
@@ -20,3 +21,7 @@ Route::resource('students', StudentController::class);
 Route::resource('addresses', AddressController::class);
 Route::resource('responsiblies', ResponsiblyController::class);
 Route::resource('registrations', RegistrationController::class);
+Route::resource('anamneses', AnamneseController::class)->parameters([
+    'anamneses' => 'registration'
+]);
+Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');

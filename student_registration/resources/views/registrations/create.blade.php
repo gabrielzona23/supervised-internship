@@ -11,17 +11,17 @@
             novalidate="novalidate">
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Identificação do Aluno</h4>
+                <h4 class="card-title mb-3">Identificação do Aluno(a)</h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Informações de identificação do Aluno</div>
+                            <div class="card-title mb-3">Informações de identificação do Aluno(a)</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="name">Nome do aluno*</label>
+                                    <label for="name">Nome do aluno(a)*</label>
                                     <input class="form-control form-control-rounded" id="name" name="name" required
-                                        type="text" placeholder="Digite o nome do aluno" value="{{ old('name') }}" />
+                                        type="text" placeholder="Digite o nome do aluno(a)" value="{{ old('name') }}" />
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -254,11 +254,23 @@
                                     </label>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="g_mus">G_MUS*</label>
+                                    <label for="g_mus">G_MUS</label>
                                     <input class="form-control form-control-rounded" id="g_mus" name="g_mus" type="text"
                                         placeholder="Digite o Número" value="{{ old('g_mus') }}" />
                                     <div class="valid-feedback">
                                         Tudo Ok!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="school_year">Ano Letivo*</label>
+                                    <input class="form-control form-control-rounded" id="school_year" name="school_year"
+                                        required type="text" placeholder="Digite o ano Letivo dá mátricula"
+                                        value="{{ old('school_year') }}" />
+                                    <div class="valid-feedback">
+                                        Tudo Ok!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        O campo acima não pode ser vazio
                                     </div>
                                 </div>
                             </div>

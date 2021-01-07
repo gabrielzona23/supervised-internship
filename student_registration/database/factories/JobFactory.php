@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Program;
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProgramFactory extends Factory
+class JobFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Program::class;
+    protected $model = Job::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,8 @@ class ProgramFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(true),
+            'name' => $this->faker->jobTitle(),
+            'workplace_name' => $this->faker->company(),
         ];
     }
 }

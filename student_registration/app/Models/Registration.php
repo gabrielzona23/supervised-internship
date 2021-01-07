@@ -10,8 +10,13 @@ class Registration extends Model
 {
 
     protected $fillable = [
-        'image_authorization', 'parents_divorced', 'guard_document', 'student_custody', 'number_card_family_bag', 'student_id'
+        'image_authorization', 'parents_divorced', 'guard_document', 'student_custody', 'number_card_family_bag', 'student_id', 'school_year'
+    ], $dates = [
+        'created_at',
+        'updated_at',
+        'school_year'
     ];
+
     const VALIDATORS_STORE = [
         'name' => ['bail', 'required', 'string', 'max:64'],
         'rg' => ['bail', 'max:20'],
@@ -64,6 +69,7 @@ class Registration extends Model
         'phone4' => ['bail', 'max:15'],
 
         'student_custody' => ['bail', 'max:32'],
+        'school_year' => ['bail', 'date_format:Y'],
 
         'document_model' => ['bail', 'required', 'in:new,old,others'],
         'document_number' => ['bail', 'required', 'string', 'max:32'],
@@ -143,5 +149,9 @@ class Registration extends Model
     {
         $this->attributes['school_year'] = Carbon::createFromFormat('Y', $value);
     }
+    // public function getSchoolYearAttribute($value)
+    // {
+    //     return  Carbon::create($value);
+    // }
     use HasFactory;
 }

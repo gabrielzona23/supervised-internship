@@ -4,27 +4,27 @@
 <div class="col-md-12 mb-4">
     <div class="card text-left">
         <div class="card-body">
-            <h4 class="card-title mb-3">Lista de alunos matriculados</h4>
+            <h4 class="card-title mb-3">Lista de matriculas</h4>
 
             <div class="table-responsive">
                 <div id="zero_configuration_table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     {{-- <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="dataTables_length" id="zero_configuration_table_length"><label>Show <select
-                                            name="zero_configuration_table_length" aria-controls="zero_configuration_table"
-                                            class="form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> entries</label></div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div id="zero_configuration_table_filter" class="dataTables_filter"><label>Search:<input
-                                            type="search" class="form-control form-control-sm" placeholder=""
-                                            aria-controls="zero_configuration_table"></label></div>
-                            </div>
-                        </div> --}}
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="zero_configuration_table_length"><label>Show <select
+                                        name="zero_configuration_table_length" aria-controls="zero_configuration_table"
+                                        class="form-control form-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="zero_configuration_table_filter" class="dataTables_filter"><label>Search:<input
+                                        type="search" class="form-control form-control-sm" placeholder=""
+                                        aria-controls="zero_configuration_table"></label></div>
+                        </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="display table table-striped table-bordered dataTable"
@@ -43,7 +43,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Office: activate to sort column ascending"
-                                            style="width: 117px;">Data da Nascimento</th>
+                                            style="width: 117px;">Ano Letivo</th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending"
                                             style="width: 100px;">Status</th>
@@ -58,19 +58,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($students as $student)
+                                    @foreach ($registrations as $registration)
 
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1">{{ $student->person->name }}</td>
-                                        <td class="">{{ $student->person->cpf }}</td>
-                                        <td class="">{{ $student->born_date }}</td>
-                                        <td class="">{{ $student->status }}</td>
-                                        <td class="">{{ $student->created_at }}</td>
+                                        <td class="sorting_1">{{ $registration->student->person->name }}</td>
+                                        <td class="">{{ $registration->student->person->cpf }}</td>
+                                        <td class="">{{ \Carbon\Carbon::parse($registration->school_year)->format('Y')}}
+                                        </td>
+                                        <td class="">{{ $registration->student->status }}</td>
+                                        <td class="">
+                                            {{ \Carbon\Carbon::parse($registration->created_at)->format('d/m/Y')}}</td>
                                         <td class="">
                                             <a class="btn btn-outline-info m-1"
-                                                href="{{ route('students.edit',$student) }}" type="button">Editar
-                                                Dados do Aluno</a>
-
+                                                href="{{ route('registrations.edit',$registration) }}"
+                                                type="button">Editar Dados do Aluno</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -80,7 +81,7 @@
                                     <tr>
                                         <th rowspan="1" colspan="1">Nome</th>
                                         <th rowspan="1" colspan="1">CPF</th>
-                                        <th rowspan="1" colspan="1">Data da Nascimento</th>
+                                        <th rowspan="1" colspan="1">Ano Letivo</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1">Data da mátricula</th>
                                         <th rowspan="1" colspan="1">Mais informações</th>
@@ -92,17 +93,18 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <div class="dataTables_info" id="zero_configuration_table_info" role="status"
-                                aria-live="polite">Mostrando de 1 até {{ $students->count() }} de
-                                {{ $students->total() }} {{ $students->total() == 1 ? 'registro' : 'registros' }}
+                                aria-live="polite">Mostrando de 1 até {{ $registrations->count() }} de
+                                {{ $registrations->total() }}
+                                {{ $registrations->total() == 1 ? 'registro' : 'registros' }}
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers"
                                 id="zero_configuration_table_paginate">
-                                @if ($students->hasPages())
+                                @if ($registrations->hasPages())
 
                                 <ul class="pagination">
-                                    @if ($students->onFirstPage())
+                                    @if ($registrations->onFirstPage())
                                     <li class="paginate_button page-item previous disabled"
                                         id="deafult_ordering_table_previous"><a href="#" disabled
                                             aria-controls="deafult_ordering_table" data-dt-idx="0" tabindex="0"
@@ -110,19 +112,19 @@
                                     @else
                                     <li class="paginate_button page-item previous"
                                         id="zero_configuration_table_previous"><a
-                                            href="{{ $students->previousPageUrl() }}"
+                                            href="{{ $registrations->previousPageUrl() }}"
                                             aria-controls="zero_configuration_table" data-dt-idx="0" tabindex="0"
                                             class="page-link">Anterior</a></li>
                                     @endif
-                                    @foreach ($students as $student)
-                                    @if (is_string($student))
+                                    @foreach ($registrations as $registration)
+                                    @if (is_string($registration))
                                     <li class="paginate_button page-item active"><a href="#"
-                                            aria-controls="zero_configuration_table" data-dt-idx="{{ $student }}"
-                                            tabindex="0" class="page-link">{{ $student }}</a></li>
+                                            aria-controls="zero_configuration_table" data-dt-idx="{{ $registration }}"
+                                            tabindex="0" class="page-link">{{ $registration }}</a></li>
                                     @endif
-                                    @if (is_array($student))
-                                    @foreach ($student as $page => $url)
-                                    @if ($page == $students->currentPage())
+                                    @if (is_array($registration))
+                                    @foreach ($registration as $page => $url)
+                                    @if ($page == $registrations->currentPage())
                                     <li class="paginate_button page-item active"><a href="#"
                                             aria-controls="deafult_ordering_table" data-dt-idx="1" tabindex="0"
                                             class="page-link">{{ $page }}</a></li>
@@ -136,10 +138,11 @@
 
                                     @endforeach
 
-                                    @if ($students->hasMorePages())
+                                    @if ($registrations->hasMorePages())
                                     <li class="paginate_button page-item next" id="deafult_ordering_table_next">
-                                        <a href="{{ $students->nextPageUrl() }}" aria-controls="deafult_ordering_table"
-                                            data-dt-idx="3" tabindex="0" class="page-link">Proxima</a>
+                                        <a href="{{ $registrations->nextPageUrl() }}"
+                                            aria-controls="deafult_ordering_table" data-dt-idx="3" tabindex="0"
+                                            class="page-link">Proxima</a>
                                     </li>
                                     @else
                                     <li class="paginate_button page-item next disabled"

@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\School;
+use App\Models\Registration;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1)->create();
-        \App\Models\School::factory(1)->create();
-        \App\Models\Program::factory(10)->create();
         $this->call([
+            ModuleQuestionSeeder::class,
             ProgramSeeder::class,
+            QuestionSeeder::class,
+            VaccineSeeder::class,
+            DocumentSeeder::class,
         ]);
+        User::factory()->count(1)->create();
+        School::factory()->count(1)->create();
+        Registration::factory()->count(5)->hasResponsiblies()->create();
     }
 }
