@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionSeeder extends Seeder
 {
+    // private $numberOfCountries = 10;
     /**
      * Run the database seeds.
      *
@@ -64,14 +65,7 @@ class QuestionSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('questions')->insert([
-            'description' => 'Qual o medicamento usada continuamente?',
-            'type' => 'textual',
-            'module_question_id' => '1',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ]);
-        DB::table('questions')->insert([
-            'description' => 'Doenças adquiridas desde o nascimento e a idade?',
+            'description' => 'Qual o medicamento usado continuamente?',
             'type' => 'textual',
             'module_question_id' => '1',
             'updated_at' => now(),
@@ -148,6 +142,41 @@ class QuestionSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('questions')->insert([
+            'description' => 'Alguma mania para dormir?',
+            'type' => 'trueFalse',
+            'module_question_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('questions')->insert([
+            'description' => 'Qual a mania para dormir?',
+            'type' => 'textual',
+            'module_question_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('questions')->insert([
+            'description' => 'Sua casa é?',
+            'type' => 'scalar2',
+            'module_question_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('questions')->insert([
+            'description' => 'Caso o imóvel seja alugado, qual o valor do aluguel?',
+            'type' => 'textual',
+            'module_question_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('questions')->insert([
+            'description' => 'Doenças adquiridas desde o nascimento e a idade?',
+            'type' => 'textual',
+            'module_question_id' => '1',
+            'updated_at' => now(),
+            'created_at' => now(),
+        ]);
+        DB::table('questions')->insert([
             'description' => 'Introduziu papinha de frutas com qual idade?',
             'type' => 'textual',
             'module_question_id' => '1',
@@ -196,20 +225,7 @@ class QuestionSeeder extends Seeder
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('questions')->insert([
-            'description' => 'Alguma mania para dormir?',
-            'type' => 'trueFalse',
-            'module_question_id' => '1',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ]);
-        DB::table('questions')->insert([
-            'description' => 'Qual a mania para dormir?',
-            'type' => 'textual',
-            'module_question_id' => '1',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ]);
+
         DB::table('questions')->insert([
             'description' => 'Onde dorme?',
             'type' => 'textual',
@@ -240,7 +256,7 @@ class QuestionSeeder extends Seeder
         ]);
         DB::table('questions')->insert([
             'description' => 'Por que você decidiu colocar seu filho na creche?',
-            'type' => 'trueFalse',
+            'type' => 'scalar1',
             'module_question_id' => '1',
             'updated_at' => now(),
             'created_at' => now(),
@@ -248,20 +264,6 @@ class QuestionSeeder extends Seeder
         DB::table('questions')->insert([
             'description' => 'Os pais moram na mesma casa?',
             'type' => 'trueFalse',
-            'module_question_id' => '1',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ]);
-        DB::table('questions')->insert([
-            'description' => 'Sua casa é?',
-            'type' => 'trueFalse',
-            'module_question_id' => '1',
-            'updated_at' => now(),
-            'created_at' => now(),
-        ]);
-        DB::table('questions')->insert([
-            'description' => 'Qual o valor do aluguel da casa?',
-            'type' => 'textual',
             'module_question_id' => '1',
             'updated_at' => now(),
             'created_at' => now(),

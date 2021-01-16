@@ -22,6 +22,6 @@ Route::resource('addresses', AddressController::class);
 Route::resource('responsiblies', ResponsiblyController::class);
 Route::resource('registrations', RegistrationController::class);
 Route::resource('anamneses', AnamneseController::class)->parameters([
-    'anamneses' => 'registration'
+    'anamneses' => 'student'
 ]);
 Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');

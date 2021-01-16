@@ -48,4 +48,16 @@ class Student extends Model
     {
         return $this->belongsTo(Person::class);
     }
+    public function booleanAnswers()
+    {
+        return $this->belongsToMany(BooleanAnswer::class, 'boolean_answers');
+    }
+    public function textualAnswers()
+    {
+        return $this->belongsToMany(TextualAnswer::class, 'textual_answers');
+    }
+    public function scaleAnswers()
+    {
+        return $this->belongsToMany(ScaleAnswer::class, 'scale_answers');
+    }
 }

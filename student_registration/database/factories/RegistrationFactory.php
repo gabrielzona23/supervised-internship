@@ -24,13 +24,13 @@ class RegistrationFactory extends Factory
     public function definition()
     {
         return [
-            "status_progress" => $this->faker->optional()->numberBetween($min = 0, $max = 100),
+            "status_progress" => $this->faker->numberBetween($min = 0, $max = 100),
             'image_authorization' => $this->faker->numberBetween($min = 0, $max = 1),
             'parents_divorced' => $this->faker->numberBetween($min = 0, $max = 1),
             'guard_document' => $this->faker->numberBetween($min = 0, $max = 1),
-            'student_custody' => $this->faker->optional()->name,
+            'student_custody' => $this->faker->name,
             'school_year' => $this->faker->date('Y'),
-            'number_card_family_bag' => $this->faker->optional()->numberBetween($min = 1000000, $max = 99999999999),
+            'number_card_family_bag' => $this->faker->numberBetween($min = 1000000, $max = 99999999999),
             'student_id' => Student::factory()->hasPrograms(1),
             'updated_by' => 1,
             'created_by' => 1,

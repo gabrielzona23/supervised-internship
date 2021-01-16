@@ -70,7 +70,8 @@
                                             <a class="btn btn-outline-info m-1"
                                                 href="{{ route('students.edit',$student) }}" type="button">Editar
                                                 Dados do Aluno</a>
-
+                                            <a class="btn btn-outline-danger m-1"
+                                                href="{{ route('anamneses.edit',$student) }}" type="button">Anamnese</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -99,58 +100,7 @@
                         <div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers"
                                 id="zero_configuration_table_paginate">
-                                @if ($students->hasPages())
-
-                                <ul class="pagination">
-                                    @if ($students->onFirstPage())
-                                    <li class="paginate_button page-item previous disabled"
-                                        id="deafult_ordering_table_previous"><a href="#" disabled
-                                            aria-controls="deafult_ordering_table" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Anterior</a></li>
-                                    @else
-                                    <li class="paginate_button page-item previous"
-                                        id="zero_configuration_table_previous"><a
-                                            href="{{ $students->previousPageUrl() }}"
-                                            aria-controls="zero_configuration_table" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Anterior</a></li>
-                                    @endif
-                                    @foreach ($students as $student)
-                                    @if (is_string($student))
-                                    <li class="paginate_button page-item active"><a href="#"
-                                            aria-controls="zero_configuration_table" data-dt-idx="{{ $student }}"
-                                            tabindex="0" class="page-link">{{ $student }}</a></li>
-                                    @endif
-                                    @if (is_array($student))
-                                    @foreach ($student as $page => $url)
-                                    @if ($page == $students->currentPage())
-                                    <li class="paginate_button page-item active"><a href="#"
-                                            aria-controls="deafult_ordering_table" data-dt-idx="1" tabindex="0"
-                                            class="page-link">{{ $page }}</a></li>
-                                    @else
-                                    <li class="paginate_button page-item"><a href="{{ $url }}"
-                                            aria-controls="deafult_ordering_table" data-dt-idx="1" tabindex="0"
-                                            class="page-link">{{ $page }}</a></li>
-                                    @endif
-                                    @endforeach
-                                    @endif
-
-                                    @endforeach
-
-                                    @if ($students->hasMorePages())
-                                    <li class="paginate_button page-item next" id="deafult_ordering_table_next">
-                                        <a href="{{ $students->nextPageUrl() }}" aria-controls="deafult_ordering_table"
-                                            data-dt-idx="3" tabindex="0" class="page-link">Proxima</a>
-                                    </li>
-                                    @else
-                                    <li class="paginate_button page-item next disabled"
-                                        id="zero_configuration_table_next"><a href="#"
-                                            aria-controls="zero_configuration_table" data-dt-idx="7" tabindex="0"
-                                            class="page-link">Proxima</a></li>
-                                    @endif
-
-                                </ul>
-                                @endif
-
+                                {{ $students->links() }}
                             </div>
                         </div>
                     </div>

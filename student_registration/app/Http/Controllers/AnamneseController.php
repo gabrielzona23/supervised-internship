@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnamneseRequest;
 use App\Models\Question;
 use App\Models\Registration;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class AnamneseController extends Controller
@@ -54,11 +56,11 @@ class AnamneseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registration $registration)
+    public function edit(Student $student)
     {
         $questions = Question::where('module_question_id', 1)->get();
-        $student = $registration->student;
-        return view('questions.edit')->with('questions', $questions)->with('student', $student)->with('registration', $registration);
+        $student = $student;
+        return view('questions.edit')->with('questions', $questions)->with('student', $student);
     }
 
     /**
@@ -68,9 +70,22 @@ class AnamneseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $registration)
+    public function update(AnamneseRequest $request, Student $student)
     {
-        dd($request->all(), $registration);
+
+        $count = 1;
+        $questionsAnamnese = Question::where('module_question_id', 1)->get();
+        dd($questionsAnamnese->toArray());
+        $array = array_map($questionsAnamnese->toArray(), $request->except(['_token', '_method']));
+        dd($array);
+        foreach ($array as $input) {
+
+            // if($input!=null) {
+            //     $student->
+            // }
+            $count++;
+        }
+        dd($request->all(), $student);
     }
 
     /**

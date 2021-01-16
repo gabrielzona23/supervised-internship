@@ -8,20 +8,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
 {
-    public function module(){
+    public function module()
+    {
         return $this->belongsTo(ModuleQuestion::class);
     }
 
-    public function booleanAnswers(){
-        return $this->belongsToMany(BooleanAnswer::class);
+    public function booleanAnswers()
+    {
+        return $this->belongsToMany(BooleanAnswer::class, 'boolean_answers');
     }
 
-    public function textualAnswers(){
-        return $this->belongsToMany(TextualAnswer::class);
+    public function textualAnswers()
+    {
+        return $this->belongsToMany(TextualAnswer::class, 'textual_answers');
     }
 
-    public function scalesAnswers(){
-        return $this->belongsToMany(ScaleAnswer::class);
+    public function scaleAnswers()
+    {
+        return $this->belongsToMany(ScaleAnswer::class, 'scale_answers');
     }
 
     use HasFactory, SoftDeletes;

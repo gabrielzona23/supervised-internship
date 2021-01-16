@@ -17,7 +17,7 @@ class CreateBooleanAnswersTable extends Migration
             $table->id();
             $table->boolean('value')->default(0);
             $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('registration_id')->constrained('registrations');
+            $table->foreignId('student_id')->constrained('students');
             $table->timestamps();
         });
     }

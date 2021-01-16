@@ -11,8 +11,7 @@
                 <!-- ICON BG-->
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a
-                            href="{{ route('students.editRegistrationStudent',['student' => $student, 'registration'=> $registration]) }}">
+                        <a href="{{ route('students.editRegistrationStudent',['student' => $student, 'registration'=> $registration]) }}">
                             <div class="card-body text-center"><i class="i-Add-User"></i>
                                 <p class="text-muted mt-3 mb-0">Edição</p>
                                 <p class="text-primary text-18 line-height-1 mb-2">Dados Principais do Aluno</p>

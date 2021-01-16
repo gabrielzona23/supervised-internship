@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class TextualAnswer extends Model
 {
-    public function question(){
-        return $this->belongsTo(Question::class);
-    }
+    protected $table = 'textual_answers';
+    // public function question()
+    // {
+    //     return $this->belongsTo(Question::class);
+    // }
 
-    public function registration(){
-        return $this->belongsTo(Registration::class);
-    }
+    // public function student()
+    // {
+    //     return $this->belongsTo(Student::class);
+    // }
     use HasFactory;
 }

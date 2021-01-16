@@ -25,8 +25,8 @@ class ResponsiblyFactory extends Factory
         return [
             "family_bag" => $this->faker->numberBetween($min = 0, $max = 1),
             "active" => $this->faker->numberBetween($min = 0, $max = 1),
-            'number_card_family_bag' => $this->faker->unique()->optional()->numberBetween($min = 10000, $max = 99999999),
-            'kinship' => $this->faker->optional()->randomElement(['Mãe', 'Pai', 'Primo 1º', 'Avós', 'Tio']),
+            'number_card_family_bag' => $this->faker->unique()->numberBetween($min = 10000, $max = 99999999),
+            'kinship' => $this->faker->randomElement(['Mãe', 'Pai', 'Primo 1º', 'Avós', 'Tio']),
             'created_by' => 1,
             'person_id' => Person::factory()/*->hasAttached(Address::factory())*/,
             'updated_at' => now(),

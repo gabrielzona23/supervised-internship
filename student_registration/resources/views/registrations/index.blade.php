@@ -101,58 +101,7 @@
                         <div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers"
                                 id="zero_configuration_table_paginate">
-                                @if ($registrations->hasPages())
-
-                                <ul class="pagination">
-                                    @if ($registrations->onFirstPage())
-                                    <li class="paginate_button page-item previous disabled"
-                                        id="deafult_ordering_table_previous"><a href="#" disabled
-                                            aria-controls="deafult_ordering_table" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Anterior</a></li>
-                                    @else
-                                    <li class="paginate_button page-item previous"
-                                        id="zero_configuration_table_previous"><a
-                                            href="{{ $registrations->previousPageUrl() }}"
-                                            aria-controls="zero_configuration_table" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Anterior</a></li>
-                                    @endif
-                                    @foreach ($registrations as $registration)
-                                    @if (is_string($registration))
-                                    <li class="paginate_button page-item active"><a href="#"
-                                            aria-controls="zero_configuration_table" data-dt-idx="{{ $registration }}"
-                                            tabindex="0" class="page-link">{{ $registration }}</a></li>
-                                    @endif
-                                    @if (is_array($registration))
-                                    @foreach ($registration as $page => $url)
-                                    @if ($page == $registrations->currentPage())
-                                    <li class="paginate_button page-item active"><a href="#"
-                                            aria-controls="deafult_ordering_table" data-dt-idx="1" tabindex="0"
-                                            class="page-link">{{ $page }}</a></li>
-                                    @else
-                                    <li class="paginate_button page-item"><a href="{{ $url }}"
-                                            aria-controls="deafult_ordering_table" data-dt-idx="1" tabindex="0"
-                                            class="page-link">{{ $page }}</a></li>
-                                    @endif
-                                    @endforeach
-                                    @endif
-
-                                    @endforeach
-
-                                    @if ($registrations->hasMorePages())
-                                    <li class="paginate_button page-item next" id="deafult_ordering_table_next">
-                                        <a href="{{ $registrations->nextPageUrl() }}"
-                                            aria-controls="deafult_ordering_table" data-dt-idx="3" tabindex="0"
-                                            class="page-link">Proxima</a>
-                                    </li>
-                                    @else
-                                    <li class="paginate_button page-item next disabled"
-                                        id="zero_configuration_table_next"><a href="#"
-                                            aria-controls="zero_configuration_table" data-dt-idx="7" tabindex="0"
-                                            class="page-link">Proxima</a></li>
-                                    @endif
-
-                                </ul>
-                                @endif
+                                {{$registrations->links()}}
 
                             </div>
                         </div>
