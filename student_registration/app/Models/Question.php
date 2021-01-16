@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
 {
+    use HasFactory, SoftDeletes;
+
     public function module()
     {
         return $this->belongsTo(ModuleQuestion::class);
@@ -15,18 +17,16 @@ class Question extends Model
 
     public function booleanAnswers()
     {
-        return $this->belongsToMany(BooleanAnswer::class, 'boolean_answers');
+        return $this->belongsToMany(Student::class, 'boolean_answers')->withPivot('value')->withTimestamps();
     }
 
     public function textualAnswers()
     {
-        return $this->belongsToMany(TextualAnswer::class, 'textual_answers');
+        return $this->belongsToMany(Student::class, 'textual_answers')->withPivot('value')->withTimestamps();
     }
 
     public function scaleAnswers()
     {
-        return $this->belongsToMany(ScaleAnswer::class, 'scale_answers');
+        return $this->belongsToMany(Student::class, 'scale_answers')->withPivot('value')->withTimestamps();
     }
-
-    use HasFactory, SoftDeletes;
 }
