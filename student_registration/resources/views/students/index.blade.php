@@ -1,6 +1,7 @@
 @extends('layouts.home')
 
 @section('content')
+<x-alerts.sucess :message="session('message')" />
 <div class="col-md-12 mb-4">
     <div class="card text-left">
         <div class="card-body">

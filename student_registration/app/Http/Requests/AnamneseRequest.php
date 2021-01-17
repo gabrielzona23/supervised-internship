@@ -13,7 +13,7 @@ class AnamneseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,27 +24,46 @@ class AnamneseRequest extends FormRequest
     public function rules()
     {
         return [
-            '1' => ['bail', 'required_if:special_needs_check,1', 'string', 'max:64'],
-            '2' => ['bail', 'required', 'string', 'max:64'],
-            '3' => ['bail', 'max:64'],
-            '4' => ['bail', 'max:32'],
-            '5' => ['bail', 'max:32'],
-            '6' => ['bail', 'max:32'],
-            '7' => ['bail', 'max:32'],
-            '8' => ['bail', 'max:32'],
-            '9' => ['bail', 'max:32'],
-            '10' => ['bail', 'max:32'],
-            '11' => ['bail', 'max:32'],
-            '12' => ['bail', 'max:32'],
-            '13' => ['bail', 'required', 'boolean'],
-            '14' => ['bail', 'required', 'boolean'],
-            '15' => ['bail', 'max:64'],
-            '16' => ['bail', 'required', 'date', 'min:10', 'max:10'],
-            '17' => ['bail', 'required', 'min:14', 'max:14'],
-            '18' => ['bail', 'required', 'min:5', 'max:20'],
-            '19' => ['bail', 'max:16'],
-            '20' => ['bail', 'required', 'min:7', 'max:15'],
-            'phone2' => ['bail', 'max:15'],
+            '1' => ['bail', 'max:1024'],
+            // '2' => ['bail', 'boolean'],
+            // '3' => ['bail', 'boolean'],
+            '4' => ['bail', 'max:1024'],
+            // '5' => ['bail', 'boolean'],
+            '6' => ['bail', 'max:1024'],
+            // '7' => ['bail', 'boolean'],
+            '8' => ['bail', 'max:1024'],
+            // '9' => ['bail', 'boolean'],
+            '10' => ['bail', 'max:1024'],
+            // '11' => ['bail', 'boolean'],
+            '12' => ['bail', 'max:1024'],
+            // '13' => ['bail', 'boolean'],
+            '14' => ['bail', 'max:1024'],
+            '15' => ['bail', 'max:1024'],
+            '16' => ['bail', 'max:1024'],
+            // '17' => ['bail', 'boolean'],
+            '18' => ['bail', 'max:1024'],
+            // '19' => ['bail', 'boolean'],
+            '20' => ['bail', 'max:1024'],
+            // '21' => ['bail', 'in:1,2,3'],
+            '22' => ['bail', 'max:1024'],
+            '23' => ['bail', 'max:1024'],
+            '24' => ['bail', 'max:1024'],
+            '25' => ['bail', 'max:1024'],
+            '26' => ['bail', 'max:1024'],
+            '27' => ['bail', 'max:1024'],
+            '28' => ['bail', 'max:1024'],
+            '29' => ['bail', 'max:1024'],
+            '30' => ['bail', 'max:1024'],
+            '31' => ['bail', 'max:1024'],
+            '32' => ['bail', 'max:1024'],
+            '33' => ['bail', 'max:1024'],
+            '34' => ['bail', 'max:1024'],
+            // '35' => ['bail', 'in:1,2,3'],
+            // '36' => ['bail', 'boolean'],
+            '37' => ['bail', 'max:1024'],
+            '38' => ['bail', 'max:1024'],
+            '39' => ['bail', 'max:1024'],
+            '41' => ['bail', 'max:1024'],
         ];
     }
 }

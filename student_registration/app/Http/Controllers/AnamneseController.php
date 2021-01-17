@@ -6,7 +6,11 @@ use App\Http\Requests\AnamneseRequest;
 use App\Models\Question;
 use App\Models\Registration;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AnamneseController extends Controller
 {
@@ -58,9 +62,19 @@ class AnamneseController extends Controller
      */
     public function edit(Student $student)
     {
+        // $question = $student->booleanAnswers;
+        // dd($question);
+        $booleanQuestions = $student->booleanAnswers;
+        // dd($booleanQuestions->where('description', 'Tipo de parto?')->first());
+        $textualQuestions = $student->textualAnswers()->get();
+        $scaleQuestions = $student->scaleAnswers()->get();
         $questions = Question::where('module_question_id', 1)->get();
-        $student = $student;
-        return view('questions.edit')->with('questions', $questions)->with('student', $student);
+        // foreach ($questions as $question) {
+        //     if ($question->description === 'Tipo de parto?') {
+        //         dd($question->booleanAnswers);
+        //     }
+        // }
+        return view('questions.edit')->with('questions', $questions)->with('student', $student)->with('booleanQuestions', $booleanQuestions)->with('textualQuestions', $textualQuestions)->with('scaleQuestions', $scaleQuestions);
     }
 
     /**
@@ -72,20 +86,37 @@ class AnamneseController extends Controller
      */
     public function update(AnamneseRequest $request, Student $student)
     {
-
-        $count = 1;
-        $questionsAnamnese = Question::where('module_question_id', 1)->get();
-        dd($questionsAnamnese->toArray());
-        $array = array_map($questionsAnamnese->toArray(), $request->except(['_token', '_method']));
-        dd($array);
-        foreach ($array as $input) {
-
-            // if($input!=null) {
-            //     $student->
-            // }
-            $count++;
+        try {
+            DB::beginTransaction();
+            $questionsAnamnese = Question::where('module_question_id', 1)->get();
+            foreach ($request->except(['_token', '_method']) as $key => $input) {
+                if ($input != null) {
+                    $question = Question::find($key);
+                    if ($question->type == 'textual') {
+                        $student->textualAnswers()->sync([$key => ['value' => $input]]);
+                    } elseif ($question->type == 'trueFalse') {
+                        $student->booleanAnswers()->sync([$key => ['value' => $input]]);
+                    } else {
+                        $student->scaleAnswers()->sync([$key => ['value' => $input]]);
+                    }
+                }
+            }
+            DB::commit();
+            Log::info('Successfully created Estudante');
+            return redirect()->route('students.index')->with('message', 'Anamnese Atualizada com sucesso!');
+        } catch (ModelNotFoundException $m) {
+            DB::rollback();
+            Log::error('No query result', ['errors' => $m]);
+            return view('erros.not-found-404')->with('problem', 'Dados não encontrados!');
+        } catch (QueryException $q) {
+            DB::rollback();
+            Log::error('Internal database error', ['errors' => $q]);
+            return view('erros.service-unavailable-503')->with('problem', 'Erro no Banco de dados!');
+        } catch (\Throwable $t) {
+            DB::rollback();
+            Log::error('Internal server error', ['errors' => $t]);
+            return view('erros.internal-serve-error-500')->with('problem', 'Erro no Servidor!');
         }
-        dd($request->all(), $student);
     }
 
     /**

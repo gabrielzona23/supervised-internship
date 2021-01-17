@@ -15,38 +15,31 @@
 </head>
 
 <body class="text-left">
+
     <div class="app-admin-wrap layout-sidebar-large">
-
         <x-header />
-
         <x-sidebar />
-
-        <!-- =============== Left side End ================-->
         <div class="main-content-wrap sidenav-open d-flex flex-column">
-            <!-- ============ Body content start ============= -->
-            @yield('content')
+            <div class="main-content">
 
-            <!-- Footer Start -->
+                @yield('content')
+            </div>
             <x-footer />
-            <!-- fotter end -->
         </div>
-        <!-- ============ Search UI Start ============= -->
-        {{--
-        <x-search_ui /> --}}
     </div>
-    <!-- ============ Search UI End ============= -->
-    <script src="{{ asset('js/plugins/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('js/scripts/script.min.js') }}"></script>
+
+    <script src="{{ asset('js/plugins/jquery-3.3.1.min.js') }}"> </script>
+    <script src="{{ asset('js/plugins/bootstrap.bundle.min.js') }}"> </script>
+    <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"> </script>
+    <script src="{{ asset('js/scripts/script.min.js') }}"> </script>
     <script src="{{ asset('js/scripts/sidebar.large.script.min.js') }}"></script>
-    <script src="{{ asset('js/scripts/customizer.script.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/jquery.smartWizard.min.js') }}"></script>
-    <script src="{{ asset('js/scripts/customizer.script.min.js') }}"></script>
-    <script src="{{ asset('js/scripts/smart.wizard.script.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/datatables.min.js') }}"></script>
-    <script src="{{ asset('js/scripts/datatables.script.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+    <script src="{{ asset('js/scripts/customizer.script.min.js') }}"> </script>
+    <script src="{{ asset('js/plugins/jquery.smartWizard.min.js') }}"> </script>
+    <script src="{{ asset('js/scripts/customizer.script.min.js') }}"> </script>
+    <script src="{{ asset('js/scripts/smart.wizard.script.min.js') }}"> </script>
+    <script src="{{ asset('js/plugins/datatables.min.js') }}"> </script>
+    <script src="{{ asset('js/scripts/datatables.script.min.js') }}"> </script>
+    <script src="{{ asset('js/jquery.mask.min.js') }}"> </script>
     <script>
         $(document).ready(function() {
             $("[name=school_year]").mask('0000');

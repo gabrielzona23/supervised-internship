@@ -50,14 +50,14 @@ class Student extends Model
     }
     public function booleanAnswers()
     {
-        return $this->belongsToMany(BooleanAnswer::class, 'boolean_answers');
+        return $this->belongsToMany(Question::class, 'boolean_answers')->withPivot('value')->withTimestamps();
     }
     public function textualAnswers()
     {
-        return $this->belongsToMany(TextualAnswer::class, 'textual_answers');
+        return $this->belongsToMany(Question::class, 'textual_answers')->withPivot('value')->withTimestamps();
     }
     public function scaleAnswers()
     {
-        return $this->belongsToMany(ScaleAnswer::class, 'scale_answers');
+        return $this->belongsToMany(Question::class, 'scale_answers')->withPivot('value')->withTimestamps();
     }
 }
