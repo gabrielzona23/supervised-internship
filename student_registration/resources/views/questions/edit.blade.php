@@ -24,54 +24,87 @@
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="{{ $question->id }}">{{ $question->description }}</label>
                                         <select class="form-control form-control-rounded" name="{{ $question->id }}" id="{{ $question->id }}">
-                                            <option value="5" selected disabled>----Selecione o tipo de parto----
+                                            <option value= selected disabled>----Selecione o tipo de parto----
                                             </option>
-                                            <option value=0 @if($booleanQuestions->where('description', 'Tipo de
-                                                parto?')->first() != null) @if($booleanQuestions->where('description',
-                                                'Tipo de parto?')->first()->pivot->value===false) selected @endif
-                                                @endif/>Cesária
-                                            </option>
-                                            <option value=1 @if($booleanQuestions->where('description', 'Tipo de
-                                                parto?')->first()!=null)
-                                                @if($booleanQuestions->where('description', 'Tipo de parto?')->first()->pivot->value===true)
-                                                selected
+                                            <option value=0
+                                                @if($booleanQuestions->where('description', 'Tipo de parto?')->first() != null&&$booleanQuestions->where('description', 'Tipo de parto?')->first()->pivot->value===false)
+                                                    selected
                                                 @endif
-                                                @endif>Normal
-                                            </option>
+                                                >Cesária</option>
+                                            <option value=1
+                                                @if($booleanQuestions->where('description', 'Tipo de parto?')->first()!=null&&$booleanQuestions->where('description', 'Tipo de parto?')->first()->pivot->value===true)
+                                                    selected
+                                                @endif
+                                                >Normal</option>
                                         </select>
                                     </div>
                                     @elseif($question->type ==='textual')
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="{{ $question->id }}">{{ $question->description }}</label>
-                                        <input class="form-control form-control-rounded" id="{{ $question->id }}" name="{{ $question->id }}" type="text" />
+                                        <input class="form-control form-control-rounded" id="{{ $question->id }}" name="{{ $question->id }}" type="text"
+                                            @if($textualQuestions->where('id',$question->id)->first() != null)
+                                                value ="{{ $textualQuestions->where('id', $question->id)->first()->pivot->value}}"
+                                            @endif/>
                                     </div>
                                     @elseif($question->type === 'trueFalse')
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="{{ $question->id }}">{{ $question->description }}</label>
                                         <select class="form-control form-control-rounded" name="{{ $question->id }}" id="{{ $question->id }}">
-                                            <option value="5" selected disabled>----Selecione----</option>
-                                            <option value=0>Não</option>
-                                            <option value=1>Sim</option>
+                                            <option selected disabled>----Selecione----</option>
+                                            <option value=0
+                                                @if($booleanQuestions->where('id', $question->id)->first()!=null&&$booleanQuestions->where('id', $question->id)->first()->pivot->value===false)
+                                                    selected
+                                                @endif
+                                            >Não</option>
+                                            <option value=1
+                                                @if($booleanQuestions->where('id', $question->id)->first() != null&&$booleanQuestions->where('id', $question->id)->first()->pivot->value===true)
+                                                    selected
+                                                @endif
+                                            >Sim</option>
                                         </select>
                                     </div>
                                     @elseif($question->type === 'scalar2')
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="{{ $question->id }}">{{ $question->description }}</label>
                                         <select class="form-control form-control-rounded" name="{{ $question->id }}" id="{{ $question->id }}">
-                                            <option value="5" selected disabled>----Selecione----</option>
-                                            <option value=1>Própria</option>
-                                            <option value=2>Cedida</option>
-                                            <option value=3>Alugada</option>
+                                            <option selected disabled>----Selecione----</option>
+                                            <option value=1
+                                                @if($scaleQuestions->where('type', $question->type)->first() != null&&$scaleQuestions->where('type', $question->type)->first()->pivot->value==="1")
+                                                    selected
+                                                @endif
+                                            >Própria</option>
+                                            <option value=2
+                                                @if($scaleQuestions->where('type', $question->type)->first() != null&&$scaleQuestions->where('type', $question->type)->first()->pivot->value==="2")
+                                                    selected
+                                                @endif
+                                            >Cedida</option>
+                                            <option value=3
+                                                @if($scaleQuestions->where('type', $question->type)->first() != null&&$scaleQuestions->where('type', $question->type)->first()->pivot->value==="3")
+                                                    selected
+                                                @endif
+                                            >Alugada</option>
                                         </select>
                                     </div>
                                     @elseif($question->type === 'scalar1')
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="{{ $question->id }}">{{ $question->description }}</label>
                                         <select class="form-control form-control-rounded" name="{{ $question->id }}" id="{{ $question->id }}">
-                                            <option value="5" selected disabled>----Selecione----</option>
-                                            <option value=1>Para se socializar</option>
-                                            <option value=2>Para a mãe trabalhar fora</option>
-                                            <option value=3>Por orientação médita</option>
+                                            <option value= selected disabled>----Selecione----</option>
+                                            <option value=1
+                                                @if($scaleQuestions->where('type', $question->type)->first() != null&&$scaleQuestions->where('type', $question->type)->first()->pivot->value==="1")
+                                                    selected
+                                                @endif
+                                             >Para se socializar</option>
+                                            <option value=2
+                                                @if($scaleQuestions->where('type', $question->type)->first() != null&&$scaleQuestions->where('type', $question->type)->first()->pivot->value==="2")
+                                                    selected
+                                                @endif
+                                             >Para a mãe trabalhar fora</option>
+                                            <option value=3
+                                                @if($scaleQuestions->where('type', $question->type)->first() != null&&$scaleQuestions->where('type', $question->type)->first()->pivot->value==="3")
+                                                    selected
+                                                @endif
+                                             >Por orientação médita</option>
                                         </select>
                                     </div>
                                     @endif
@@ -81,7 +114,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                     </div>
                 </div>
             </form>

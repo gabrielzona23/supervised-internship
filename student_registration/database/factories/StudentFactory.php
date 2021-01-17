@@ -35,7 +35,7 @@ class StudentFactory extends Factory
             'has_special_needs' => $this->faker->numberBetween($min = 0, $max = 1),
             'created_by' => 1,
             // 'person_id' => $this->faker->unique()->numberBetween($min = 1, $max = 30),
-            'person_id' => Person::factory()->hasAttached(Address::factory())->hasJob(),
+            'person_id' => Person::factory()->hasJob(),
             'updated_at' => now(),
             'created_at' => now(),
         ];

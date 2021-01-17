@@ -15,46 +15,6 @@ use Illuminate\Support\Facades\Log;
 class AnamneseController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Registration $registration)
-    {
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -62,18 +22,11 @@ class AnamneseController extends Controller
      */
     public function edit(Student $student)
     {
-        // $question = $student->booleanAnswers;
-        // dd($question);
         $booleanQuestions = $student->booleanAnswers;
-        // dd($booleanQuestions->where('description', 'Tipo de parto?')->first());
-        $textualQuestions = $student->textualAnswers()->get();
-        $scaleQuestions = $student->scaleAnswers()->get();
+        $textualQuestions = $student->textualAnswers;
+        $scaleQuestions = $student->scaleAnswers;
+        $question = Question::where('type', 'scalar2')->first();
         $questions = Question::where('module_question_id', 1)->get();
-        // foreach ($questions as $question) {
-        //     if ($question->description === 'Tipo de parto?') {
-        //         dd($question->booleanAnswers);
-        //     }
-        // }
         return view('questions.edit')->with('questions', $questions)->with('student', $student)->with('booleanQuestions', $booleanQuestions)->with('textualQuestions', $textualQuestions)->with('scaleQuestions', $scaleQuestions);
     }
 
@@ -88,16 +41,18 @@ class AnamneseController extends Controller
     {
         try {
             DB::beginTransaction();
-            $questionsAnamnese = Question::where('module_question_id', 1)->get();
             foreach ($request->except(['_token', '_method']) as $key => $input) {
                 if ($input != null) {
                     $question = Question::find($key);
                     if ($question->type == 'textual') {
-                        $student->textualAnswers()->sync([$key => ['value' => $input]]);
+                        $student->textualAnswers()->detach($key);
+                        $student->textualAnswers()->attach([$key => ['value' => $input]]);
                     } elseif ($question->type == 'trueFalse') {
-                        $student->booleanAnswers()->sync([$key => ['value' => $input]]);
+                        $student->booleanAnswers()->detach($key);
+                        $student->booleanAnswers()->attach([$key => ['value' => $input]]);
                     } else {
-                        $student->scaleAnswers()->sync([$key => ['value' => $input]]);
+                        $student->scaleAnswers()->detach($key);
+                        $student->scaleAnswers()->attach([$key => ['value' => $input]]);
                     }
                 }
             }
@@ -117,16 +72,5 @@ class AnamneseController extends Controller
             Log::error('Internal server error', ['errors' => $t]);
             return view('erros.internal-serve-error-500')->with('problem', 'Erro no Servidor!');
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

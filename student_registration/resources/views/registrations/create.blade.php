@@ -11,7 +11,7 @@
             novalidate="novalidate">
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Identificação do Aluno(a)</h4>
+                <h4 class="card-title mb-3">Identificação do Novo Aluno(a)</h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
@@ -519,6 +519,13 @@
                                     <input class="form-control form-control-rounded" id="reference" name="reference"
                                         type="text" value="{{ old('reference') }}"
                                         placeholder="Digite o ponto de referência do endereço do aluno" />
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="complement">Complemento</label>
+                                    <input class="form-control form-control-rounded" id="complement" name="complement"
+                                        type="text" value="{{ old('complement') }}"
+                                        placeholder="Digite o complemento do endereço do aluno" />
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">

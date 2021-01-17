@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Registration;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
@@ -21,10 +23,9 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function editAddressStudent(Student $student)
     {
-        return view('addresses.create');
-
+        return view('address.create')->with('student', $student);
     }
 
     /**
@@ -33,7 +34,7 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeAddressStudent(Request $request, Student $student)
     {
         //
     }
@@ -55,9 +56,9 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('address.edit')->with('student', $student);
     }
 
     /**
@@ -67,7 +68,7 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
         //
     }

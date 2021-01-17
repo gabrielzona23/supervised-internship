@@ -31,7 +31,7 @@ class RegistrationFactory extends Factory
             'student_custody' => $this->faker->name,
             'school_year' => $this->faker->date('Y'),
             'number_card_family_bag' => $this->faker->numberBetween($min = 1000000, $max = 99999999999),
-            'student_id' => Student::factory()->hasPrograms(1),
+            'student_id' => Student::factory()->hasAttached(Address::factory())->hasPrograms(1),
             'updated_by' => 1,
             'created_by' => 1,
             'updated_at' => now(),

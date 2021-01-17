@@ -24,6 +24,12 @@ class Student extends Model
         'created_by'
     ];
 
+
+    public function addresses()
+    {
+        return $this->belongsToMany(Address::class, 'address_student', 'student_id');
+    }
+
     public function programs()
     {
         return $this->belongsToMany(Program::class);

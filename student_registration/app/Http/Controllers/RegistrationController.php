@@ -26,7 +26,7 @@ class RegistrationController extends Controller
      */
     public function index(Request $request)
     {
-        $registrations = Registration::paginate();
+        $registrations = Registration::paginate(60);
         return view('registrations.index')->with('registrations', $registrations);
     }
 
