@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'nickname' => 'zonattin',
             'status' => 'active',
             'email_verified_at' => now(),
-            'password' => 'senha123', // password
+            'password' => bcrypt('123456'), // password
             'remember_token' => Str::random(10),
         ];
     }

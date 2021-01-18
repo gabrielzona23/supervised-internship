@@ -153,11 +153,15 @@
                     <i class="i-Administrator" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <div class="dropdown-header">
-                            <i class="i-Lock-User mr-1"></i> Timothy Carlson
+                            <i class="i-Lock-User mr-1"></i> <div class="ml-3">{{ Auth::user()->name }}
+                        </div>
                         </div>
                         <a class="dropdown-item">Account settings</a>
                         <a class="dropdown-item">Billing history</a>
-                        <a class="dropdown-item" href="signin.html">Sign out</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Encerrar Sessão</button>
+                        </form>
                     </div>
                 </div>
             </div>
