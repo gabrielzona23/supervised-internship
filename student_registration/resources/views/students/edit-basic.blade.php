@@ -9,16 +9,14 @@
     <div class="card text-left">
         <form method="POST" action="{{ route('students.update', $student) }}" class="needs-validation"
             novalidate="novalidate">
-            @method('PACTH')
+            @method('put')
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Identificação do Aluno(a) {{ $student->person->name }}</h4>
+                <h4 class="card-title mb-3">Edição das informações de identificação do Aluno(a): <b>{{ $student->person->name }}</b> </h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Informações de identificação do Aluno(a)
-                            </div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="name">Nome do aluno(a)*</label>
@@ -144,7 +142,7 @@
                                             <label for="number_car_sus">Número do cartão do sus</label>
                                             <input class="form-control form-control-rounded" id="number_card_sus"
                                                 value="{{ $student->number_card_sus }}" name="number_card_sus"
-                                                type="text" placeholder="Digite o cartão do sus do aluno" />
+                                                type="text" placeholder="Digite o número do cartão do sus" />
                                         </div>
 
                                         <div class="col-6 form-group">
@@ -178,14 +176,15 @@
                                         <div class="col-6 form-group">
                                             <label for="programs">Programas*</label>
                                             <select class="form-control form-control-rounded" id="programs"
-                                                name="programs" value="{{ old('programs') }}" required>
+                                                name="programs" required>
                                                 <option value="" selected disabled>----Selecione----</option>
                                                 <option value="0">Nenhum</option>
                                                 @foreach ($programs as $program)
-                                                <option value="{{ $program->id }}" @if($programsStudent->
-                                                    id==$program->id) selected @endif>
-                                                    {{ $program->name }}
-                                                </option>
+                                                    <option value="{{ $program->id }}"
+                                                    @if($programsStudent->id==$program->id)
+                                                        selected
+                                                    @endif
+                                                    >{{ $program->name }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback">
@@ -201,8 +200,7 @@
                                             <select class="form-control form-control-rounded" name="has_special_needs"
                                                 id="has_special_needs" required>
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value=0 @if(old('has_special_needs')==0 ||$student->
-                                                    has_special_needs==0 )
+                                                <option value=0 @if(old('has_special_needs')==0 ||$student->has_special_needs==0 )
                                                     selected @endif >Não
                                                 </option>
                                                 <option value=1 @if(old('has_special_needs')==1||$student->

@@ -55,7 +55,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Salary: activate to sort column ascending"
-                                            style="width: 350px;">Mais informações</th>
+                                            style="width: 350px;">Gerenciamento de informações dos alunos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,11 +68,12 @@
                                         <td class="">{{ $student->status }}</td>
                                         <td class="">{{ $student->created_at }}</td>
                                         <td class="">
-                                            <a class="btn btn-outline-info m-1"
-                                                href="{{ route('students.edit',$student) }}" type="button">Editar
-                                                Dados do Aluno</a>
-                                            <a class="btn btn-outline-danger m-1"
+                                            <a class="btn btn-outline-info btn-sm m-1"
+                                                href="{{ route('students.edit',$student) }}" type="button">Informações</a>
+                                            <a class="btn btn-outline-danger btn-sm m-1"
                                                 href="{{ route('anamneses.edit',$student) }}" type="button">Anamnese</a>
+                                            <a class="btn btn-outline-secondary btn-sm m-1"
+                                                href="{{ route('address.createAddressStudent',$student) }}" type="button">Endereço</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -85,7 +86,7 @@
                                         <th rowspan="1" colspan="1">Data da Nascimento</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1">Data da mátricula</th>
-                                        <th rowspan="1" colspan="1">Mais informações</th>
+                                        <th rowspan="1" colspan="1">Gerenciamento de informações dos alunos</th>
                                     </tr>
                                 </tfoot>
                             </table>

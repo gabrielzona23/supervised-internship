@@ -11,6 +11,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class AnamneseController extends Controller
 {
@@ -27,7 +28,7 @@ class AnamneseController extends Controller
         $scaleQuestions = $student->scaleAnswers;
         $question = Question::where('type', 'scalar2')->first();
         $questions = Question::where('module_question_id', 1)->get();
-        return view('questions.edit')->with('questions', $questions)->with('student', $student)->with('booleanQuestions', $booleanQuestions)->with('textualQuestions', $textualQuestions)->with('scaleQuestions', $scaleQuestions);
+        return view('questions.edit', compact('questions', 'student', 'booleanQuestions', 'textualQuestions', 'scaleQuestions'));
     }
 
     /**
@@ -37,9 +38,14 @@ class AnamneseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AnamneseRequest $request, Student $student)
+    public function update(Request $request, Student $student)
     {
         try {
+            $validator = Validator::make($request->all(), Question::VALIDATORS_STORE);
+            if ($validator->fails()) {
+                Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+                return redirect()->route('anamneses.edit', $student)->withErrors($validator)->withInput();
+            }
             DB::beginTransaction();
             foreach ($request->except(['_token', '_method']) as $key => $input) {
                 if ($input != null) {

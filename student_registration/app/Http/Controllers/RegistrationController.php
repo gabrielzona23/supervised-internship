@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Services\ResponsiblyService;
 use App\Services\RegistrationService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,6 +50,7 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         try {
             $validator = Validator::make($request->all(), Registration::VALIDATORS_STORE);
             if ($validator->fails()) {
@@ -91,22 +93,25 @@ class RegistrationController extends Controller
             }
 
             $data_address = $request->only([
-                'city',
-                'number',
                 'street',
-                'branch_line',
-                'residential_area',
+                'city',
                 'state',
-                'country',
                 'neighborhood',
+                'country',
                 'cep',
-                'complement',
+                'number',
                 'electrical_installation_code',
-                'reference'
+                'residential_area',
+                'type_transport',
+                'reference',
+                'complement',
+                'buses_name',
+                'transport_localization',
+                'route',
             ]);
-            $data_address['person_id'] = $person->id;
+            $data_address['student_id'] = $student->id;
             $addressService = new AddressService();
-            $address = $addressService->store($data_address);
+            $addressService->storeRegistration($data_address);
 
 
             $person_responsibly = $personService->storeResponsibly($request);
@@ -116,23 +121,27 @@ class RegistrationController extends Controller
             ]);
             $data_responsibly['person_id'] = $person_responsibly->id;
             $responsiblyService = new ResponsiblyService();
-            $responsibly = $responsiblyService->store($data_responsibly);
+            $responsiblyService->store($data_responsibly);
 
             $documentService = new DocumentService();
-            $documents = $documentService->store($request, $registration);
+            $documentService->store($request, $registration);
 
 
             DB::commit();
             Log::info('Successfully created Estudante');
-            return redirect()->route('registrations.create')->with('message', 'Cadastro realizado com sucesso!')->withInput()->with('student', $student);
+            return redirect()->route('registrations.create', compact('student'))->with('message', 'Matricula realizado com sucesso!')->withInput();
+        } catch (ModelNotFoundException $m) {
+            DB::rollback();
+            Log::error('No query result', ['errors' => $m]);
+            return view('erros.not-found-404')->with('problem', 'Dados não encontrados!');
         } catch (QueryException $q) {
-            DB::rollBack();
-            Log::error('Internal Server Error', ['errors' => $q]);
-            return redirect()->route('registrations.create')->with('problem', 'Falha ao realizar cadastro!')->withInput()->with('student', $student);
+            DB::rollback();
+            Log::error('Internal database error', ['errors' => $q]);
+            return view('erros.service-unavailable-503')->with('problem', 'Erro no Banco de dados!');
         } catch (\Throwable $t) {
-            DB::rollBack();
-            Log::critical('Internal Server Error', ['errors' => $t]);
-            return redirect()->route('registrations.create')->with('problem', 'Falha ao realizar cadastro!')->withInput()->with('student', $student);
+            DB::rollback();
+            Log::error('Internal server error', ['errors' => $t]);
+            return view('erros.internal-serve-error-500')->with('problem', 'Erro no Servidor!');
         }
     }
 
@@ -156,7 +165,7 @@ class RegistrationController extends Controller
     public function edit(Registration $registration)
     {
         $student = $registration->student;
-        return view('registrations.forms')->with('registration', $registration)->with('student', $student);
+        return view('registrations.forms', compact('registration', 'student'));
     }
 
     /**

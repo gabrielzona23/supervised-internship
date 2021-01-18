@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
         ]);
         User::factory()->count(1)->create();
         School::factory()->count(1)->create();
-        Registration::factory()->count(50)->hasResponsiblies()->create();
+        Registration::factory()->count(100)->hasResponsiblies()->create();
     }
 }

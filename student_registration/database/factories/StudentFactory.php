@@ -33,6 +33,7 @@ class StudentFactory extends Factory
             'g_mus' => $this->faker->unique()->numberBetween($min = 10000, $max = 99999999),
             'special_educational_needs' => $this->faker->words(3, true),
             'has_special_needs' => $this->faker->numberBetween($min = 0, $max = 1),
+            'status' => $this->faker->randomElement(['Cursando', 'Concluído', 'Inativo']),
             'created_by' => 1,
             // 'person_id' => $this->faker->unique()->numberBetween($min = 1, $max = 30),
             'person_id' => Person::factory()->hasJob(),

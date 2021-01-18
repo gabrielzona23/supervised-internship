@@ -54,7 +54,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Salary: activate to sort column ascending"
-                                            style="width: 350px;">Mais informações</th>
+                                            style="width: 350px;">Gerenciamento de informações da matricula</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +69,7 @@
                                         <td class="">
                                             {{ \Carbon\Carbon::parse($registration->created_at)->format('d/m/Y')}}</td>
                                         <td class="">
-                                            <a class="btn btn-outline-info m-1"
+                                            <a class="btn btn-outline-info btn-sm m-1"
                                                 href="{{ route('registrations.edit',$registration) }}"
                                                 type="button">Editar Dados do Aluno</a>
                                         </td>
@@ -84,7 +84,7 @@
                                         <th rowspan="1" colspan="1">Ano Letivo</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1">Data da mátricula</th>
-                                        <th rowspan="1" colspan="1">Mais informações</th>
+                                        <th rowspan="1" colspan="1">Gerenciamento de informações da matricula</th>
                                     </tr>
                                 </tfoot>
                             </table>

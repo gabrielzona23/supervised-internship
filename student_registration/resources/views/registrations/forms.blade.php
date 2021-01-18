@@ -23,28 +23,8 @@
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <a href="{{ route('anamneses.edit',$student) }}">
                             <div class="card-body text-center"><i class="i-Clinic"></i>
-                                <p class="text-muted mt-2 mb-0">Incluir ou editar  </p>
+                                <p class="text-muted mt-2 mb-0">Gerenciar</p>
                                 <p class="text-primary text-18 line-height-1 mb-2"> Anamnese</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="{{ route('addresses.edit',$student) }}">
-                            <div class="card-body text-center"><i class="i-Globe"></i>
-                                <p class="text-muted mt-2 mb-0">Editar</p>
-                                <p class="text-primary text-18 line-height-1 mb-2"> Editar Endereço</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="{{ route('address.editAddressStudent',$student) }}">
-                            <div class="card-body text-center"><i class="i-Edit-Map"></i>
-                                <p class="text-muted mt-2 mb-0">Incluir Novo </p>
-                                <p class="text-primary text-18 line-height-1 mb-2"> Novo Endereço</p>
                             </div>
                         </a>
                     </div>

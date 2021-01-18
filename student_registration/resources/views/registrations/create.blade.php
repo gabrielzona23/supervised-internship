@@ -11,7 +11,7 @@
             novalidate="novalidate">
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Identificação do Novo Aluno(a)</h4>
+                <h4 class="card-title mb-3">Identificação do Novo Aluno(a) <b>{{ old('name') }}</b></h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
@@ -177,12 +177,15 @@
                                         <div class="col-6 form-group">
                                             <label for="programs">Programas*</label>
                                             <select class="form-control form-control-rounded" id="programs"
-                                                name="programs" value="{{ old('programs') }}" required>
-                                                <option value="" disabled selected>Selecione um programa da escola que o
-                                                    aluno participa</option>
+                                                name="programs"  required>
+                                                <option value="" disabled selected>----Selecione----</option>
                                                 <option value="0">Nenhum</option>
                                                 @foreach ($programs as $program)
-                                                <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                                    <option value="{{ $program->id }}"
+                                                    @if(old('programs')==$program->id)
+                                                        selected
+                                                    @endif
+                                                    >{{ $program->name }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback">
@@ -196,10 +199,18 @@
                                             <label for="has_special_needs">Possui Necessidades Educacionais
                                                 Especiais*</label>
                                             <select class="form-control form-control-rounded" name="has_special_needs"
-                                                id="has_special_needs" value="{{ old('has_special_needs') }}" required>
+                                                id="has_special_needs" required>
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value=0>Não</option>
-                                                <option value=1>Sim</option>
+                                                <option value="0"
+                                                    @if(old('has_special_needs')=="0")
+                                                        selected
+                                                    @endif
+                                                >Não</option>
+                                                <option value="1"
+                                                    @if(old('has_special_needs')=="1")
+                                                        selected
+                                                    @endif
+                                                >Sim</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
@@ -216,7 +227,7 @@
                                     <label for="special_educational_needs">Necessidades Especiais</label>
                                     <input class="form-control form-control-rounded" id="special_educational_needs"
                                         name="special_educational_needs" type="text"
-                                        placeholder="Digite as necssidades educacionais do aluno"
+                                        placeholder="Digite as necessidades educacionais"
                                         value="{{ old('special_educational_needs') }}" />
                                 </div>
 
@@ -225,14 +236,14 @@
                                         <div class="col-4 form-group">
                                             <label for="color">Cor</label>
                                             <input class="form-control form-control-rounded" type="text" name="color"
-                                                id="color" placeholder="Digite a Cor do aluno"
+                                                id="color" placeholder="Digite a Cor"
                                                 value="{{ old('color') }}" />
                                         </div>
 
                                         <div class="col-4 form-group">
                                             <label for="breed">Raça</label>
                                             <input class="form-control form-control-rounded" type="text" id="breed"
-                                                placeholder="Digite a Raça do aluno" name="breed"
+                                                placeholder="Digite a Raça" name="breed"
                                                 value="{{ old('breed') }}" />
                                         </div>
 
@@ -240,18 +251,27 @@
                                             <label for="gender">Gênero</label>
                                             <input class="form-control form-control-rounded" id="gender" name="gender"
                                                 value="{{ old('gender') }}" type="text"
-                                                placeholder="Digite o gênero do aluno" />
+                                                placeholder="Digite o gênero" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label class="checkbox checkbox-primary">
-                                        <input class="form-control form-control-rounded" id="image_authorization"
-                                            name="image_authorization" type="checkbox" checked="checked"><span
-                                            for="image_authorization" value="{{ old('image_authorization') }}" />O
-                                        Responsável autoriza a divuldagação de fotos em trabalhos
-                                        escolares em redes sociais?</span><span class="checkmark"></span>
-                                    </label>
+                                    <label for="image_authorization">O Responsável autoriza a divuldagação de fotos em trabalhos
+                                        escolares em redes sociais?</label>
+                                    <select class="form-control form-control-rounded" name="image_authorization"
+                                        id="image_authorization">
+                                        <option value="" selected disabled>----Selecione----</option>
+                                        <option value="0"
+                                            @if(old('image_authorization')=="0")
+                                                selected
+                                            @endif
+                                        >Não</option>
+                                        <option value="1"
+                                            @if(old('image_authorization')=="1")
+                                                selected
+                                            @endif
+                                        >Sim</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="g_mus">G_MUS</label>
@@ -287,11 +307,23 @@
                                         <div class="col-6 form-group">
                                             <label for="document_model">Modelo de Documento*</label>
                                             <select class="form-control form-control-rounded" name="document_model"
-                                                id="document_model" value="{{ old('document_model') }}" required>
+                                                id="document_model" required>
                                                 <option value="" selected disabled>----Selecione O Modelo----</option>
-                                                <option value="new">Modelo Novo</option>
-                                                <option value="old">Modelo Antigo</option>
-                                                <option value="others">Outro Documento</option>
+                                                <option value="new"
+                                                    @if(old('document_model')=="new")
+                                                        selected
+                                                    @endif
+                                                >Modelo Novo</option>
+                                                <option value="old"
+                                                    @if(old('document_model')=="old")
+                                                        selected
+                                                    @endif
+                                                >Modelo Antigo</option>
+                                                <option value="others"
+                                                    @if(old('document_model')=="others")
+                                                        selected
+                                                    @endif
+                                                >Outro Documento</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
@@ -304,8 +336,7 @@
                                         <div class="col-6 form-group">
                                             <label for="document_number">Número do Documento*</label>
                                             <input class="form-control form-control-rounded" id="document_number"
-                                                name="document_number" type="text"
-                                                placeholder="Digite o número do Documento"
+                                                name="document_number" type="text" placeholder="Digite o número do Documento"
                                                 value="{{ old('document_number') }}" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
@@ -329,10 +360,18 @@
                                         <div class="col-4 form-group">
                                             <label for="type_of_certificate">Tipo de Certidão</label>
                                             <select class="form-control form-control-rounded" name="type_of_certificate"
-                                                id="type_of_certificate" value="{{ old('type_of_certificate') }}">
+                                                id="type_of_certificate" >
                                                 <option value="" selected disabled>----Selecione A Certidão----</option>
-                                                <option value="Nascimento">Certidão de Nascimento</option>
-                                                <option value="Casamento">Certidão de casamento</option>
+                                                <option value="Nascimento"
+                                                    @if(old('type_of_certificate')=="Nascimento")
+                                                        selected
+                                                    @endif
+                                                >Certidão de Nascimento</option>
+                                                <option value="Casamento"
+                                                    @if(old('type_of_certificate')=="Casamento")
+                                                        selected
+                                                    @endif
+                                                >Certidão de casamento</option>
                                             </select>
                                         </div>
                                         <div class="col-4 form-group">
@@ -404,9 +443,12 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="city">Cidade*</label>
-                                            <input class="form-control form-control-rounded" id="city" name="city"
-                                                type="text" @if(old('city')) value="{{ old('city')}}" @else
-                                                value="Rio Branco" @endif required />
+                                            <input class="form-control form-control-rounded" id="city" name="city" type="text" required
+                                                @if(old('city'))
+                                                    value="{{ old('city')}}"
+                                                @else
+                                                    value="Rio Branco"
+                                                @endif />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
@@ -417,9 +459,12 @@
 
                                         <div class="col-6 form-group">
                                             <label for="state">Estado*</label>
-                                            <input class="form-control form-control-rounded" id="state" name="state"
-                                                type="text" @if(old('state')) value="{{ old('state')}}" @else
-                                                value="Acre" @endif required />
+                                            <input class="form-control form-control-rounded" id="state" name="state" type="text" required
+                                                @if(old('state'))
+                                                    value="{{ old('state')}}"
+                                                @else
+                                                    value="Acre"
+                                                @endif/>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
@@ -431,16 +476,36 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="neighborhood">Bairro*</label>
-                                    <input class="form-control form-control-rounded" id="neighborhood"
-                                        name="neighborhood" type="text"
-                                        placeholder="Digite o Bairro em que o aluno mora"
-                                        value="{{ old('neighborhood') }}" required />
-                                    <div class="valid-feedback">
-                                        Tudo Ok!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="neighborhood">Bairro*</label>
+                                            <input class="form-control form-control-rounded" id="neighborhood"
+                                                name="neighborhood" placeholder="Digite o Bairro em que o aluno mora"
+                                                value="{{ old('neighborhood') }}" type="text" required />
+                                            <div class="valid-feedback">
+                                                Tudo Ok!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                O campo acima não pode ser vazio
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6 form-group">
+                                            <label for="country">Pais*</label>
+                                            <input class="form-control form-control-rounded" id="country" name="country"
+                                                type="text" placeholder="Digite o pais onde o aluno mora"
+                                                @if(old('country'))
+                                                    value="{{ old('country')}}"
+                                                @else
+                                                    value="Brasil"
+                                                @endif/>
+                                            <div class="valid-feedback">
+                                                Tudo Ok!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                O campo acima não pode ser vazio
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -487,10 +552,18 @@
                                         <div class="col-6 form-group">
                                             <label for="residential_area">Área Residencial*</label>
                                             <select class="form-control form-control-rounded" name="residential_area"
-                                                id="residential_area" value="{{ old('residential_area') }}" required>
+                                                id="residential_area" required>
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value="Urbana">Urbana</option>
-                                                <option value="Rural">Rural</option>
+                                                <option value="Urbana"
+                                                    @if(old('residential_area')=="Urbana")
+                                                        selected
+                                                    @endif
+                                                >Urbana</option>
+                                                <option value="Rural"
+                                                    @if(old('residential_area')=="Rural")
+                                                        selected
+                                                    @endif
+                                                >Rural</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
@@ -505,10 +578,26 @@
                                             <select class="form-control form-control-rounded" name="type_transport"
                                                 id="type_transport" value="{{ old('type_transport') }}">
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value="Particular">Particular</option>
-                                                <option value="Público">Público</option>
-                                                <option value="Escolar">Escolar</option>
-                                                <option value="Variado">Variado</option>
+                                                <option value="Particular"
+                                                    @if(old('type_transport') =="Particular")
+                                                        selected
+                                                    @endif
+                                                >Particular</option>
+                                                <option value="Público"
+                                                    @if(old('type_transport') =="Público")
+                                                        selected
+                                                    @endif
+                                                >Público</option>
+                                                <option value="Escolar"
+                                                    @if(old('type_transport') =="Escolar")
+                                                        selected
+                                                    @endif
+                                                >Escolar</option>
+                                                <option value="Variado"
+                                                    @if(old('type_transport') =="Variado")
+                                                        selected
+                                                    @endif
+                                                >Variado</option>
                                             </select>
                                         </div>
                                     </div>
@@ -529,9 +618,21 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
+                                    <label for="buses_name">Nome(s) do ônibus que o aluno pega</label>
+                                    <input class="form-control form-control-rounded" id="buses_name" name="buses_name" type="text"
+                                        placeholder="Digite o rota de transporte do aluno" value="{{ old('buses_name') }}" />
+                                </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                    <label for="transport_localization">Localidade Transporte</label>
+                                    <input class="form-control form-control-rounded" id="transport_localization" name="transport_localization" type="text"
+                                        placeholder="Digite o localidade de transporte" value="{{ old('transport_localization') }}" />
+                                </div>
+
+                                <div class="col-md-12 form-group mb-3">
                                     <label for="route">Rota</label>
                                     <input class="form-control form-control-rounded" id="route" name="route" type="text"
-                                        placeholder="Digite o rota de transporte do aluno" value="{{ old('route') }}" />
+                                        placeholder="Digite o rota de transporte" value="{{ old('route') }}" />
                                 </div>
 
                             </div>
@@ -607,11 +708,18 @@
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="family_bag">Possui Bolsa Família*</label>
-                                    <select class="form-control form-control-rounded" name="family_bag" id="family_bag"
-                                        value="{{ old('family_bag') }}" required>
+                                    <select class="form-control form-control-rounded" name="family_bag" id="family_bag" required>
                                         <option value="" selected disabled>----Selecione----</option>
-                                        <option value=0>Não</option>
-                                        <option value=1>Sim</option>
+                                        <option value="0"
+                                            @if(old('family_bag')=="0")
+                                                selected
+                                            @endif
+                                        >Não</option>
+                                        <option value="1"
+                                             @if(old('family_bag')=="1")
+                                                selected
+                                            @endif
+                                        >Sim</option>
                                     </select>
                                     <div class="valid-feedback">
                                         Tudo Ok!
@@ -654,17 +762,24 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-3 form-group">
-                                            <label for="parents_divorced" class="checkbox checkbox-primary">
-                                                <input class="form-control form-control-rounded" id="parents_divorced"
-                                                    name="parents_divorced" type="checkbox" checked="checked" />
-                                                <span for="parents_divorced" value="{{ old('parents_divorced') }}">Os
-                                                    pais são divorciados?</span>
-                                                <span class="checkmark"></span>
-                                            </label>
+                                            <label for="parents_divorced">Os pais são divorciados?</label>
+                                            <select class="form-control form-control-rounded" name="parents_divorced" id="parents_divorced">
+                                                <option value="" selected disabled>----Selecione----</option>
+                                                <option value="0"
+                                                    @if(old('parents_divorced')=="0")
+                                                        selected
+                                                    @endif
+                                                >Não</option>
+                                                <option value="1"
+                                                    @if(old('parents_divorced')=="1")
+                                                        selected
+                                                    @endif
+                                                >Sim</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-9 form-group">
-                                            <label for="student_custody">Nome da pessoa que pussui a guarda do
+                                            <label for="student_custody">Caso sejam divorciados, Quem pussui a guarda do
                                                 Aluno</label>
                                             <input class="form-control form-control-rounded" id="student_custody"
                                                 name="student_custody" type="text" value="{{ old('student_custody') }}"
@@ -674,13 +789,20 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="guard_document" class="checkbox checkbox-primary">
-                                        <input id="guard_document" name="guard_document" type="checkbox"
-                                            checked="checked">
-                                        <span for="parents_divorced" value="{{ old('guard_document') }}">O responsavel
-                                            apresentou documentos
-                                            comprobatórios da guarda?</span><span class="checkmark"></span>
-                                    </label>
+                                    <label for="guard_document">O responsavel apresentou documentos comprobatórios da guarda?</label>
+                                    <select class="form-control form-control-rounded" name="guard_document" id="guard_document">
+                                        <option value="" selected disabled>----Selecione----</option>
+                                        <option value="0"
+                                            @if(old('guard_document')=="0")
+                                                selected
+                                            @endif
+                                        >Não</option>
+                                        <option value="1"
+                                            @if(old('guard_document')=="1")
+                                                selected
+                                            @endif
+                                        >Sim</option>
+                                    </select>
                                 </div>
 
                             </div>

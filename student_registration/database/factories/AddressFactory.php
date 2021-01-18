@@ -26,6 +26,7 @@ class AddressFactory extends Factory
             "number" => $this->faker->buildingNumber,
             'street' => $this->faker->streetName,
             'residential_area' => $this->faker->randomElement(['Urbana', 'Rural']),
+            'type_transport' => $this->faker->randomElement(['Público', 'Particular', 'Escolar', 'Variado']),
             'state' => $this->faker->state,
             'country' => $this->faker->country,
             'neighborhood' => $this->faker->word(),

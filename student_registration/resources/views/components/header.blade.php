@@ -2,7 +2,9 @@
     <!-- Well begun is half done. - Aristotle -->
     <div class="main-header">
         <div class="logo ml-3">
+        <a href="{{ route('home') }}">
             <span style="font-size:20px"><Strong>Dom Bosco</Strong></span>
+        </a>
             {{-- <img src={{asset('image/logo.png')}} alt=""> --}}
         </div>
         <div class="menu-toggle">
@@ -13,7 +15,7 @@
         <div class="d-flex align-items-center">
             <!-- Mega menu -->
             <div class="dropdown mega-menu d-none d-md-block">
-                <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mega Menu</a>
+                <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
                 <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton">
                     <div class="row m-0">
                         <div class="col-md-4 p-4 bg-img">
@@ -148,7 +150,7 @@
             <!-- User avatar dropdown -->
             <div class="dropdown">
                 <div class="user col align-self-end">
-                    <img src="{{asset('image/faces/1.jpg')}}" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="i-Administrator" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <div class="dropdown-header">
                             <i class="i-Lock-User mr-1"></i> Timothy Carlson
