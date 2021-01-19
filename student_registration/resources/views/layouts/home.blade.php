@@ -12,6 +12,7 @@
     <link href="{{ asset('css/plugins/toastr.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/plugins/smart.wizard/smart_wizard.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/plugins/datatables.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="text-left">

@@ -20,7 +20,7 @@
                                     <label for="street">Rua*</label>
                                     <input class="form-control form-control-rounded" id="street" name="street"
                                         type="text" placeholder="Digite a Rua em que mora o aluno"
-                                        value="{{ $address->street }}" required />
+                                        value="{{ $address->street }}" required autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>

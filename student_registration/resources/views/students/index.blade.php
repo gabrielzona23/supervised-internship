@@ -74,6 +74,8 @@
                                                 href="{{ route('anamneses.edit',$student) }}" type="button">Anamnese</a>
                                             <a class="btn btn-outline-secondary btn-sm m-1"
                                                 href="{{ route('address.createAddressStudent',$student) }}" type="button">Endereço</a>
+                                            <a class="btn btn-outline-primary btn-sm m-1"
+                                                href="{{ route('attendedSchool.create',$student) }}" type="button">Escolas Frequentandas</a>
                                         </td>
                                     </tr>
                                     @endforeach

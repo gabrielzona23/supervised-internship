@@ -155,7 +155,8 @@ return [
         'date'      => 'data',
         'day'       => 'dia',
         'excerpt'   => 'resumo',
-        'first_name'=> 'primeiro nome',
+        'first_name' => 'primeiro nome',
+        'born_date' => 'data nascimento',
         'gender'    => 'gênero',
         'hour'      => 'hora',
         'last_name' => 'sobrenome',
@@ -164,10 +165,13 @@ return [
         'mobile'    => 'celular',
         'month'     => 'mês',
         'name'      => 'nome',
+        'active' => 'ativo',
         'password'  => 'senha',
         'phone'     => 'telefone',
-        'phone1'     => 'telefone principal',
-        'phone2'     => 'telefone secundário',
+        'phone1'    => 'telefone principal',
+        'phone2'    => 'telefone secundário',
+        'phone3'    => 'telefone principal do responsável',
+        'phone4'    => 'telefone secundário do responsável',
         'second'    => 'segundo',
         'sex'       => 'sexo',
         'state'     => 'estado',
@@ -179,7 +183,6 @@ return [
         'year'      => 'ano',
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
-        ''
     ],
 
 ];

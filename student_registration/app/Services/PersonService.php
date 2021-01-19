@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Person;
+use Illuminate\Support\Facades\Auth;
 
 class PersonService
 {
@@ -25,7 +26,7 @@ class PersonService
         $person->phone2 = $request->phone4;
         $person->emitter_rg = $request->emitter_rg1;
         $person->nis = $request->nis1;
-        $person->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+        $person->created_by = Auth::user()->id;
         $person->save();
         return $person;
     }

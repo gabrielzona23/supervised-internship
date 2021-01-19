@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Responsibly;
+use Illuminate\Support\Facades\Auth;
 
 class ResponsiblyService
 {
@@ -13,7 +14,7 @@ class ResponsiblyService
         $responsibly->kinship = $data['kinship'];
         $responsibly->family_bag = $data['family_bag'];
         $responsibly->person_id = $data['person_id'];
-        $responsibly->created_by = 1; //
+        $responsibly->created_by = Auth::user()->id;
         $responsibly->save();
 
         return $responsibly;

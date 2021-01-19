@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AnamneseController;
+use App\Http\Controllers\AttendedSchoolController;
 use App\Http\Controllers\ResponsiblyController;
 use App\Http\Controllers\RegistrationController;
 
@@ -33,15 +34,19 @@ Route::middleware(['auth'])->group(function () {
         'anamneses' => 'student'
     ]);
     Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
+
     Route::get('/address/{student}', [AddressController::class, 'createAddressStudent'])->name('address.createAddressStudent');
     Route::post('/address/{student}', [AddressController::class, 'storeAddressStudent'])->name('address.storeAddressStudent');
     Route::put('/address/{student}/active/{addressForActive}', [AddressController::class, 'activeAddressStudent'])->name('address.activeAddressStudent');
-});
-Route::get('/', function () {
-    return view('welcome');
+
+    Route::get('/attendedSchools/{student}', [AttendedSchoolController::class, 'create'])->name('attendedSchool.create');
+    Route::post('/attendedSchools/{student}', [AttendedSchoolController::class, 'storeWithStudent'])->name('attendedSchool.storeWithStudent');
+    Route::get('/attendedSchools/{address}', [AttendedSchoolController::class, 'edit'])->name('attendedSchool.edit');
+    Route::put('/attendedSchools/{address}', [AttendedSchoolController::class, 'update'])->name('attendedSchool.update');
+    // Route::put('/attendedSchools/{student}/active/{addressForActive}', [AttendedSchoolController::class, 'active'])->name('attendedSchools.active');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('layouts.home');
 })->middleware(['auth'])->name('home');
 

@@ -11,7 +11,7 @@
             novalidate="novalidate">
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Identificação do Novo Aluno(a) <b>{{ old('name') }}</b></h4>
+                <h4 class="card-title mb-3">Matricular Novo Aluno(a)</h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
@@ -19,14 +19,14 @@
                             <div class="card-title mb-3">Informações de identificação do Aluno(a)</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="name">Nome do aluno(a)*</label>
+                                    <label for="name">Nome do aluno(a)<span class="span-red" >*</span></label>
                                     <input class="form-control form-control-rounded" id="name" name="name" required
-                                        type="text" placeholder="Digite o nome do aluno(a)" value="{{ old('name') }}" />
+                                        type="text" placeholder="Digite o nome do aluno(a)" value="{{ old('name') }}" autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo nome não pode ser vazio
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
@@ -175,9 +175,8 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="programs">Programas*</label>
-                                            <select class="form-control form-control-rounded" id="programs"
-                                                name="programs"  required>
+                                            <label for="programs">Programas<span style="font-size:13px; color:red;">*</span></label>
+                                            <select class="form-control form-control-rounded" id="programs" name="programs"  required>
                                                 <option value="" disabled selected>----Selecione----</option>
                                                 <option value="0">Nenhum</option>
                                                 @foreach ($programs as $program)
@@ -196,8 +195,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 form-group">
-                                            <label for="has_special_needs">Possui Necessidades Educacionais
-                                                Especiais*</label>
+                                            <label for="has_special_needs">Possui Necessidades Educacionais Especiais<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" name="has_special_needs"
                                                 id="has_special_needs" required>
                                                 <option value="" selected disabled>----Selecione----</option>

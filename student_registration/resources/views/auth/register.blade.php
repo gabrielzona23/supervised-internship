@@ -2,6 +2,9 @@
 @section('content')
 <div class="auth-layout-wrap img-teste">
     <div class="auth-content">
+        <x-alerts.validation-errors :errors="$errors" />
+        <x-alerts.sucess :message="session('message')" />
+        <x-alerts.info :problem="session('problem')" />
         <div class="card o-hidden">
             <div class="row">
                 <div class="col-md-6 text-center img-forms">

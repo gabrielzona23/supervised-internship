@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Forgot | Gull Admin Template</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
-    <link href="../../dist-assets/css/themes/lite-purple.min.css" rel="stylesheet">
-</head>
-<div class="auth-layout-wrap" style="background-image: url(../../dist-assets/images/photo-wide-4.jpg)">
+@extends('layouts.guest')
+@section('content')
+<div class="auth-layout-wrap img-teste">
     <div class="auth-content">
         <div class="card o-hidden">
             <div class="row">
@@ -34,3 +26,4 @@
         </div>
     </div>
 </div>
+@endsection

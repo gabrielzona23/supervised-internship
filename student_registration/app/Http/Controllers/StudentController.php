@@ -10,6 +10,7 @@ use App\Models\Registration;
 use App\Models\Student;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -63,14 +64,14 @@ class StudentController extends Controller
             $person->rg = $request->input('rg');
             $person->emitter_rg = $request->input('emitter_rg');
             $person->gender = $request->input('gender');
-            $person->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $person->created_by = Auth::user()->id;
             $person->save();
 
             $student = new Student();
             $inputStudent = $request->only(['born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'nis']);
             $inputStudent['person_id'] = $person->id;
             $inputStudent['status'] = 'studying';
-            $inputStudent['created_by'] = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $inputStudent['created_by'] =  Auth::user()->id;
             $student->fill($inputStudent);
             $student->save();
 
@@ -80,8 +81,8 @@ class StudentController extends Controller
 
             $registration = new Registration();
             $registration->image_authorization = $request->input('image_authorization');
-            $registration->created_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
-            $registration->updated_by = 1; //colocar Auth::user()->id; no lugar de '1' apenas para teste
+            $registration->created_by =  Auth::user()->id;
+            $registration->updated_by =  Auth::user()->id;
             $registration->student_id = $student->id;
 
             // $student->programs()->attach($request->input('programs'));

@@ -30,18 +30,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <!-- ICON BG-->
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        {{-- <a --}}
+                        <a
                         {{-- href="{{ route('students.editRegistrationStudent',['student' => $student, 'registration'=> $registration]) }}">
-                        --}}
+
                         <div class="card-body text-center"><i class="i-Add-User"></i>
                             <p class="text-muted mt-3 mb-0">Edição</p>
                             <p class="text-primary text-18 line-height-1 mb-2">Dados Principais do Aluno</p>
                         </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

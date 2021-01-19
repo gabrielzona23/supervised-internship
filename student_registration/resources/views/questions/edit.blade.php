@@ -21,7 +21,7 @@
                                     @if($question->description ==='Tipo de parto?')
                                         <div class="col-md-6 form-group mb-3">
                                             <label for="{{ $question->id }}">{{ $question->description }}</label>
-                                            <select class="form-control form-control-rounded" name="{{ $question->id }}" id="{{ $question->id }}">
+                                            <select class="form-control form-control-rounded" name="{{ $question->id }}" id="{{ $question->id }}" autofocus>
                                                 <option value="" selected disabled>----Selecione o tipo de parto----</option>
                                                 <option value=0
                                                     @if($booleanQuestions->where('description', 'Tipo de parto?')->first() != null&&$booleanQuestions->where('description', 'Tipo de parto?')->first()->pivot->value===false)

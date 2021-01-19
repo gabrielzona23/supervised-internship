@@ -29,10 +29,13 @@ class Student extends Model
     {
         return $this->belongsToMany(Address::class, 'address_student', 'student_id');
     }
-
     public function programs()
     {
         return $this->belongsToMany(Program::class);
+    }
+    public function attendedSchools()
+    {
+        return $this->belongsToMany(AttendedSchool::class, 'attended_school_student', 'student_id', 'schools_id')->withTimestamps();
     }
     public function registrations()
     {

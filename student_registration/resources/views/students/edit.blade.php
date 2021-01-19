@@ -19,7 +19,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="name">Nome do aluno(a)*</label>
-                                    <input class="form-control form-control-rounded" id="name" name="name" required type="text" placeholder="Digite o nome do aluno(a)" value="{{ $student->person->name }}" />
+                                    <input class="form-control form-control-rounded" id="name" name="name" required type="text" placeholder="Digite o nome do aluno(a)" value="{{ $student->person->name }}" autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>

@@ -7,7 +7,7 @@
 
 <div class="col-md-12">
     <div class="card text-left">
-        <form method="POST" action="{{ route('address.storeAddressStudent', $student) }}" class="needs-validation" novalidate="novalidate">
+        <form method="POST" action="{{ route('attendedSchool.storeWithStudent', $student) }}" class="needs-validation" novalidate="novalidate">
             @csrf
             <div class="card-body">
                 <div class="col-md-12">
@@ -19,7 +19,7 @@
                                     <label for="street">Rua*</label>
                                     <input class="form-control form-control-rounded" id="street" name="street"
                                         type="text" placeholder="Digite a Rua em que mora o aluno"
-                                        value="{{ old('street') }}" required />
+                                        value="{{ old('street') }}" required autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -168,22 +168,22 @@
                                                 id="type_transport">
                                                 <option value="" selected disabled>----Selecione----</option>
                                                 <option value="Particular"
-                                                    @if(old('type_transport') &&old('type_transport') =="Particular")
+                                                    @if(old('type_transport') =="Particular")
                                                         selected
                                                     @endif
                                                 >Particular</option>
                                                 <option value="Público"
-                                                    @if(old('type_transport') &&old('type_transport') =="Público")
+                                                    @if(old('type_transport') =="Público")
                                                         selected
                                                     @endif
                                                 >Público</option>
                                                 <option value="Escolar"
-                                                    @if(old('type_transport') &&old('type_transport') =="Escolar")
+                                                    @if(old('type_transport') =="Escolar")
                                                         selected
                                                     @endif
                                                 >Escolar</option>
                                                 <option value="Variado"
-                                                    @if(old('type_transport') &&old('type_transport') =="Variado")
+                                                    @if(old('type_transport') =="Variado")
                                                         selected
                                                     @endif
                                                 >Variado</option>
@@ -287,9 +287,9 @@
                                                     <td class="">{{ $address->number }}</td>
                                                     <td class="">{{ $address->status }}</td>
                                                     <td class="">
-                                                        <a class="btn btn-outline-danger m-1" href="{{ route('addresses.edit',$address) }}" type="button">Editar Endereço</a>
+                                                        <a class="btn btn-outline-danger btn-sm m-1" href="{{ route('addresses.edit',$address) }}" type="button">Editar Endereço</a>
                                                         @if($address->status =='Inativo')
-                                                            <button class="btn btn-outline-info m-1" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                                            <button class="btn btn-outline-info btn-sm m-1" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                                                                 Ativar endereço
                                                             </button>
                                                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle-2" aria-hidden="true">
