@@ -11,7 +11,7 @@
                                 <Strong>Dom Bosco</Strong>
                             </span>
                         </div>
-                          <h5><b>Já possui cadastro? entre no sistema agora!</b></h5>
+                          <h5><b>Já possui cadastro? Entre no sistema agora!</b></h5>
                         <div class="flex-grow-1">
                         </div>
                         <div class="w-100 mb-4">
@@ -35,7 +35,7 @@
                                     Tudo Ok!
                                 </div>
                                 <div class="invalid-feedback">
-                                    O campo Email não pode ser vazio
+                                    O campo Email não pode ser vazio!
                                 </div>
                             </div>
                             <div class="form-group">
@@ -53,7 +53,7 @@
                                     Tudo Ok!
                                 </div>
                                 <div class="invalid-feedback">
-                                    O campo Senha não pode ser vazio
+                                    O campo Senha não pode ser vazio!
                                 </div>
                             </div>
                             <div class="form-group">
@@ -63,7 +63,7 @@
                                     Tudo Ok!
                                 </div>
                                 <div class="invalid-feedback">
-                                    O campo de confirmação não pode ser vazio
+                                    O campo de confirmação não pode ser vazio!
                                 </div>
                             </div>
                             <a class="btn  btn-rounded btn-light mt-3" href="{{ route('login') }}">

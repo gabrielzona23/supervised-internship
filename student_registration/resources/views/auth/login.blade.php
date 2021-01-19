@@ -24,7 +24,7 @@
                                     Tudo Ok!
                                 </div>
                                 <div class="invalid-feedback">
-                                    O campo Email não pode ser vazio
+                                    O campo Email não pode ser vazio!
                                 </div>
                             </div>
                             <div class="form-group">
@@ -34,7 +34,7 @@
                                     Tudo Ok!
                                 </div>
                                 <div class="invalid-feedback">
-                                    O campo Senha não pode ser vazio
+                                    O campo Senha não pode ser vazio!
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6 text-center img-forms">
                     <div class="pr-3 auth-right">
-                        <h6>Não possui cadastro? se cadastre agora!</h6>
+                        <h6>Não possui cadastro? Se cadastre agora!</h6>
                         <a class="btn btn-rounded btn-outline-primary btn-outline-email btn-block btn-icon-text" href="{{ route('register') }}">
                             <i class="i-Mail-with-At-Sign"></i>
                             Se cadastre com seu email
