@@ -16,22 +16,27 @@
                             <div class="card-title mb-3">Cadastro de um <b>novo</b> endereço do discente: <b>{{ $student->person->name }}</b></div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="street">Rua*</label>
+                                    <label for="street">Rua<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="street" name="street"
+<<<<<<< HEAD
                                         type="text" placeholder="Digite a Rua em que mora o aluno"
                                         value="{{ old('street') }}" required autofocus/>
+=======
+                                        type="text" placeholder="Digite a Rua"
+                                        value="{{ old('street') }}" required />
+>>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo Rua não pode ser vazio!
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="city">Cidade*</label>
+                                            <label for="city">Cidade<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="city" name="city" type="text" required
                                                 @if(old('city'))
                                                     value="{{ old('city')}}"
@@ -42,12 +47,12 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Cidade não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="state">Estado*</label>
+                                            <label for="state">Estado<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="state" name="state" type="text" required
                                                 @if(old('state'))
                                                     value="{{ old('state')}}"
@@ -58,7 +63,7 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Estado não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -67,22 +72,22 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="neighborhood">Bairro*</label>
+                                            <label for="neighborhood">Bairro<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="neighborhood"
-                                                name="neighborhood" placeholder="Digite o Bairro em que o aluno mora"
+                                                name="neighborhood" placeholder="Digite o Bairro"
                                                 value="{{ old('neighborhood') }}" type="text" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Bairro não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="country">Pais*</label>
+                                            <label for="country">País<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="country" name="country"
-                                                type="text" placeholder="Digite o pais onde o aluno mora"
+                                                type="text" placeholder="Digite o País"
                                                 @if(old('country'))
                                                     value="{{ old('country')}}"
                                                 @else
@@ -92,7 +97,7 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo País não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -101,28 +106,28 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="cep">CEP*</label>
+                                            <label for="cep">CEP<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="cep" name="cep"
-                                                type="text" placeholder="Digite o cep referente ao endereço do aluno"
+                                                type="text" placeholder="Digite o CEP"
                                                 value="{{ old('cep') }}" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo CEP não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="number">Número*</label>
+                                            <label for="number">Número<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="number" name="number"
-                                                type="text" placeholder="Digite o Número referente ao endereço do aluno"
+                                                type="text" placeholder="Digite o Número referente ao endereço"
                                                 value="{{ old('number') }}" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Número não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -139,7 +144,7 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="residential_area">Área Residencial*</label>
+                                            <label for="residential_area">Área Residencial<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" name="residential_area"
                                                 id="residential_area" required>
                                                 <option value="" selected disabled>----Selecione----</option>
@@ -158,7 +163,7 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Área Residencial não pode ser vazio!
                                             </div>
                                         </div>
 
@@ -215,7 +220,7 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="transport_localization">Localidade Transporte</label>
                                     <input class="form-control form-control-rounded" id="transport_localization" name="transport_localization" type="text"
-                                        placeholder="Digite o localidade de transporte" value="{{ old('transport_localization') }}" />
+                                        placeholder="Digite a localidade de transporte" value="{{ old('transport_localization') }}" />
                                 </div>
 
                                 <div class="col-md-12 form-group mb-3">
@@ -300,7 +305,7 @@
                                                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            Ao ativar ente enredeço o atual endereço do aluno(a) {{ $student->person->name }}ficara inativo
+                                                                            Ao ativar este endereço o atual endereço do(a) aluno(a) {{ $student->person->name }} ficará inativo!
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <form action="{{route('address.activeAddressStudent',['student' => $student, 'addressForActive'=> $address])}}" method="post">

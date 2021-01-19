@@ -13,6 +13,16 @@
     <link href="{{ asset('css/plugins/smart.wizard/smart_wizard.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/plugins/datatables.min.css') }}" rel="stylesheet">
 
+<<<<<<< HEAD
+=======
+    <style>
+        .span-red {
+            font-size:12px;
+            color:red;
+        }
+    </style>
+
+>>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
 </head>
 
 <body class="text-left">

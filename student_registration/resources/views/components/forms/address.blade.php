@@ -8,41 +8,41 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 form-group mb-3">
-                            <label for="street">Rua*</label>
+                            <label for="street">Rua<span style="font-size:13px; color:red;">*</span></label>
                             <input class="form-control form-control-rounded" id="street" name="street"
-                                type="text" placeholder="Digite a Rua em que mora o aluno" />
+                                type="text" placeholder="Digite a Rua" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label for="city">Cidade*</label>
+                            <label for="city">Cidade<span style="font-size:13px; color:red;">*</span></label>
                             <input class="form-control form-control-rounded" id="city" name="city"
-                                type="text" placeholder="Digite a cidade onde mora o aluno" />
+                                type="text" placeholder="Digite a Cidade" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label for="state">Estado*</label>
+                            <label for="state">Estado<span style="font-size:13px; color:red;">*</span></label>
                             <input class="form-control form-control-rounded" id="state" name="state"
-                                type="text" placeholder="Digite o estado onde mora o aluno" />
+                                type="text" placeholder="Digite o Estado" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label for="cep">CEP*</label>
+                            <label for="cep">CEP<span style="font-size:13px; color:red;">*</span></label>
                             <input class="form-control form-control-rounded" id="cep" name="cep"
-                                type="text" placeholder="Digite o cep referente ao endereço do aluno" />
+                                type="text" placeholder="Digite o CEP" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label for="number">Número*</label>
+                            <label for="number">Número<span style="font-size:13px; color:red;">*</span></label>
                             <input class="form-control form-control-rounded" id="number" name="number"
                                 type="text"
-                                placeholder="Digite o Número referente ao endereço do aluno" />
+                                placeholder="Digite o Número referente ao endereço" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label for="neighborhood">Bairro*</label>
+                            <label for="neighborhood">Bairro<span style="font-size:13px; color:red;">*</span></label>
                             <input class="form-control form-control-rounded" id="neighborhood"
                                 name="neighborhood" type="text"
-                                placeholder="Digite o Bairro em que o aluno mora" />
+                                placeholder="Digite o Bairro" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
@@ -50,7 +50,7 @@
                             <input class="form-control form-control-rounded"
                                 id="electrical_installation_core" name="electrical_installation_core"
                                 type="text"
-                                placeholder="Digite o código da instalação elétrica do aluno" />
+                                placeholder="Digite o código da instalação elétrica" />
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="col-md-6 form-group mb-3">
-                            <label for="type_transport">Tipo de traporte</label>
+                            <label for="type_transport">Tipo de Transporte</label>
                             <select class="form-control form-control-rounded" name="type_transport"
                                 id="type_transport">
                                 <option value="1">Particular</option>
@@ -91,7 +91,7 @@
                             <label for="reference">Ponto de Referência</label>
                             <input class="form-control form-control-rounded" id="reference"
                                 name="reference" type="text"
-                                placeholder="Digite o ponto de referência do endereço do aluno" />
+                                placeholder="Digite o ponto de referência do endereço" />
                         </div>
 
                         <div class="col-md-12">
