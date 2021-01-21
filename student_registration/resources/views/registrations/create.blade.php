@@ -19,24 +19,14 @@
                             <div class="card-title mb-3">Informações de identificação do Aluno(a)</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-<<<<<<< HEAD
-                                    <label for="name">Nome do aluno(a)<span class="span-red" >*</span></label>
+                                    <label for="name">Nome do(a) Aluno(a)<span class="span-red">*</span></label>
                                     <input class="form-control form-control-rounded" id="name" name="name" required
-                                        type="text" placeholder="Digite o nome do aluno(a)" value="{{ old('name') }}" autofocus/>
-=======
-                                    <label for="name">Nome do(a) Aluno(a)<span style="font-size:13px; color:red;">*</span></label>
-                                    <input class="form-control form-control-rounded" id="name" name="name" required
-                                        type="text" placeholder="Digite o Nome do(a) Aluno(a)" value="{{ old('name') }}" />
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
+                                        type="text" placeholder="Digite o Nome do(a) Aluno(a)" value="{{ old('name') }}" autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-<<<<<<< HEAD
-                                        O campo nome não pode ser vazio
-=======
                                         O campo Nome do(a) Aluno(a) não pode ser vazio!
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
@@ -63,7 +53,7 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="born_state">Estado de Nascimento*</label>
+                                    <label for="born_state">Estado de Nascimento<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="born_state" type="text"
                                         required name="born_state" @if (old('born_state'))
                                         value="{{ old('born_state') }}" @else value="Acre" @endif />
@@ -166,7 +156,7 @@
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
-                                        <div class="col-6 form-group">aluno
+                                        <div class="col-6 form-group">
                                             <label for="job">Profissão</label>
                                             <input class="form-control form-control-rounded" id="job" name="job"
                                                 type="text" @if (old('job')) value="{{ old('job') }}" @else
@@ -186,12 +176,7 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="programs">Programas<span style="font-size:13px; color:red;">*</span></label>
-<<<<<<< HEAD
                                             <select class="form-control form-control-rounded" id="programs" name="programs"  required>
-=======
-                                            <select class="form-control form-control-rounded" id="programs"
-                                                name="programs"  required>
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
                                                 <option value="" disabled selected>----Selecione----</option>
                                                 <option value="0">Nenhum</option>
                                                 @foreach ($programs as $program)
@@ -210,14 +195,8 @@
                                             </div>
                                         </div>
                                         <div class="col-6 form-group">
-<<<<<<< HEAD
                                             <label for="has_special_needs">Possui Necessidades Educacionais Especiais<span style="font-size:13px; color:red;">*</span></label>
-=======
-                                            <label for="has_special_needs">Possui Necessidades Educacionais
-                                                Especiais<span style="font-size:13px; color:red;">*</span></label>
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
-                                            <select class="form-control form-control-rounded" name="has_special_needs"
-                                                id="has_special_needs" required>
+                                            <select class="form-control form-control-rounded" name="has_special_needs" id="has_special_needs" required>
                                                 <option value="" selected disabled>----Selecione----</option>
                                                 <option value="0"
                                                     @if(old('has_special_needs')=="0")

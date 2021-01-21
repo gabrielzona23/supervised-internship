@@ -24,7 +24,7 @@ class AttendedSchoolFactory extends Factory
     {
         return [
             "name" => $this->faker->sentence(3),
-            'type' => $this->faker->randomElement(['creche', 'pre escola', 'ensino médio']),
+            'type' => $this->faker->randomElement(['Creche', 'Pré-escola', 'Ensino médio']),
             "school_grade" => $this->faker->word(),
             'city' => $this->faker->city(),
             'administrative_department' => $this->faker->word(),

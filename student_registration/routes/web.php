@@ -27,22 +27,30 @@ Route::get('/foo', function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('students', StudentController::class);
-    Route::resource('addresses', AddressController::class);
+    // Route::resource('addresses', AddressController::class);
     Route::resource('responsiblies', ResponsiblyController::class);
     Route::resource('registrations', RegistrationController::class);
     Route::resource('anamneses', AnamneseController::class)->parameters([
         'anamneses' => 'student'
     ]);
-    Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
 
-    Route::get('/address/{student}', [AddressController::class, 'createAddressStudent'])->name('address.createAddressStudent');
+
+    Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
+    Route::put('/students/{student}/registration/{registration}update', [StudentController::class, 'updateRegistration'])->name('students.updateRegistration');
+
+
+    Route::get('/address/{student}/create', [AddressController::class, 'createAddressStudent'])->name('address.createAddressStudent');
     Route::post('/address/{student}', [AddressController::class, 'storeAddressStudent'])->name('address.storeAddressStudent');
+    Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
+    Route::get('/address/{address}/show', [AddressController::class, 'show'])->name('address.show');
+    Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
     Route::put('/address/{student}/active/{addressForActive}', [AddressController::class, 'activeAddressStudent'])->name('address.activeAddressStudent');
 
-    Route::get('/attendedSchools/{student}', [AttendedSchoolController::class, 'create'])->name('attendedSchool.create');
+    Route::get('/attendedSchools/{student}/create', [AttendedSchoolController::class, 'create'])->name('attendedSchool.create');
     Route::post('/attendedSchools/{student}', [AttendedSchoolController::class, 'storeWithStudent'])->name('attendedSchool.storeWithStudent');
-    Route::get('/attendedSchools/{address}', [AttendedSchoolController::class, 'edit'])->name('attendedSchool.edit');
-    Route::put('/attendedSchools/{address}', [AttendedSchoolController::class, 'update'])->name('attendedSchool.update');
+    Route::get('/attendedSchools/{attendedSchool}/show', [AttendedSchoolController::class, 'show'])->name('attendedSchool.show');
+    Route::get('/attendedSchool/{attendedSchool}', [AttendedSchoolController::class, 'editSchool'])->name('attendedSchool.edit');
+    Route::put('/attendedSchools/{attendedSchool}', [AttendedSchoolController::class, 'update'])->name('attendedSchool.update');
     // Route::put('/attendedSchools/{student}/active/{addressForActive}', [AttendedSchoolController::class, 'active'])->name('attendedSchools.active');
 });
 

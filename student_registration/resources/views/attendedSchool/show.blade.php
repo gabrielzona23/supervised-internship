@@ -14,17 +14,17 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Edição da escola <b>{{ $attendedSchool->name}}</b> que o discente: <b>{{ $attendedSchool->students[0]->person->name }}</b> frequentou</div>
+                            <div class="card-title mb-3">Vizulização da escola <b>{{ $attendedSchool->name}}</b> que o discente <b>{{ $attendedSchool->students[0]->person->name }}</b> frequentou</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="year">Ano que o Aluno esteve na escola</label>
-                                    <input class="form-control form-control-rounded" id="year" type="text" name="year"
-                                        placeholder="Digite o ano aqui" value="{{ $attendedSchool->year}}" autofocus/>
+                                    <input class="form-control form-control-rounded" id="year" type="text" disabled name="year"
+                                        value="{{ $attendedSchool->year}}" autofocus/>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="school_grade">Série/Ano<span style="font-size:13px; color:red;">*</span></label>
+                                    <label for="school_grade">Série/Ano</label>
                                 <input class="form-control form-control-rounded" id="school_grade" type="text" value="{{$attendedSchool->school_grade}}"
-                                        name="school_grade" placeholder="Digita qual serie e ano o aluno fazia nesta escola" required/>
+                                        disabled name="school_grade" required/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -34,9 +34,9 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="name">Escola<span style="font-size:13px; color:red;">*</span></label>
-                                    <input class="form-control form-control-rounded" id="name" type="text" name="name" value="{{ $attendedSchool->name}}"
-                                        placeholder="Digite o nome da escola frenquentada pelo aluno" required/>
+                                    <label for="name">Escola</label>
+                                    <input class="form-control form-control-rounded" id="name" type="text" disabled name="name" value="{{ $attendedSchool->name}}"
+                                        required/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -47,7 +47,7 @@
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="network">Rede</label>
-                                    <select class="form-control form-control-rounded" name="network" id="network">
+                                    <select class="form-control form-control-rounded" disabled name="network" id="network">
                                         <option value="" selected disabled>----Selecione----</option>
                                         <option value="Particular"
                                             @if($attendedSchool->network =="Particular")
@@ -68,8 +68,8 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="type">Tipo<span style="font-size:13px; color:red;">*</span></label>
-                                    <select class="form-control form-control-rounded" name="type" id="type">
+                                    <label for="type">Tipo</label>
+                                    <select class="form-control form-control-rounded" disabled name="type" id="type">
                                         <option value="" selected disabled>----Selecione----</option>
                                         <option>Creche</option>
                                         <option>Pré-escola</option>
@@ -99,14 +99,14 @@
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="city">Cidade onde fica a escola</label>
-                                    <input class="form-control form-control-rounded" id="city" type="text" name="city"
-                                        placeholder="digite a cidade onde fica a escola" value="{{ $attendedSchool->city}}"/>
+                                    <input class="form-control form-control-rounded" id="city" type="text" disabled name="city"
+                                       value="{{ $attendedSchool->city}}"/>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="administrative_department">Dep. Administrativa</label>
                                     <input class="form-control form-control-rounded" id="administrative_department" type="text"
-                                        name="administrative_department" placeholder="" value="{{ $attendedSchool->administrative_department}}"/>
+                                        disabled name="administrative_department"  value="{{ $attendedSchool->administrative_department}}"/>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-md-12">
                     <a href="{{ route('attendedSchool.create', $attendedSchool->students[0]) }}" class="btn btn-outline-secondary m-1" type="button">Voltar</a>
-                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    {{-- <button type="submit" class="btn btn-primary">Salvar</button> --}}
                 </div>
             </div>
         </form>

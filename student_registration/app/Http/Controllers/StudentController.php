@@ -8,6 +8,7 @@ use App\Models\Phone;
 use App\Models\Program;
 use App\Models\Registration;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -128,10 +129,27 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $programsStudent = false;
-        $programs = Program::all();
-        $programsStudent = $student->programs->first();
-        return view('students.edit-basic')->with('student', $student)->with('programs', $programs)->with('programsStudent', $programsStudent);
+        try {
+            DB::beginTransaction();
+            $programsStudent = false;
+            $programs = Program::all();
+            $programsStudent = $student->programs->first();
+            DB::commit();
+            Log::info('Successfully updated Estudante');
+            return view('students.edit-basic')->with('student', $student)->with('programs', $programs)->with('programsStudent', $programsStudent);
+        } catch (ModelNotFoundException $m) {
+            DB::rollback();
+            Log::error('No query result', ['errors' => $m]);
+            return view('erros.not-found-404')->with('problem', 'Dados não encontrados!');
+        } catch (QueryException $q) {
+            DB::rollback();
+            Log::error('Internal database error', ['errors' => $q]);
+            return view('erros.service-unavailable-503')->with('problem', 'Erro no Banco de dados!');
+        } catch (\Throwable $t) {
+            DB::rollback();
+            Log::error('Internal server error', ['errors' => $t]);
+            return view('erros.internal-serve-error-500')->with('problem', 'Erro no Servidor!');
+        }
     }
 
     public function editRegistrationStudent(Student $student, Registration $registration)
@@ -152,7 +170,32 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        dd($request, $student);
+        $validator = Validator::make($request->all(), Student::VALIDATORS_UPDATE);
+
+        if ($validator->fails()) {
+            Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+            return redirect()->route('students.index')->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+
+        $student->person()->update($request->only(['name', 'born_state', 'born_city',  'cpf', 'rg', 'emitter_rg', 'gender', 'nis', 'phone1', 'phone2']));
+        $student->update($request->only(['born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'has_special_needs', 'special_educational_needs', 'g_mus', 'nationality']));
+
+        if ($request->input('programs') != 0) {
+            $student->programs()->attach($request->input('programs'));
+        }
+    }
+
+    public function updateRegistration(Request $request, Student $student, Registration $registration)
+    {
+        $validator = Validator::make($request->all(), Student::VALIDATORS_UPDATE_REGISTRATION);
+
+        if ($validator->fails()) {
+            Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+            return redirect()->route('registrations.edit')->withErrors($validator)->withInput();
+        }
+        dd($request->all(), $student);
     }
 
     /**

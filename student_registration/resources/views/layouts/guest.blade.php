@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-        {{-- <style>
+        <style>
         .img-teste {
             background-image: url('image/kids.png');
         }
@@ -15,7 +15,7 @@
             background-size: cover;
             background-image: url('image/school.jpg');
         }
-        </style> --}}
+        </style>
 
         <link href="{{ asset('css/plugins/perfect-scrollbar.min.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">

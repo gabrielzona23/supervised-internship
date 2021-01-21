@@ -48,7 +48,7 @@ class AddressController extends Controller
             $validator = Validator::make($request->all(), Address::VALIDATORS_STORE);
             if ($validator->fails()) {
                 Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
-                return redirect()->route('address.editAddressStudent', $student)->withErrors($validator)->withInput();
+                return redirect()->route('address.createAddressStudent', $student)->withErrors($validator)->withInput();
             }
 
             DB::beginTransaction();
@@ -78,9 +78,9 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Address $address)
     {
-        //
+        return view('address.show')->with('address', $address);
     }
 
     /**
@@ -103,12 +103,18 @@ class AddressController extends Controller
      */
     public function update(Request $request, Address $address)
     {
+        $validator = Validator::make($request->all(), Address::VALIDATORS_STORE);
+        if ($validator->fails()) {
+            Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+            return redirect()->route('address.edit', $address)->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+        $address->update($request->all());
+        DB::commit();
+        Log::info('Successfully activation address');
+        return redirect()->route('address.createAddressStudent', $address->students[0])->withInput()->with('message', 'Endereço Atualizado com sucesso!');
         try {
-            DB::beginTransaction();
-            $address->update($request->all());
-            DB::commit();
-            Log::info('Successfully activation address');
-            return redirect()->route('address.createAddressStudent', $address->students[0])->withInput()->with('message', 'Endereço Atualizado com sucesso!');
         } catch (ModelNotFoundException $m) {
             DB::rollback();
             Log::error('No query result', ['errors' => $m]);

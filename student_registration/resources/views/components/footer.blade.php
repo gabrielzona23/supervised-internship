@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-9">
                 <p><strong>Sistema Web de cadastro de alunos do Centro de ensino especial Dom Bosco</strong></p>
-                <p>Aqui vai os nossos blabla
+                <p>Tenha um Bom dia:)
                     <sunt></sunt>
                 </p>
             </div>

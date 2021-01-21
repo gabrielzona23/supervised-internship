@@ -27,7 +27,7 @@ class RegistrationController extends Controller
      */
     public function index(Request $request)
     {
-        $registrations = Registration::paginate(60);
+        $registrations = Registration::paginate(50);
         return view('registrations.index')->with('registrations', $registrations);
     }
 
@@ -128,7 +128,7 @@ class RegistrationController extends Controller
 
 
             DB::commit();
-            Log::info('Successfully created Estudante');
+            Log::info('Successfully registration Estudante');
             return redirect()->route('registrations.create', compact('student'))->with('message', 'Matricula realizado com sucesso!')->withInput();
         } catch (ModelNotFoundException $m) {
             DB::rollback();

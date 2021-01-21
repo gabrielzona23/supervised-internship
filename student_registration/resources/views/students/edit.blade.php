@@ -11,20 +11,15 @@
             @method('put')
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Edição das informações de identificação do Aluno(a): <b>{{ $student->person->name }}</b> </h4>
+                <h4 class="card-title mb-3">Edição das informações de identificação do(a) Aluno(a): <b>{{ $student->person->name }}</b> </h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-<<<<<<< HEAD
-                                    <label for="name">Nome do aluno(a)*</label>
-                                    <input class="form-control form-control-rounded" id="name" name="name" required type="text" placeholder="Digite o nome do aluno(a)" value="{{ $student->person->name }}" autofocus/>
-=======
                                     <label for="name">Nome do aluno(a)<span style="font-size:13px; color:red;">*</span></label>
-                                    <input class="form-control form-control-rounded" id="name" name="name" required type="text" placeholder="Digite o nome do aluno(a)" value="{{ $student->person->name }}" />
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
+                                    <input class="form-control form-control-rounded" id="name" name="name" required type="text" placeholder="Digite o nome do(a) aluno(a)" value="{{ $student->person->name }}" autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -260,7 +255,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="{{ route('registrations.index') }}" class="btn btn-outline-secondary m-1" type="button">Voltar</a>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </div>
             </div>
         </form>

@@ -29,16 +29,16 @@ class Address extends Model
     ];
 
     const VALIDATORS_STORE = [
-        'street' => ['bail', 'required', 'string', 'min:6', 'max:64'],
+        'street' => ['bail', 'required', 'string', 'min:3', 'max:64'],
         'city' => ['bail', 'required', 'min:2', 'max:128'],
         'state' => ['bail', 'required', 'min:2', 'max:64'],
-        'neighborhood' => ['bail', 'required', 'min:6', 'max:64'],
-        'country' => ['bail', 'required', 'min:6', 'max:64'],
+        'neighborhood' => ['bail', 'required', 'min:3', 'max:64'],
+        'country' => ['bail', 'required', 'min:3', 'max:64'],
         'cep' => ['bail', 'required', 'min:9', 'max:12'],
-        'number' => ['bail', 'required', 'min:2', 'max:32'],
+        'number' => ['bail', 'required', 'min:1', 'max:32'],
         'electrical_installation_core' => ['bail', 'max:32'],
         'residential_area' => ['bail', 'required', 'in:Rural,Urbana'],
-        'type_transport' => ['bail', 'in:Público, Particular, Escolar, Variado'],
+        'type_transport' => ['bail', 'in:Público,Particular,Escolar,Variado'],
         'reference' => ['bail', 'max:255'],
         'complement' => ['bail', 'max:255'],
         'buses_name' => ['bail', 'max:64'],

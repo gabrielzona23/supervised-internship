@@ -80,6 +80,11 @@
                                                 selected
                                             @endif
                                         >Pré-escola</option>
+                                        <option value="Ensino médio"
+                                            @if(old('type') =="Ensino médio")
+                                                selected
+                                            @endif
+                                        >Ensino médio</option>
                                     </select>
                                     <div class="valid-feedback">
                                         Tudo Ok!
@@ -105,7 +110,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('students.index') }}" class="btn btn-secondary">Voltar</a>
+                    <a href="{{ route('students.index') }}" class="btn btn-outline-secondary m-1" type="button">Voltar</a>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
@@ -142,25 +147,26 @@
                                                     <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
-                                                        style="width: 160px;">Tipo</th>
+                                                        style="width: 130px;">Tipo</th>
                                                     <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                                         rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending"
-                                                        style="width: 100px;">Ano que frenquentou</th>
+                                                        style="width: 170px;">Ano que frenquentou</th>
                                                     <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Salary: activate to sort column ascending"
-                                                        style="width: 420px;">Mais informações</th>
+                                                        style="width: 400px;">Mais informações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ( $student->attendedSchools as $school)
+                                                @foreach ( $student->attendedSchools as $attendedSchool)
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1">{{ $school->name }}</td>
-                                                    <td class="">{{ $school->school_grade }}</td>
-                                                    <td class="">{{ $school->type}}</td>
-                                                    <td class="">{{ $school->year }}</td>
+                                                    <td class="sorting_1">{{ $attendedSchool->name }}</td>
+                                                    <td class="">{{ $attendedSchool->school_grade }}</td>
+                                                    <td class="">{{ $attendedSchool->type}}</td>
+                                                    <td class="">{{ $attendedSchool->year }}</td>
                                                     <td class="">
-                                                        <a class="btn btn-outline-danger m-1" href="{{ route('attendedSchool.edit',$school) }}" type="button">Editar Escola</a>
+                                                        <a class="btn btn-outline-danger m-1" href="{{ route('attendedSchool.edit',$attendedSchool) }}" type="button">Editar Escola</a>
+                                                        <a class="btn btn-outline-info m-1" href="{{ route('attendedSchool.show',$attendedSchool) }}" type="button">Vizualizar Escola</a>
                                                         {{-- <button class="btn btn-outline-info m-1" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                                                             Ativar endereço
                                                         </button>

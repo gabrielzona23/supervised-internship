@@ -87,7 +87,6 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" style="color: blue; font-weight: bold" >{{ Auth::user()->name }}</a>
                         <a class="dropdown-item">Configurações da conta</a>
-                        <a class="dropdown-item">Billing history</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="dropdown-item"><b>Encerrar Sessão</b></button>

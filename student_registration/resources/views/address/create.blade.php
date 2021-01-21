@@ -7,7 +7,7 @@
 
 <div class="col-md-12">
     <div class="card text-left">
-        <form method="POST" action="{{ route('attendedSchool.storeWithStudent', $student) }}" class="needs-validation" novalidate="novalidate">
+        <form method="POST" action="{{ route('address.storeAddressStudent', $student) }}" class="needs-validation" novalidate="novalidate">
             @csrf
             <div class="card-body">
                 <div class="col-md-12">
@@ -18,13 +18,7 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="street">Rua<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="street" name="street"
-<<<<<<< HEAD
-                                        type="text" placeholder="Digite a Rua em que mora o aluno"
-                                        value="{{ old('street') }}" required autofocus/>
-=======
-                                        type="text" placeholder="Digite a Rua"
-                                        value="{{ old('street') }}" required />
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
+                                        type="text" placeholder="Digite a Rua" value="{{ old('street') }}" required autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -292,7 +286,8 @@
                                                     <td class="">{{ $address->number }}</td>
                                                     <td class="">{{ $address->status }}</td>
                                                     <td class="">
-                                                        <a class="btn btn-outline-danger btn-sm m-1" href="{{ route('addresses.edit',$address) }}" type="button">Editar Endereço</a>
+                                                        <a class="btn btn-outline-danger btn-sm m-1" href="{{ route('address.edit',$address) }}" type="button">Editar Endereço</a>
+                                                        <a class="btn btn-outline-info btn-sm m-1" href="{{ route('address.show',$address) }}" type="button">Vizualizar Endereço</a>
                                                         @if($address->status =='Inativo')
                                                             <button class="btn btn-outline-info btn-sm m-1" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                                                                 Ativar endereço

@@ -7,8 +7,7 @@
 
 <div class="col-md-12">
     <div class="card text-left">
-        <form method="POST" action="{{ route('students.update', $student) }}" class="needs-validation"
-            novalidate="novalidate">
+        <form method="POST" action="{{ route('students.update', $student) }}" class="needs-validation" novalidate="novalidate">
             @method('put')
             @csrf
             <div class="card-body">
@@ -21,13 +20,8 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="name">Nome do(a) aluno(a)<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="name" name="name" required
-<<<<<<< HEAD
-                                        type="text" placeholder="Digite o nome do aluno(a)"
-                                        value="{{ $student->person->name }}" autofocus/>
-=======
                                         type="text" placeholder="Digite o Nome do aluno(a)"
-                                        value="{{ $student->person->name }}" />
->>>>>>> 9baf7b4517bdd9af178830b52abb9c489bfc601c
+                                        value="{{ $student->person->name }}" autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
@@ -180,8 +174,7 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="programs">Programas<span style="font-size:13px; color:red;">*</span></label>
-                                            <select class="form-control form-control-rounded" id="programs"
-                                                name="programs" required>
+                                            <select class="form-control form-control-rounded" id="programs" name="programs" required>
                                                 <option value="" selected disabled>----Selecione----</option>
                                                 <option value="0">Nenhum</option>
                                                 @foreach ($programs as $program)
@@ -268,7 +261,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="{{ route('students.index') }}" class="btn btn-outline-secondary m-1" type="button">Voltar</a>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </div>
             </div>
         </form>

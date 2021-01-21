@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <a href="{{ route('students.index') }}" class="btn btn-secondary">Voltar</a>
+                        <a href="{{ route('students.index') }}" class="btn btn-outline-secondary m-1" type="button">Voltar</a>
                         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                     </div>
                 </div>
