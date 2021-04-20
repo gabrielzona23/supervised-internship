@@ -30,4 +30,19 @@ class PersonService
         $person->save();
         return $person;
     }
+
+    public function updateResponsibly($responsible, $request)
+    {
+        $person = Person::findOrFail($responsible->person_id);
+        $person->name = $request->name1;
+        $person->cpf = $request->cpf1;
+        $person->rg = $request->rg1;
+        $person->phone1 = $request->phone3;
+        $person->phone2 = $request->phone4;
+        $person->emitter_rg = $request->emitter_rg1;
+        $person->nis = $request->nis1;
+        $person->created_by = Auth::user()->id;
+        $person->save();
+        return $person;
+    }
 }

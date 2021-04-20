@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('students', StudentController::class);
     // Route::resource('addresses', AddressController::class);
-    Route::resource('responsiblies', ResponsiblyController::class);
+    // Route::resource('responsiblies', ResponsiblyController::class);
     Route::resource('registrations', RegistrationController::class);
     Route::resource('anamneses', AnamneseController::class)->parameters([
         'anamneses' => 'student'
@@ -38,6 +38,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
     Route::put('/students/{student}/registration/{registration}update', [StudentController::class, 'updateRegistration'])->name('students.updateRegistration');
 
+    Route::get('responsible/{registration}/create', [ResponsiblyController::class, 'create'])->name('responsible.create');
+    Route::post('responsible/{registration}/store', [ResponsiblyController::class, 'store'])->name('responsible.store');
+    Route::get('responsible/{responsible}/edit', [ResponsiblyController::class, 'edit'])->name('responsible.edit');
+    Route::get('responsible/{responsible}/show', [ResponsiblyController::class, 'show'])->name('responsible.show');
+    Route::put('responsible/{responsible}/update', [ResponsiblyController::class, 'update'])->name('responsible.update');
+    Route::put('/registration/{registration}/responsible/{responsibleForActive}/active', [ResponsiblyController::class, 'activeResponsibleStudent'])->name('responsible.activeResponsibleStudent');
 
     Route::get('/address/{student}/create', [AddressController::class, 'createAddressStudent'])->name('address.createAddressStudent');
     Route::post('/address/{student}', [AddressController::class, 'storeAddressStudent'])->name('address.storeAddressStudent');

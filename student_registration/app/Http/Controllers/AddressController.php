@@ -109,12 +109,12 @@ class AddressController extends Controller
             return redirect()->route('address.edit', $address)->withErrors($validator)->withInput();
         }
 
-        DB::beginTransaction();
-        $address->update($request->all());
-        DB::commit();
-        Log::info('Successfully activation address');
-        return redirect()->route('address.createAddressStudent', $address->students[0])->withInput()->with('message', 'Endereço Atualizado com sucesso!');
         try {
+            DB::beginTransaction();
+            $address->update($request->all());
+            DB::commit();
+            Log::info('Successfully activation address');
+            return redirect()->route('address.createAddressStudent', $address->students[0])->withInput()->with('message', 'Endereço Atualizado com sucesso!');
         } catch (ModelNotFoundException $m) {
             DB::rollback();
             Log::error('No query result', ['errors' => $m]);

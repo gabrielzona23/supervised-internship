@@ -11,7 +11,7 @@
             @method('put')
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Edição das informações de identificação do(a) Aluno(a): <b>{{ $student->person->name }}</b> </h4>
+                <h4 class="card-title mb-3">Edição das informações de identificação do(a) Aluno(a): <b>{{ $student->person->name }}</b> referente a matrícula de {{ $registration->dateFormatYear() }} </h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">

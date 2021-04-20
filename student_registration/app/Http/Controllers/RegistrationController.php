@@ -121,7 +121,10 @@ class RegistrationController extends Controller
             ]);
             $data_responsibly['person_id'] = $person_responsibly->id;
             $responsiblyService = new ResponsiblyService();
-            $responsiblyService->store($data_responsibly);
+            $responsibly = $responsiblyService->store($data_responsibly);
+
+            $registration->responsiblies()->attach($responsibly->id);
+
 
             $documentService = new DocumentService();
             $documentService->store($request, $registration);
@@ -164,8 +167,7 @@ class RegistrationController extends Controller
      */
     public function edit(Registration $registration)
     {
-        $student = $registration->student;
-        return view('registrations.forms', compact('registration', 'student'));
+        return view('registrations.forms', compact('registration'));
     }
 
     /**

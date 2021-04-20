@@ -729,15 +729,15 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="phone3">Número de Telefone<span style="font-size:13px; color:red;">*</span></label>
+                                            <label for="phone3">Número de telefone<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="phone3" name="phone3"
-                                                type="text" placeholder="Digite o Número de Telefone do Reponsável"
+                                                type="text" placeholder="Digite o Número de telefone do Reponsável"
                                                 required value="{{ old('phone3') }}" />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo Número de Telefone não pode ser vazio!
+                                                O campo Número de telefone não pode ser vazio!
                                             </div>
                                         </div>
 
@@ -801,7 +801,6 @@
                                         >Sim</option>
                                     </select>
                                 </div>
-
                             </div>
                         </div>
                     </div>

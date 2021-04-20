@@ -23,7 +23,7 @@ class AttendedSchool extends Model
         'name' => ['bail', 'required', 'min:4', 'max:64'],
         'year' => ['bail', 'nullable', 'min:4', 'max:4'],
         'school_grade' => ['bail', 'required', 'min:2', 'max:64'],
-        'network' => ['bail', 'in:Particular, Público,Particular com bolsa'],
+        'network' => ['bail', 'in:Particular,Público,Particular com bolsa'],
         'type' => ['bail', 'in:Creche,Pré-escola,Ensino médio'],
         'city' => ['bail', 'nullable', 'min:2', 'max:64'],
         'administrative_department' => ['bail', 'nullable', 'min:2', 'max:32'],

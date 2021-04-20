@@ -171,19 +171,37 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $validator = Validator::make($request->all(), Student::VALIDATORS_UPDATE);
-
         if ($validator->fails()) {
             Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
             return redirect()->route('students.index')->withErrors($validator)->withInput();
         }
 
-        DB::beginTransaction();
+        try {
+            DB::beginTransaction();
+            $student->person()->update($request->only(['name', 'born_state', 'born_city',  'cpf', 'rg', 'emitter_rg', 'gender', 'nis', 'phone1', 'phone2']));
+            $student->update($request->only(['born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'has_special_needs', 'special_educational_needs', 'g_mus', 'nationality']));
 
-        $student->person()->update($request->only(['name', 'born_state', 'born_city',  'cpf', 'rg', 'emitter_rg', 'gender', 'nis', 'phone1', 'phone2']));
-        $student->update($request->only(['born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'has_special_needs', 'special_educational_needs', 'g_mus', 'nationality']));
-
-        if ($request->input('programs') != 0) {
-            $student->programs()->attach($request->input('programs'));
+            if ($request->input('programs') != 0) {
+                $student->programs()->attach($request->input('programs'));
+            }
+            $programsStudent = false;
+            $programs = Program::all();
+            $programsStudent = $student->programs->first();
+            DB::commit();
+            Log::info('Successfully updated Student');
+            return view('students.edit')->with('student', $student)->with('programs', $programs)->with('programsStudent', $programsStudent);
+        } catch (ModelNotFoundException $m) {
+            DB::rollback();
+            Log::error('No query result', ['errors' => $m]);
+            return view('erros.not-found-404')->with('problem', 'Dados não encontrados!');
+        } catch (QueryException $q) {
+            DB::rollback();
+            Log::error('Internal database error', ['errors' => $q]);
+            return view('erros.service-unavailable-503')->with('problem', 'Erro no Banco de dados!');
+        } catch (\Throwable $t) {
+            DB::rollback();
+            Log::error('Internal server error', ['errors' => $t]);
+            return view('erros.internal-serve-error-500')->with('problem', 'Erro no Servidor!');
         }
     }
 

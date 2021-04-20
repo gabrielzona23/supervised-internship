@@ -27,8 +27,8 @@ class RegistrationFactory extends Factory
         return [
             "status_progress" => $this->faker->numberBetween($min = 0, $max = 100),
             'image_authorization' => $this->faker->numberBetween($min = 0, $max = 1),
-            'parents_divorced' => $this->faker->numberBetween($min = 0, $max = 1),
             'guard_document' => $this->faker->numberBetween($min = 0, $max = 1),
+            'parents_divorced' => $this->faker->numberBetween($min = 0, $max = 1),
             'student_custody' => $this->faker->name,
             'school_year' => $this->faker->date('Y'),
             'number_card_family_bag' => $this->faker->numberBetween($min = 1000000, $max = 99999999999),

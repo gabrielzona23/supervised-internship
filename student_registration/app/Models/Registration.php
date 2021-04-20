@@ -53,7 +53,7 @@ class Registration extends Model
         'number' => ['bail', 'required', 'min:2', 'max:32'],
         'electrical_installation_core' => ['bail', 'max:32'],
         'residential_area' => ['bail', 'required', 'in:Rural,Urbana'],
-        'type_transport' => ['bail', 'in:Público, Particular, Escolar, Variado'],
+        'type_transport' => ['bail', 'in:Público,Particular,Escolar,Variado'],
         'reference' => ['bail', 'max:255'],
         'complement' => ['bail', 'max:255'],
         'buses_name' => ['bail', 'max:64'],
@@ -76,7 +76,7 @@ class Registration extends Model
         'phone3' => ['bail', 'required', 'string', 'min:14', 'max:15'],
         'phone4' => ['bail', 'nullable', 'string', 'min:14', 'max:15'],
         'parents_divorced' => ['bail', 'filled', 'boolean'],
-        'student_custody' => ['bail', 'required_if,parents_divorced,1', 'nullable', 'string', 'min:14', 'max:32'],
+        'student_custody' => ['bail', 'required_if:parents_divorced,1', 'nullable', 'string', 'min:14', 'max:32'],
         'school_year' => ['bail', 'required', 'string', 'min:4', 'max:4', 'date_format:Y', 'before_or_equal:tomorrow'],
 
         'document_model' => ['bail', 'required', 'in:new,old,others'],
@@ -114,7 +114,7 @@ class Registration extends Model
     }
     public function responsiblies()
     {
-        return $this->belongsToMany(Responsibly::class, 'registration_responsibly')->withPivot('current')->withTimestamps();
+        return $this->belongsToMany(Responsibly::class, 'registration_responsibly')->withTimestamps();
     }
     public function student()
     {
@@ -131,6 +131,10 @@ class Registration extends Model
     public function setSchoolYearAttribute($value)
     {
         $this->attributes['school_year'] = Carbon::createFromFormat('Y', $value);
+    }
+    public function dateFormatYear()
+    {
+        return Carbon::parse($this->attributes['school_year'])->format('Y');
     }
     use HasFactory;
 }
