@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\StudentController;
@@ -10,8 +8,6 @@ use App\Http\Controllers\AnamneseController;
 use App\Http\Controllers\AttendedSchoolController;
 use App\Http\Controllers\ResponsiblyController;
 use App\Http\Controllers\RegistrationController;
->>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,17 +19,6 @@ use App\Http\Controllers\RegistrationController;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-=======
 Route::get('/foo', function () {
     return view('components.forms.forms');
 });
@@ -79,4 +64,3 @@ Route::get('/', function () {
 })->middleware(['auth'])->name('home');
 
 require __DIR__ . '/auth.php';
->>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9

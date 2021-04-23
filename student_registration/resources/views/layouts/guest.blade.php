@@ -3,25 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
-=======
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -50,6 +31,5 @@
         <script src="{{ asset('js/scripts/customizer.script.min.js') }}"> </script>
         <script src="{{ asset('js/scripts/script.min.js') }}"> </script>
         <script src="{{ asset('js/scripts/form.validation.script.min.js') }}"></script>
->>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9
     </body>
 </html>
