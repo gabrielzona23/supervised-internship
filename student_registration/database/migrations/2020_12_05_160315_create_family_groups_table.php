@@ -16,9 +16,9 @@ class CreateFamilyGroupsTable extends Migration
         Schema::create('family_groups', function (Blueprint $table) {
             $table->id();
             $table->integer('number_of_members');
-            $table->integer('number_of_dependents');
-            $table->integer('number_of_older_brothers');
-            $table->integer('number_of_younger_brothers');
+            $table->integer('number_of_dependents')->nullable();
+            $table->integer('number_of_older_brothers')->nullable();
+            $table->integer('number_of_younger_brothers')->nullable();
             $table->integer('income');
             $table->foreignId('registration_id');
             $table->timestamps();

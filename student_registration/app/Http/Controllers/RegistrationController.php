@@ -3,32 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use App\Models\Phone;
-use App\Models\Person;
-use App\Models\Student;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use App\Models\Registration;
+use App\Services\PersonService;
+use App\Services\StudentService;
 use App\Services\AddressService;
 use App\Services\DocumentService;
-use App\Services\PersonService;
-use App\Services\RegistrationService;
-use App\Services\ResponsiblyService;
-use App\Services\StudentService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Services\ResponsiblyService;
+use App\Services\RegistrationService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
-    private $addressService, $personService;
-
-    public function __construct(AddressService $addressService, PersonService $personService)
-    {
-        $this->addressService = $addressService;
-        $this->personService = $personService;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +27,8 @@ class RegistrationController extends Controller
      */
     public function index(Request $request)
     {
-        $registration = Registration::paginate();
-        dd($registration);
-        return view('registrations.index')->with('registration', $registration);
+        $registrations = Registration::paginate(50);
+        return view('registrations.index')->with('registrations', $registrations);
     }
 
     /**
@@ -60,113 +50,102 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        // try {
-        $validator = Validator::make($request->all(), Registration::VALIDATORS_STORE);
-        if ($validator->fails()) {
-            Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
-            return redirect()->route('registrations.create')->withErrors($validator)->withInput();
+        // dd($request->all());
+        try {
+            $validator = Validator::make($request->all(), Registration::VALIDATORS_STORE);
+            if ($validator->fails()) {
+                Log::warning("Fail on data validate", ['errors' => $validator->errors()]);
+                return redirect()->route('registrations.create')->withErrors($validator)->withInput();
+            }
+
+            DB::beginTransaction();
+            $data_person_student = $request->only(
+                ['name', 'born_state', 'born_city',  'cpf', 'rg', 'emitter_rg', 'gender', 'nis', 'phone1', 'phone2']
+            );
+            $personService = new PersonService();
+            $person = $personService->store($data_person_student);
+
+            $data_student = $request->only([
+                'born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'has_special_needs', 'special_educational_needs', 'g_mus'
+            ]);
+            $data_student['person_id'] = $person->id;
+            $studentService = new StudentService();
+            $student = $studentService->store($data_student);
+
+            if ($request->input('programs') != 0) {
+                $student->programs()->attach($request->input('programs'));
+            }
+
+            $data_student = $request->only([
+                'born_date', 'nationality', 'ethnicity', 'breed', 'color', 'number_card_sus', 'inep_code', 'status'
+            ]);
+
+            $data_registration = $request->only('image_authorization', 'parents_divorced', 'guard_document', 'student_custody', 'number_card_family_bag', 'school_year');
+            $data_registration['student_id'] = $student->id;
+            $registrationService = new RegistrationService();
+            $registration = $registrationService->store($data_registration);
+
+            if ($request->input('job') != null) {
+                $job = new Job();
+                $job->name = $request->input('job');
+                $job->person_id = $person->id;
+                $job->save();
+            }
+
+            $data_address = $request->only([
+                'street',
+                'city',
+                'state',
+                'neighborhood',
+                'country',
+                'cep',
+                'number',
+                'electrical_installation_code',
+                'residential_area',
+                'type_transport',
+                'reference',
+                'complement',
+                'buses_name',
+                'transport_localization',
+                'route',
+            ]);
+            $data_address['student_id'] = $student->id;
+            $addressService = new AddressService();
+            $addressService->storeRegistration($data_address);
+
+
+            $person_responsibly = $personService->storeResponsibly($request);
+
+            $data_responsibly = $request->only([
+                'kinship', 'family_bag'
+            ]);
+            $data_responsibly['person_id'] = $person_responsibly->id;
+            $responsiblyService = new ResponsiblyService();
+            $responsibly = $responsiblyService->store($data_responsibly);
+
+            $registration->responsiblies()->attach($responsibly->id);
+
+
+            $documentService = new DocumentService();
+            $documentService->store($request, $registration);
+
+
+            DB::commit();
+            Log::info('Successfully registration Estudante');
+            return redirect()->route('registrations.create', compact('student'))->with('message', 'Matricula realizado com sucesso!')->withInput();
+        } catch (ModelNotFoundException $m) {
+            DB::rollback();
+            Log::error('No query result', ['errors' => $m]);
+            return view('erros.not-found-404')->with('problem', 'Dados não encontrados!');
+        } catch (QueryException $q) {
+            DB::rollback();
+            Log::error('Internal database error', ['errors' => $q]);
+            return view('erros.service-unavailable-503')->with('problem', 'Erro no Banco de dados!');
+        } catch (\Throwable $t) {
+            DB::rollback();
+            Log::error('Internal server error', ['errors' => $t]);
+            return view('erros.internal-serve-error-500')->with('problem', 'Erro no Servidor!');
         }
-
-        DB::beginTransaction();
-        $data_person_student = $request->only(
-            ['name', 'born_state', 'born_city',  'cpf', 'rg', 'emitter_rg', 'gender', 'nis']
-        );
-        $personService = new PersonService();
-        $person = $personService->store($data_person_student);
-
-        $data_student = $request->only([
-            'born_date', 'nationality', 'breed', 'color', 'number_card_sus', 'inep_code', 'has_special_needs', 'special_educational_needs', 'g_mus'
-        ]);
-        $data_student['person_id'] = $person->id;
-        $studentService = new StudentService();
-        $student = $studentService->store($data_student);
-
-        if ($request->input('programs') != 0) {
-            $student->programs()->attach($request->input('programs'));
-        }
-
-        $data_student = $request->only([
-            'born_date', 'nationality', 'ethnicity', 'breed', 'color', 'number_card_sus', 'inep_code', 'status'
-        ]);
-
-        $data_registration = $request->only('image_authorization', 'parents_divorced', 'guard_document', 'student_custody', 'number_card_family_bag');
-        $data_registration['student_id'] = $student->id;
-        $registrationService = new RegistrationService();
-        $registration = $registrationService->store($data_registration);
-
-        if ($request->input('job') != null) {
-            $job = new Job();
-            $job->name = $request->input('job');
-            $job->save();
-            $person->jobs()->attach($job->id);
-        }
-
-        $phone1 = new Phone();
-        $phone1->number = $request->input('phone1');
-        $phone1->person_id = $person->id;
-        $phone1->save();
-
-        if ($request->input('phone2') != null) {
-            $phone2 = new Phone();
-            $phone2->number = $request->input('phone2');
-            $phone2->person_id = $person->id;
-            $phone2->save();
-        }
-
-        $data_address = $request->only(
-            'city',
-            'number',
-            'street',
-            'branch_line',
-            'residential_area',
-            'state',
-            'country',
-            'neighborhood',
-            'cep',
-            'complement',
-            'electrical_installation_code',
-            'reference'
-        );
-        $data_address['person_id'] = $person->id;
-        $address = $this->addressService->store($data_address);
-
-
-        $person_responsibly = $this->personService->storeResponsibly($request);
-
-        $data_responsibly = $request->only([
-            'kinship', 'family_bag'
-        ]);
-        $data_responsibly['person_id'] = $person_responsibly->id;
-        $responsiblyService = new ResponsiblyService();
-        $responsibly = $responsiblyService->store($data_responsibly);
-
-        $phone3 = new Phone();
-        $phone3->number = $request->input('phone3');
-        $phone3->person_id = $person_responsibly->id;
-        $phone3->save();
-
-        if ($request->input('phone4') != null) {
-            $phone4 = new Phone();
-            $phone4->number = $request->input('phone4');
-            $phone4->person_id = $person_responsibly->id;
-            $phone4->save();
-        }
-        $documentService = new DocumentService();
-        $documents = $documentService->store($request, $registration);
-
-
-        DB::commit();
-        Log::info('Successfully created Estudante');
-        return redirect()->route('registrations.create')->with('message', 'Cadastro realizado com sucesso!')->withInput()->with('student', $student);
-        // } catch (QueryException $q) {
-        //     DB::rollBack();
-        //     Log::error('Internal Server Error', ['errors' => $q]);
-        //     return redirect()->route('registrations.create')->with('problem', 'Falha ao realizar cadastro!');
-        // } catch (\Throwable $t) {
-        //     DB::rollBack();
-        //     Log::critical('Internal Server Error', ['errors' => $t]);
-        //     return redirect()->route('registrations.create')->with('problem', 'Falha ao realizar cadastro!');
-        // }
     }
 
     /**
@@ -186,9 +165,9 @@ class RegistrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Registration $registration)
     {
-        //
+        return view('registrations.forms', compact('registration'));
     }
 
     /**
@@ -200,7 +179,6 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

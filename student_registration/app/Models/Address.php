@@ -8,45 +8,42 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     protected $fillable = [
-        'city',
-        'number',
         'street',
-        'branch_line',
-        'residential_area',
+        'city',
         'state',
-        'country',
         'neighborhood',
+        'country',
         'cep',
-        'complement',
+        'number',
         'electrical_installation_code',
-        'reference'
+        'residential_area',
+        'type_transport',
+        'reference',
+        'complement',
+        'buses_name',
+        'transport_localization',
+        'route',
     ];
 
     const VALIDATORS_STORE = [
-        'special_needs' => ['bail', 'required_if:special_needs_check,1', 'string', 'max:64'],
-        'name' => ['bail', 'required', 'string', 'max:64'],
-        'programs' => ['bail', 'max:64'],
-        'nationality' => ['bail', 'max:32'],
-        'born_city' => ['bail', 'max:32'],
-        'born_state' => ['bail', 'max:32'],
-        'job' => ['bail', 'max:32'],
-        'number_car_sus' => ['bail', 'max:32'],
-        'inep_code' => ['bail', 'max:32'],
-        'nis' => ['bail', 'max:32'],
-        'color' => ['bail', 'max:32'],
-        'breed' => ['bail', 'max:32'],
-        'image_authorization' => ['bail', 'required', 'boolean'],
-        'special_needs_check' => ['bail', 'required', 'boolean'],
-        'gender' => ['bail', 'max:64'],
-        'born_date' => ['bail', 'required', 'date', 'min:10', 'max:10'],
-        'cpf' => ['bail', 'required', 'min:14', 'max:14'],
-        'rg' => ['bail', 'required', 'min:5', 'max:20'],
-        'emitter_rg' => ['bail', 'max:16'],
-        'phone1' => ['bail', 'required', 'min:7', 'max:15'],
-        'phone2' => ['bail', 'max:15'],
+        'street' => ['bail', 'required', 'string', 'min:3', 'max:64'],
+        'city' => ['bail', 'required', 'min:2', 'max:128'],
+        'state' => ['bail', 'required', 'min:2', 'max:64'],
+        'neighborhood' => ['bail', 'required', 'min:3', 'max:64'],
+        'country' => ['bail', 'required', 'min:3', 'max:64'],
+        'cep' => ['bail', 'required', 'min:9', 'max:12'],
+        'number' => ['bail', 'required', 'min:1', 'max:32'],
+        'electrical_installation_core' => ['bail', 'max:32'],
+        'residential_area' => ['bail', 'required', 'in:Rural,Urbana'],
+        'type_transport' => ['bail', 'in:Público,Particular,Escolar,Variado'],
+        'reference' => ['bail', 'max:255'],
+        'complement' => ['bail', 'max:255'],
+        'buses_name' => ['bail', 'max:64'],
+        'transport_localization' => ['bail', 'max:64'],
+        'route' => ['bail', 'max:64'],
     ];
 
     public function schools()
@@ -54,8 +51,8 @@ class Address extends Model
         return $this->hasOne(School::class);
     }
 
-    public function persons()
+    public function students()
     {
-        return $this->belongsToMany(Person::class, 'address_person', 'address_id');
+        return $this->belongsToMany(Student::class, 'address_student', 'address_id');
     }
 }

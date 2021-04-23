@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScaleAnswer extends Model
 {
-    public function question(){
-        return $this->belongsTo(Question::class);
-    }
 
-    public function registration(){
-        return $this->belongsTo(Registration::class);
-    }
+    protected $table = 'scale_answers';
+
+    // public function question()
+    // {
+    //     return $this->belongsTo(Question::class);
+    // }
+    // public function student()
+    // {
+    //     return $this->belongsTo(Student::class);
+    // }
     use HasFactory;
 }

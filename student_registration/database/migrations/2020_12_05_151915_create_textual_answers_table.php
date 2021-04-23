@@ -17,7 +17,7 @@ class CreateTextualAnswersTable extends Migration
             $table->id();
             $table->text('value');
             $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('registration_id')->constrained('registrations');
+            $table->foreignId('student_id')->constrained('students');
             $table->timestamps();
         });
     }

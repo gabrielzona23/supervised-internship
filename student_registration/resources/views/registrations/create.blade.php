@@ -11,49 +11,49 @@
             novalidate="novalidate">
             @csrf
             <div class="card-body">
-                <h4 class="card-title mb-3">Identificação do Aluno</h4>
+                <h4 class="card-title mb-3">Matricular Novo Aluno(a)</h4>
                 <div class="separator-breadcrumb border-top"></div>
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Informações de identificação do Aluno</div>
+                            <div class="card-title mb-3">Informações de identificação do Aluno(a)</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="name">Nome do aluno*</label>
+                                    <label for="name">Nome do(a) Aluno(a)<span class="span-red">*</span></label>
                                     <input class="form-control form-control-rounded" id="name" name="name" required
-                                        type="text" placeholder="Digite o nome do aluno" value="{{ old('name') }}" />
+                                        type="text" placeholder="Digite o Nome do(a) Aluno(a)" value="{{ old('name') }}" autofocus/>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo Nome do(a) Aluno(a) não pode ser vazio!
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="born_date">Data de nascimento do aluno*</label>
+                                            <label for="born_date">Data de Nascimento<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="born_date"
                                                 name="born_date" value="{{ old('born_date') }}" type="date" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Data de Nascimento não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="cpf">CPF de aluno</label>
+                                            <label for="cpf">CPF</label>
                                             <input class="form-control form-control-rounded" id="cpf" name="cpf"
                                                 type="text" value="{{ old('cpf') }}"
-                                                placeholder="Digite o CPF do aluno" />
+                                                placeholder="Digite o CPF" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="born_state">Estado onde o aluno nasceu*</label>
+                                    <label for="born_state">Estado de Nascimento<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="born_state" type="text"
                                         required name="born_state" @if (old('born_state'))
                                         value="{{ old('born_state') }}" @else value="Acre" @endif />
@@ -61,23 +61,23 @@
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo Estado de Nascimento não pode ser vazio!
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="rg">RG do Aluno</label>
+                                            <label for="rg">RG</label>
                                             <input class="form-control form-control-rounded" id="rg" name="rg"
                                                 value="{{ old('rg') }}" type="text"
-                                                placeholder="Digite o RG do aluno" />
+                                                placeholder="Digite o RG" />
                                         </div>
                                         <div class="col-6 form-group">
                                             <label for="emitter_rg">Órgão do emissor</label>
                                             <input class="form-control form-control-rounded" id="emitter_rg"
                                                 value="{{ old('emitter_rg') }}" name="emitter_rg" type="text"
-                                                placeholder="Digite o órgão emissor do RG do aluno" />
+                                                placeholder="Digite o órgão emissor do RG" />
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="nationality">Nacionalidade*</label>
+                                            <label for="nationality">Nacionalidade<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="nationality"
                                                 name="nationality" type="text" required @if (old('nationality'))
                                                 value="{{ old('nationality') }}" @else value="Brasileira" @endif />
@@ -93,12 +93,12 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Nacionalidade não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="born_city">Naturalidade*</label>
+                                            <label for="born_city">Naturalidade<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="born_city"
                                                 name="born_city" value="{{ old('born_city') }}" type="text"
                                                 placeholder="Digite a cidade em que o aluno nasceu" required />
@@ -106,7 +106,7 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Naturalidade não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="phone1">Número de telefone principal*</label>
+                                            <label for="phone1">Número de telefone principal<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="phone1" name="phone1"
                                                 value="{{ old('phone1') }}" type="text" required
                                                 placeholder="Digite o número de telefone" />
@@ -123,7 +123,7 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Número de Telefone não pode ser vazio!
                                             </div>
                                         </div>
 
@@ -139,17 +139,17 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="number_car_sus">Número do cartão do sus</label>
+                                            <label for="number_car_sus">Número do cartão do SUS</label>
                                             <input class="form-control form-control-rounded" id="number_card_sus"
                                                 value="{{ old('number_card_sus') }}" name="number_card_sus" type="text"
-                                                placeholder="Digite o cartão do sus do aluno" />
+                                                placeholder="Digite o número do cartão do SUS" />
                                         </div>
 
                                         <div class="col-6 form-group">
                                             <label for="inep_code">Código INEP</label>
                                             <input class="form-control form-control-rounded" id="inep_code"
                                                 name="inep_code" value="{{ old('inep_code') }}" type="text"
-                                                placeholder="Digite o código do inep do aluno" />
+                                                placeholder="Digite o código do INEP" />
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                                             <label for="nis">NIS do Aluno</label>
                                             <input class="form-control form-control-rounded" id="nis" name="nis"
                                                 type="text" value="{{ old('nis') }}"
-                                                placeholder="Digite o nis do aluno" />
+                                                placeholder="Digite o NIS do aluno" />
                                         </div>
                                     </div>
                                 </div>
@@ -175,37 +175,45 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="programs">Programas*</label>
-                                            <select class="form-control form-control-rounded" id="programs"
-                                                name="programs" value="{{ old('programs') }}" required>
-                                                <option value="" disabled selected>Selecione um programa da escola que o
-                                                    aluno participa</option>
+                                            <label for="programs">Programas<span style="font-size:13px; color:red;">*</span></label>
+                                            <select class="form-control form-control-rounded" id="programs" name="programs"  required>
+                                                <option value="" disabled selected>----Selecione----</option>
                                                 <option value="0">Nenhum</option>
                                                 @foreach ($programs as $program)
-                                                <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                                    <option value="{{ $program->id }}"
+                                                    @if(old('programs')==$program->id)
+                                                        selected
+                                                    @endif
+                                                    >{{ $program->name }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Programas não pode ser vazio!
                                             </div>
                                         </div>
                                         <div class="col-6 form-group">
-                                            <label for="has_special_needs">Possui Necessidades Educacionais
-                                                Especiais*</label>
-                                            <select class="form-control form-control-rounded" name="has_special_needs"
-                                                id="has_special_needs" value="{{ old('has_special_needs') }}" required>
+                                            <label for="has_special_needs">Possui Necessidades Educacionais Especiais<span style="font-size:13px; color:red;">*</span></label>
+                                            <select class="form-control form-control-rounded" name="has_special_needs" id="has_special_needs" required>
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value=0>Não</option>
-                                                <option value=1>Sim</option>
+                                                <option value="0"
+                                                    @if(old('has_special_needs')=="0")
+                                                        selected
+                                                    @endif
+                                                >Não</option>
+                                                <option value="1"
+                                                    @if(old('has_special_needs')=="1")
+                                                        selected
+                                                    @endif
+                                                >Sim</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Possui Necessidades Educacionais não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -216,7 +224,7 @@
                                     <label for="special_educational_needs">Necessidades Especiais</label>
                                     <input class="form-control form-control-rounded" id="special_educational_needs"
                                         name="special_educational_needs" type="text"
-                                        placeholder="Digite as necssidades educacionais do aluno"
+                                        placeholder="Digite as Necessidades Educacionais"
                                         value="{{ old('special_educational_needs') }}" />
                                 </div>
 
@@ -225,14 +233,14 @@
                                         <div class="col-4 form-group">
                                             <label for="color">Cor</label>
                                             <input class="form-control form-control-rounded" type="text" name="color"
-                                                id="color" placeholder="Digite a Cor do aluno"
+                                                id="color" placeholder="Digite a Cor"
                                                 value="{{ old('color') }}" />
                                         </div>
 
                                         <div class="col-4 form-group">
                                             <label for="breed">Raça</label>
                                             <input class="form-control form-control-rounded" type="text" id="breed"
-                                                placeholder="Digite a Raça do aluno" name="breed"
+                                                placeholder="Digite a Raça" name="breed"
                                                 value="{{ old('breed') }}" />
                                         </div>
 
@@ -240,25 +248,46 @@
                                             <label for="gender">Gênero</label>
                                             <input class="form-control form-control-rounded" id="gender" name="gender"
                                                 value="{{ old('gender') }}" type="text"
-                                                placeholder="Digite o gênero do aluno" />
+                                                placeholder="Digite o Gênero" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label class="checkbox checkbox-primary">
-                                        <input class="form-control form-control-rounded" id="image_authorization"
-                                            name="image_authorization" type="checkbox" checked="checked"><span
-                                            for="image_authorization" value="{{ old('image_authorization') }}" />O
-                                        Responsável autoriza a divuldagação de fotos em trabalhos
-                                        escolares em redes sociais?</span><span class="checkmark"></span>
-                                    </label>
+                                    <label for="image_authorization">O Responsável autoriza a divuldagação de fotos em trabalhos
+                                        escolares em redes sociais?</label>
+                                    <select class="form-control form-control-rounded" name="image_authorization"
+                                        id="image_authorization">
+                                        <option value="" selected disabled>----Selecione----</option>
+                                        <option value="0"
+                                            @if(old('image_authorization')=="0")
+                                                selected
+                                            @endif
+                                        >Não</option>
+                                        <option value="1"
+                                            @if(old('image_authorization')=="1")
+                                                selected
+                                            @endif
+                                        >Sim</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="g_mus">G_MUS*</label>
+                                    <label for="g_mus">G_MUS</label>
                                     <input class="form-control form-control-rounded" id="g_mus" name="g_mus" type="text"
                                         placeholder="Digite o Número" value="{{ old('g_mus') }}" />
                                     <div class="valid-feedback">
                                         Tudo Ok!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="school_year">Ano Letivo<span style="font-size:13px; color:red;">*</span></label>
+                                    <input class="form-control form-control-rounded" id="school_year" name="school_year"
+                                        required type="text" placeholder="Digite o ano Letivo dá mátricula"
+                                        value="{{ old('school_year') }}" />
+                                    <div class="valid-feedback">
+                                        Tudo Ok!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        O campo Ano Letivo não pode ser vazio!
                                     </div>
                                 </div>
                             </div>
@@ -273,33 +302,44 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="document_model">Modelo de Documento*</label>
+                                            <label for="document_model">Modelo de Documento<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" name="document_model"
-                                                id="document_model" value="{{ old('document_model') }}" required>
+                                                id="document_model" required>
                                                 <option value="" selected disabled>----Selecione O Modelo----</option>
-                                                <option value="new">Modelo Novo</option>
-                                                <option value="old">Modelo Antigo</option>
-                                                <option value="others">Outro Documento</option>
+                                                <option value="new"
+                                                    @if(old('document_model')=="new")
+                                                        selected
+                                                    @endif
+                                                >Modelo Novo</option>
+                                                <option value="old"
+                                                    @if(old('document_model')=="old")
+                                                        selected
+                                                    @endif
+                                                >Modelo Antigo</option>
+                                                <option value="others"
+                                                    @if(old('document_model')=="others")
+                                                        selected
+                                                    @endif
+                                                >Outro Documento</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Modelo de Documento não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="document_number">Número do Documento*</label>
+                                            <label for="document_number">Número do Documento<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="document_number"
-                                                name="document_number" type="text"
-                                                placeholder="Digite o número do Documento"
+                                                name="document_number" type="text" placeholder="Digite o número do Documento"
                                                 value="{{ old('document_number') }}" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Número do Documento não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -317,14 +357,22 @@
                                         <div class="col-4 form-group">
                                             <label for="type_of_certificate">Tipo de Certidão</label>
                                             <select class="form-control form-control-rounded" name="type_of_certificate"
-                                                id="type_of_certificate" value="{{ old('type_of_certificate') }}">
+                                                id="type_of_certificate" >
                                                 <option value="" selected disabled>----Selecione A Certidão----</option>
-                                                <option value="Nascimento">Certidão de Nascimento</option>
-                                                <option value="Casamento">Certidão de casamento</option>
+                                                <option value="Nascimento"
+                                                    @if(old('type_of_certificate')=="Nascimento")
+                                                        selected
+                                                    @endif
+                                                >Certidão de Nascimento</option>
+                                                <option value="Casamento"
+                                                    @if(old('type_of_certificate')=="Casamento")
+                                                        selected
+                                                    @endif
+                                                >Certidão de casamento</option>
                                             </select>
                                         </div>
                                         <div class="col-4 form-group">
-                                            <label for="city_registry">Munícipio do Cartório</label>
+                                            <label for="city_registry">Município do Cartório</label>
                                             <input class="form-control form-control-rounded" id="city_registry"
                                                 name="city_registry" type="text" placeholder="Digite o número do Termo"
                                                 value="{{ old('city_registry') }}" />
@@ -332,7 +380,7 @@
                                         <div class="col-4 form-group">
                                             <label for="state_registry">Estado onde fica o cartório</label>
                                             <input class="form-control form-control-rounded" id="state_registry"
-                                                name="state_registry" type="text" placeholder="Digite o estado"
+                                                name="state_registry" type="text" placeholder="Digite o Estado"
                                                 value="{{ old('state_registry') }}" />
                                         </div>
                                     </div>
@@ -349,19 +397,19 @@
                                         <div class="col-3 form-group">
                                             <label for="sheet_number">Número da folha</label>
                                             <input class="form-control form-control-rounded" id="sheet_number"
-                                                name="sheet_number" type="text" placeholder="Digite o número da folha"
+                                                name="sheet_number" type="text" placeholder="Digite o Número da Folha"
                                                 value="{{ old('sheet_number') }}" />
                                         </div>
                                         <div class="col-3 form-group">
                                             <label for="book_number">Número do livro</label>
                                             <input class="form-control form-control-rounded" id="book_number"
-                                                name="book_number" type="text" placeholder="Digite o número do livro"
+                                                name="book_number" type="text" placeholder="Digite o Número do Livro"
                                                 value="{{ old('book_number') }}" />
                                         </div>
                                         <div class="col-3 form-group">
-                                            <label for="emission_date">Data de emissão</label>
+                                            <label for="emission_date">Data de Emissão</label>
                                             <input class="form-control form-control-rounded" id="emission_date"
-                                                name="emission_date" type="text" placeholder="Digite a data da emissão"
+                                                name="emission_date" type="text" placeholder="Digite a Data da Emissão"
                                                 value="{{ old('emission_date') }}" />
                                         </div>
                                     </div>
@@ -376,87 +424,113 @@
                             <div class="card-title mb-3">Informações do Endereço do aluno</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="street">Rua*</label>
+                                    <label for="street">Rua<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="street" name="street"
-                                        type="text" placeholder="Digite a Rua em que mora o aluno"
+                                        type="text" placeholder="Digite a Rua"
                                         value="{{ old('street') }}" required />
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo Rua não pode ser vazio!
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="city">Cidade*</label>
-                                            <input class="form-control form-control-rounded" id="city" name="city"
-                                                type="text" @if(old('city')) value="{{ old('city')}}" @else
-                                                value="Rio Branco" @endif required />
+                                            <label for="city">Cidade<span style="font-size:13px; color:red;">*</span></label>
+                                            <input class="form-control form-control-rounded" id="city" name="city" type="text" required
+                                                @if(old('city'))
+                                                    value="{{ old('city')}}"
+                                                @else
+                                                    value="Rio Branco"
+                                                @endif />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Cidade não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="state">Estado*</label>
-                                            <input class="form-control form-control-rounded" id="state" name="state"
-                                                type="text" @if(old('state')) value="{{ old('state')}}" @else
-                                                value="Acre" @endif required />
+                                            <label for="state">Estado<span style="font-size:13px; color:red;">*</span></label>
+                                            <input class="form-control form-control-rounded" id="state" name="state" type="text" required
+                                                @if(old('state'))
+                                                    value="{{ old('state')}}"
+                                                @else
+                                                    value="Acre"
+                                                @endif/>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Estado não pode ser vazio!
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="neighborhood">Bairro*</label>
-                                    <input class="form-control form-control-rounded" id="neighborhood"
-                                        name="neighborhood" type="text"
-                                        placeholder="Digite o Bairro em que o aluno mora"
-                                        value="{{ old('neighborhood') }}" required />
-                                    <div class="valid-feedback">
-                                        Tudo Ok!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="cep">CEP*</label>
+                                            <label for="neighborhood">Bairro<span style="font-size:13px; color:red;">*</span></label>
+                                            <input class="form-control form-control-rounded" id="neighborhood"
+                                                name="neighborhood" placeholder="Digite o Bairro"
+                                                value="{{ old('neighborhood') }}" type="text" required />
+                                            <div class="valid-feedback">
+                                                Tudo Ok!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                O campo Bairro não pode ser vazio!
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6 form-group">
+                                            <label for="country">País<span style="font-size:13px; color:red;">*</span></label>
+                                            <input class="form-control form-control-rounded" id="country" name="country"
+                                                type="text" placeholder="Digite o país"
+                                                @if(old('country'))
+                                                    value="{{ old('country')}}"
+                                                @else
+                                                    value="Brasil"
+                                                @endif/>
+                                            <div class="valid-feedback">
+                                                Tudo Ok!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                O campo País não pode ser vazio!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <div class="row">
+                                        <div class="col-6 form-group">
+                                            <label for="cep">CEP<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="cep" name="cep"
-                                                type="text" placeholder="Digite o cep referente ao endereço do aluno"
+                                                type="text" placeholder="Digite o CEP"
                                                 value="{{ old('cep') }}" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo CEP não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="number">Número*</label>
+                                            <label for="number">Número<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="number" name="number"
-                                                type="text" placeholder="Digite o Número referente ao endereço do aluno"
+                                                type="text" placeholder="Digite o Número referente ao endereço"
                                                 value="{{ old('number') }}" required />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Número não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
@@ -473,18 +547,26 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="residential_area">Área Residencial*</label>
+                                            <label for="residential_area">Área Residencial<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" name="residential_area"
-                                                id="residential_area" value="{{ old('residential_area') }}" required>
+                                                id="residential_area" required>
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value="Urbana">Urbana</option>
-                                                <option value="Rural">Rural</option>
+                                                <option value="Urbana"
+                                                    @if(old('residential_area')=="Urbana")
+                                                        selected
+                                                    @endif
+                                                >Urbana</option>
+                                                <option value="Rural"
+                                                    @if(old('residential_area')=="Rural")
+                                                        selected
+                                                    @endif
+                                                >Rural</option>
                                             </select>
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Área Residencial não pode ser vazio!
                                             </div>
                                         </div>
 
@@ -493,10 +575,26 @@
                                             <select class="form-control form-control-rounded" name="type_transport"
                                                 id="type_transport" value="{{ old('type_transport') }}">
                                                 <option value="" selected disabled>----Selecione----</option>
-                                                <option value="Particular">Particular</option>
-                                                <option value="Público">Público</option>
-                                                <option value="Escolar">Escolar</option>
-                                                <option value="Variado">Variado</option>
+                                                <option value="Particular"
+                                                    @if(old('type_transport') =="Particular")
+                                                        selected
+                                                    @endif
+                                                >Particular</option>
+                                                <option value="Público"
+                                                    @if(old('type_transport') =="Público")
+                                                        selected
+                                                    @endif
+                                                >Público</option>
+                                                <option value="Escolar"
+                                                    @if(old('type_transport') =="Escolar")
+                                                        selected
+                                                    @endif
+                                                >Escolar</option>
+                                                <option value="Variado"
+                                                    @if(old('type_transport') =="Variado")
+                                                        selected
+                                                    @endif
+                                                >Variado</option>
                                             </select>
                                         </div>
                                     </div>
@@ -506,13 +604,32 @@
                                     <label for="reference">Ponto de Referência</label>
                                     <input class="form-control form-control-rounded" id="reference" name="reference"
                                         type="text" value="{{ old('reference') }}"
-                                        placeholder="Digite o ponto de referência do endereço do aluno" />
+                                        placeholder="Digite o ponto de referência do endereço" />
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
+                                    <label for="complement">Complemento</label>
+                                    <input class="form-control form-control-rounded" id="complement" name="complement"
+                                        type="text" value="{{ old('complement') }}"
+                                        placeholder="Digite o complemento do endereço" />
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="buses_name">Nome(s) do ônibus que o aluno pega</label>
+                                    <input class="form-control form-control-rounded" id="buses_name" name="buses_name" type="text"
+                                        placeholder="Digite o rota de transporte" value="{{ old('buses_name') }}" />
+                                </div>
+
+                                    <div class="col-md-6 form-group mb-3">
+                                    <label for="transport_localization">Localidade Transporte</label>
+                                    <input class="form-control form-control-rounded" id="transport_localization" name="transport_localization" type="text"
+                                        placeholder="Digite o localidade de transporte" value="{{ old('transport_localization') }}" />
+                                </div>
+
+                                <div class="col-md-12 form-group mb-3">
                                     <label for="route">Rota</label>
                                     <input class="form-control form-control-rounded" id="route" name="route" type="text"
-                                        placeholder="Digite o rota de transporte do aluno" value="{{ old('route') }}" />
+                                        placeholder="Digite o rota de transporte" value="{{ old('route') }}" />
                                 </div>
 
                             </div>
@@ -525,7 +642,7 @@
                             <div class="card-title mb-3">Dados de Identificação do reponsável</div>
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="name1">Nome do Responsável*</label>
+                                    <label for="name1">Nome do Responsável<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="name1" name="name1" type="text"
                                         placeholder="Digite o nome do responsável" required
                                         value="{{ old('name1') }}" />
@@ -533,33 +650,33 @@
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo Nome do Responsável não pode ser vazio!
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="kinship">Grau de parentesco</label>
+                                    <label for="kinship">Grau de Parentesco</label>
                                     <input class="form-control form-control-rounded" id="kinship" name="kinship"
                                         type="text" value="{{ old('kinship') }}"
-                                        placeholder="Digite o Grau de parentesco do responsável para com o Aluno" />
+                                        placeholder="Digite o Grau de Parentesco do responsável para com o Aluno" />
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="cpf1">CPF do Responsável*</label>
+                                    <label for="cpf1">CPF do Responsável<span style="font-size:13px; color:red;">*</span></label>
                                     <input class="form-control form-control-rounded" id="cpf1" name="cpf1" type="text"
-                                        placeholder="Digite o cpf do responsável" value="{{ old('cpf1') }}" required />
+                                        placeholder="Digite o CPF do Responsável" value="{{ old('cpf1') }}" required />
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo CPF do Responsável não pode ser vazio!
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="rg1">RG do Responsável*</label>
+                                            <label for="rg1">RG do Responsável<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="rg1" name="rg1"
                                                 type="text" placeholder="Digite o RG do Responsável" required
                                                 value="{{ old('rg1') }}" />
@@ -567,53 +684,60 @@
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo RG do Responsável não pode ser vazio!
                                             </div>
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <label for="emitter_rg1">Órgão do emissor*</label>
+                                            <label for="emitter_rg1">Órgão Emissor<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="emitter_rg1"
                                                 name="emitter_rg1" type="text" value="{{ old('emitter_rg1') }}" required
-                                                placeholder="Digite o órgão emissor do RG do Responsável" />
+                                                placeholder="Digite o Órgão Emissor do RG do Responsável" />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Órgão Emissor não pode ser vazio!
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="family_bag">Possui Bolsa Família*</label>
-                                    <select class="form-control form-control-rounded" name="family_bag" id="family_bag"
-                                        value="{{ old('family_bag') }}" required>
+                                    <label for="family_bag">Possui Bolsa Família<span style="font-size:13px; color:red;">*</span></label>
+                                    <select class="form-control form-control-rounded" name="family_bag" id="family_bag" required>
                                         <option value="" selected disabled>----Selecione----</option>
-                                        <option value=0>Não</option>
-                                        <option value=1>Sim</option>
+                                        <option value="0"
+                                            @if(old('family_bag')=="0")
+                                                selected
+                                            @endif
+                                        >Não</option>
+                                        <option value="1"
+                                             @if(old('family_bag')=="1")
+                                                selected
+                                            @endif
+                                        >Sim</option>
                                     </select>
                                     <div class="valid-feedback">
                                         Tudo Ok!
                                     </div>
                                     <div class="invalid-feedback">
-                                        O campo acima não pode ser vazio
+                                        O campo Possui Bolsa Família não pode ser vazio!
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <label for="phone3">Número de telefone principal*</label>
+                                            <label for="phone3">Número de telefone<span style="font-size:13px; color:red;">*</span></label>
                                             <input class="form-control form-control-rounded" id="phone3" name="phone3"
-                                                type="text" placeholder="Digite o número de telefone do reponsável"
+                                                type="text" placeholder="Digite o Número de telefone do Reponsável"
                                                 required value="{{ old('phone3') }}" />
                                             <div class="valid-feedback">
                                                 Tudo Ok!
                                             </div>
                                             <div class="invalid-feedback">
-                                                O campo acima não pode ser vazio
+                                                O campo Número de telefone não pode ser vazio!
                                             </div>
                                         </div>
 
@@ -629,23 +753,30 @@
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="nis1">NIS do Responsável</label>
                                     <input class="form-control form-control-rounded" id="nis1" name="nis1" type="text"
-                                        placeholder="Digite o nis do Responsável" value="{{ old('nis1') }}" />
+                                        placeholder="Digite o NIS do Responsável" value="{{ old('nis1') }}" />
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
                                     <div class="row">
                                         <div class="col-3 form-group">
-                                            <label for="parents_divorced" class="checkbox checkbox-primary">
-                                                <input class="form-control form-control-rounded" id="parents_divorced"
-                                                    name="parents_divorced" type="checkbox" checked="checked" />
-                                                <span for="parents_divorced" value="{{ old('parents_divorced') }}">Os
-                                                    pais são divorciados?</span>
-                                                <span class="checkmark"></span>
-                                            </label>
+                                            <label for="parents_divorced">Os pais são divorciados?</label>
+                                            <select class="form-control form-control-rounded" name="parents_divorced" id="parents_divorced">
+                                                <option value="" selected disabled>----Selecione----</option>
+                                                <option value="0"
+                                                    @if(old('parents_divorced')=="0")
+                                                        selected
+                                                    @endif
+                                                >Não</option>
+                                                <option value="1"
+                                                    @if(old('parents_divorced')=="1")
+                                                        selected
+                                                    @endif
+                                                >Sim</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-9 form-group">
-                                            <label for="student_custody">Nome da pessoa que pussui a guarda do
+                                            <label for="student_custody">Caso sejam divorciados, quem pussui a guarda do
                                                 Aluno</label>
                                             <input class="form-control form-control-rounded" id="student_custody"
                                                 name="student_custody" type="text" value="{{ old('student_custody') }}"
@@ -655,15 +786,21 @@
                                 </div>
 
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="guard_document" class="checkbox checkbox-primary">
-                                        <input id="guard_document" name="guard_document" type="checkbox"
-                                            checked="checked">
-                                        <span for="parents_divorced" value="{{ old('guard_document') }}">O responsavel
-                                            apresentou documentos
-                                            comprobatórios da guarda?</span><span class="checkmark"></span>
-                                    </label>
+                                    <label for="guard_document">O responsável apresentou documentos comprobatórios da guarda?</label>
+                                    <select class="form-control form-control-rounded" name="guard_document" id="guard_document">
+                                        <option value="" selected disabled>----Selecione----</option>
+                                        <option value="0"
+                                            @if(old('guard_document')=="0")
+                                                selected
+                                            @endif
+                                        >Não</option>
+                                        <option value="1"
+                                            @if(old('guard_document')=="1")
+                                                selected
+                                            @endif
+                                        >Sim</option>
+                                    </select>
                                 </div>
-
                             </div>
                         </div>
                     </div>

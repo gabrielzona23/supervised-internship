@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vaccine extends Model
 {
 
-    public function registrations(){
-        return $this->belongsToMany(Registration::class)->withPivot('expiration');
+    public function registrations()
+    {
+        return $this->belongsToMany(Registration::class)->withPivot('expiration')->withTimestamps();
     }
     use HasFactory;
 }

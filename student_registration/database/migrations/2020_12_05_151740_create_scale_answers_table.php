@@ -15,9 +15,9 @@ class CreateScaleAnswersTable extends Migration
     {
         Schema::create('scale_answers', function (Blueprint $table) {
             $table->id();
-            $table->enum('value',['1','2','3','4','5'])->default('1');
+            $table->enum('value', ['1', '2', '3'])->default('1');
             $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('registration_id')->constrained('registrations');
+            $table->foreignId('student_id')->constrained('students');
             $table->timestamps();
         });
     }

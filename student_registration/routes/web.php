@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AnamneseController;
+use App\Http\Controllers\AttendedSchoolController;
+use App\Http\Controllers\ResponsiblyController;
+use App\Http\Controllers\RegistrationController;
+>>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,3 +33,50 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+=======
+Route::get('/foo', function () {
+    return view('components.forms.forms');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('users', UserController::class);
+    Route::resource('students', StudentController::class);
+    // Route::resource('addresses', AddressController::class);
+    // Route::resource('responsiblies', ResponsiblyController::class);
+    Route::resource('registrations', RegistrationController::class);
+    Route::resource('anamneses', AnamneseController::class)->parameters([
+        'anamneses' => 'student'
+    ]);
+
+
+    Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
+    Route::put('/students/{student}/registration/{registration}update', [StudentController::class, 'updateRegistration'])->name('students.updateRegistration');
+
+    Route::get('responsible/{registration}/create', [ResponsiblyController::class, 'create'])->name('responsible.create');
+    Route::post('responsible/{registration}/store', [ResponsiblyController::class, 'store'])->name('responsible.store');
+    Route::get('responsible/{responsible}/edit', [ResponsiblyController::class, 'edit'])->name('responsible.edit');
+    Route::get('responsible/{responsible}/show', [ResponsiblyController::class, 'show'])->name('responsible.show');
+    Route::put('responsible/{responsible}/update', [ResponsiblyController::class, 'update'])->name('responsible.update');
+    Route::put('/registration/{registration}/responsible/{responsibleForActive}/active', [ResponsiblyController::class, 'activeResponsibleStudent'])->name('responsible.activeResponsibleStudent');
+
+    Route::get('/address/{student}/create', [AddressController::class, 'createAddressStudent'])->name('address.createAddressStudent');
+    Route::post('/address/{student}', [AddressController::class, 'storeAddressStudent'])->name('address.storeAddressStudent');
+    Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
+    Route::get('/address/{address}/show', [AddressController::class, 'show'])->name('address.show');
+    Route::put('/address/{address}/update', [AddressController::class, 'update'])->name('address.update');
+    Route::put('/address/{student}/active/{addressForActive}', [AddressController::class, 'activeAddressStudent'])->name('address.activeAddressStudent');
+
+    Route::get('/attendedSchools/{student}/create', [AttendedSchoolController::class, 'create'])->name('attendedSchool.create');
+    Route::post('/attendedSchools/{student}', [AttendedSchoolController::class, 'storeWithStudent'])->name('attendedSchool.storeWithStudent');
+    Route::get('/attendedSchools/{attendedSchool}/show', [AttendedSchoolController::class, 'show'])->name('attendedSchool.show');
+    Route::get('/attendedSchool/{attendedSchool}', [AttendedSchoolController::class, 'editSchool'])->name('attendedSchool.edit');
+    Route::put('/attendedSchools/{attendedSchool}', [AttendedSchoolController::class, 'update'])->name('attendedSchool.update');
+    // Route::put('/attendedSchools/{student}/active/{addressForActive}', [AttendedSchoolController::class, 'active'])->name('attendedSchools.active');
+});
+
+Route::get('/', function () {
+    return view('layouts.home');
+})->middleware(['auth'])->name('home');
+
+require __DIR__ . '/auth.php';
+>>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9

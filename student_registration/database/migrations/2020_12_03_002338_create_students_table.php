@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('g_mus', 64)->nullable();
             $table->text('special_educational_needs')->nullable();
             $table->boolean('has_special_needs')->nullable();
-            $table->enum('status', ['studying', 'concluded', 'inactive'])->default('studying');
+            $table->enum('status', ['Cursando', 'Concluído', 'Inativo'])->default('Cursando');
             $table->foreignId('person_id')->constrained('persons');
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();

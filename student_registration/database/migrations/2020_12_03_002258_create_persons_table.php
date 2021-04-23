@@ -22,6 +22,8 @@ class CreatePersonsTable extends Migration
             $table->string('nis', 32)->nullable();
             $table->string('born_city', 64)->nullable();
             $table->string('emitter_rg', 32)->nullable();
+            $table->string('phone1', 16);
+            $table->string('phone2', 16)->nullable();
             $table->string('born_state', 64)->nullable();
             $table->foreignId('created_by')->constrained('users');
             $table->string('gender', 32)->default('others')->nullable();

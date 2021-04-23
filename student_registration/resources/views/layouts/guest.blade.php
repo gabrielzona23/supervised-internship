@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
@@ -20,5 +21,35 @@
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+=======
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+        <style>
+        .img-teste {
+            background-image: url('image/kids.png');
+        }
+        .img-forms {
+            background-size: cover;
+            background-image: url('image/school.jpg');
+        }
+        </style>
+
+        <link href="{{ asset('css/plugins/perfect-scrollbar.min.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+   {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet"> --}}
+        <link href="{{ asset('css/themes/lite-purple.min.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        @yield('content')
+
+        <script src="{{ asset('js/plugins/jquery-3.3.1.min.js') }}"> </script>
+        <script src="{{ asset('js/plugins/bootstrap.bundle.min.js') }}"> </script>
+        <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"> </script>
+        <script src="{{ asset('js/scripts/customizer.script.min.js') }}"> </script>
+        <script src="{{ asset('js/scripts/script.min.js') }}"> </script>
+        <script src="{{ asset('js/scripts/form.validation.script.min.js') }}"></script>
+>>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9
     </body>
 </html>

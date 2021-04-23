@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class BooleanAnswer extends Model
 {
-    public function question(){
-        return $this->belongsTo(Question::class);
-    }
-
-    public function registration(){
-        return $this->belongsTo(Registration::class);
-    }
     use HasFactory;
+
+    protected $table = 'boolean_answers';
+
+    // public function question()
+    // {
+    //     return $this->belongsTo(Question::class);
+    // }
+    // public function student()
+    // {
+    //     return $this->belongsTo(Student::class);
+    // }
 }

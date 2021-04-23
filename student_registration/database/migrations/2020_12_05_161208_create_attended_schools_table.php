@@ -15,12 +15,14 @@ class CreateAttendedSchoolsTable extends Migration
     {
         Schema::create('attended_schools', function (Blueprint $table) {
             $table->id();
-            $table->string('name',64);
-            $table->enum('type', ['creche', 'pre escola','ensino médio']);
-            $table->string('school_grade',64);
-            $table->string('city',64);
-            $table->string('administrative_department',64);
-            $table->enum('network',['particular', 'publica', 'particular com bolsa']);
+            $table->string('name', 64);
+            $table->enum('type', ['Creche', 'Pré-escola', 'Ensino médio'])->nullable()->default('Creche');
+            $table->string('school_grade', 64);
+            $table->string('city', 64)->nullable();
+            $table->string('administrative_department', 64)->nullable();
+            $table->enum('network', ['Particular', 'Público', 'Particular com bolsa'])->nullable();
+            $table->string('year')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
