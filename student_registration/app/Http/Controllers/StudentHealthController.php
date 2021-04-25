@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\Address;
 use App\Models\Registration;
-use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Models\StudentHealthQuestion;
+use App\Models\Vaccine;
 use App\Services\AddressService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class AddressController extends Controller
+class StudentHealthController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,9 +32,11 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createAddressStudent(Student $student)
+    public function createHealthStudent(Registration $registration)
     {
-        return view('address.create', compact('student'));
+        $vaccines = Vaccine::all();
+        $healthQuestions = StudentHealthQuestion::all();
+        return view('health.create', compact('registration', 'vaccines', 'healthQuestions'));
     }
 
     /**

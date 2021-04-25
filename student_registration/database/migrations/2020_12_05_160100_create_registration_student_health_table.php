@@ -15,8 +15,10 @@ class CreateRegistrationStudentHealthTable extends Migration
     {
         Schema::create('registration_student_health', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_health_id')->constrained('student_healths');
+            $table->foreignId('student_health_id')->constrained('student_health_questions');
             $table->foreignId('registration_id')->constrained('registrations');
+            $table->string('value');
+            $table->boolean('current')->default(1);
             $table->timestamps();
         });
     }

@@ -1,47 +1,47 @@
 @extends('layouts.home')
 
 @section('content')
-<div class="col-md-12 mb-4">
-    <div class="card text-left">
-        <div class="card-body">
-            <h4 class="card-title mb-3">Formulários para edição e inclusão das informações do Discente {{ $registration->student->person->name }}
-            </h4>
+    <div class="col-md-12 mb-4">
+        <div class="card text-left">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Formulários para edição e inclusão das informações do Discente
+                    {{ $registration->student->person->name }}
+                </h4>
 
-            <div class="row">
-                <!-- ICON BG-->
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="{{ route('students.editRegistrationStudent',['student' => $registration->student, 'registration'=> $registration]) }}">
-                            <div class="card-body text-center"><i class="i-File-Edit"></i>
-                                <p class="text-muted mt-3 mb-0">Edição</p>
-                                <p class="text-primary text-18 line-height-1 mb-2">Dados Principais do Aluno</p>
-                            </div>
-                        </a>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                            <a
+                                href="{{ route('students.editRegistrationStudent', ['student' => $registration->student, 'registration' => $registration]) }}">
+                                <div class="card-body text-center"><i class="i-File-Edit"></i>
+                                    <p class="text-muted mt-3 mb-0">Edição</p>
+                                    <p class="text-primary text-18 line-height-1 mb-2">Dados Principais do Aluno</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                            <a href="{{ route('responsible.create', $registration) }}">
+                                <div class="card-body text-center"><i class="i-Business-ManWoman"></i>
+                                    <p class="text-muted mt-2 mb-0">Gerenciar</p>
+                                    <p class="text-primary text-18 line-height-1 mb-2"> Responsavéis</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                            <a href="">
+                                <div class="card-body text-center"><i class="i-Clinic"></i>
+                                    <p class="text-muted mt-2 mb-0">Gerenciar</p>
+                                    <p class="text-primary text-18 line-height-1 mb-2"> Saúde do aluno</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="{{ route('responsible.create',$registration) }}">
-                            <div class="card-body text-center"><i class="i-Business-ManWoman"></i>
-                                <p class="text-muted mt-2 mb-0">Gerenciar</p>
-                                <p class="text-primary text-18 line-height-1 mb-2"> Responsavéis</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-                {{-- <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="{{ route('anamneses.edit',$student) }}">
-                            <div class="card-body text-center"><i class="i-Clinic"></i>
-                                <p class="text-muted mt-2 mb-0">Gerenciar</p>
-                                <p class="text-primary text-18 line-height-1 mb-2"> Anamnese</p>
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
-            {{-- <div class="row">
-                <!-- ICON BG-->
+                {{-- <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <a
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div> --}}
+            </div>
         </div>
     </div>
-</div>
 @endsection

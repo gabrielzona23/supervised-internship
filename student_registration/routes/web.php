@@ -20,7 +20,7 @@ use App\Http\Controllers\RegistrationController;
 */
 
 Route::get('/foo', function () {
-    return view('components.forms.forms');
+    return view('school.school_form');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
         'anamneses' => 'student'
     ]);
 
+    Route::get('/health/student/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
 
     Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
     Route::put('/students/{student}/registration/{registration}update', [StudentController::class, 'updateRegistration'])->name('students.updateRegistration');

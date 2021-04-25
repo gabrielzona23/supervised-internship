@@ -23,27 +23,27 @@ class ProgramSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('programs')->insert([
+        DB::table('programs')->insertOrIgnore([
             'name' => 'Programa Projetos funcionais',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('programs')->insert([
+        DB::table('programs')->insertOrIgnore([
             'name' => 'Programa de estimulação',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('programs')->insert([
+        DB::table('programs')->insertOrIgnore([
             'name' => 'Programa de educação física',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('programs')->insert([
+        DB::table('programs')->insertOrIgnore([
             'name' => 'Profissional de áreas',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('programs')->insert([
+        DB::table('programs')->insertOrIgnore([
             'name' => 'Núcleo de apoio a família',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

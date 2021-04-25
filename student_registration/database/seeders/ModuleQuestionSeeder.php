@@ -14,7 +14,7 @@ class ModuleQuestionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('module_questions')->insert([
+        DB::table('module_questions')->insertOrIgnore([
             'id' => 1,
             'name' => 'Anamnese',
             'updated_at' => now(),

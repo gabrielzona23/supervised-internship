@@ -18,12 +18,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ModuleQuestionSeeder::class,
-            ProgramSeeder::class,
-            QuestionSeeder::class,
+            UserSeeder::class,
             VaccineSeeder::class,
+            ProgramSeeder::class,
             DocumentSeeder::class,
+            QuestionSeeder::class,
+            QuestionHealthSeeder::class,
         ]);
-        User::factory()->count(1)->create();
+        // User::factory()->count(1)->create();
         School::factory()->count(1)->create();
         Registration::factory()->count(100)->hasResponsiblies()->create();
     }

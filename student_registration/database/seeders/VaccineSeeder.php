@@ -14,52 +14,52 @@ class VaccineSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'B. C. G. Oral',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Tríplice',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Sabin',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Anti-Tifóide',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Anti-Rubéola',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Anti-Sarampo',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Anti-Tetânica',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'B. C. G. Intra Dérmica',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'V. A. Y. (Anti-Variólica)',
             'updated_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('vaccines')->insert([
+        DB::table('vaccines')->insertOrIgnore([
             'name' => 'Outra(s)',
             'updated_at' => now(),
             'created_at' => now(),
