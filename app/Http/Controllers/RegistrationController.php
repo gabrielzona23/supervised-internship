@@ -50,7 +50,7 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         try {
             $validator = Validator::make($request->all(), Registration::VALIDATORS_STORE);
             if ($validator->fails()) {

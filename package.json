@@ -14,11 +14,7 @@
         "alpinejs": "^2.7.3",
         "async": "^3.1.0",
         "autoprefixer": "^10.1.0",
-<<<<<<< HEAD
-        "axios": "^0.19",
-=======
         "axios": "^0.21",
->>>>>>> 7f50c616d857cdc54f2b730bf0ee33d1fc1c82a9
         "babelify": "^10.0.0",
         "bootstrap": "^4.5.3",
         "browser-sync": "^2.26.7",
