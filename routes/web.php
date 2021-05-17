@@ -23,7 +23,7 @@ Route::get('/foo', function () {
     return view('school.school_form');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('matricula')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('students', StudentController::class);
     // Route::resource('addresses', AddressController::class);
@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::put('/attendedSchools/{student}/active/{addressForActive}', [AttendedSchoolController::class, 'active'])->name('attendedSchools.active');
 });
 
-Route::get('/', function () {
+Route::get('/matricula/', function () {
     return view('layouts.home');
 })->middleware(['auth'])->name('home');
 

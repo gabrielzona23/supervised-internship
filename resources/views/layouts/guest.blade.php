@@ -9,11 +9,11 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <style>
         .img-teste {
-            background-image: url('image/kids.png');
+            background-image: url("{{asset('image/kids.png')}}");
         }
         .img-forms {
             background-size: cover;
-            background-image: url('image/school.jpg');
+            background-image: url("{{asset('image/kids.png')}}");
         }
         </style>
 

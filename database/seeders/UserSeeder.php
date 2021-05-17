@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'nickname' => 'zonattin',
             'status' => 'active',
             'email_verified_at' => now(),
-            'password' => bcrypt('123456'), // password
+            'password' => bcrypt('bunitindaquebrada'), // password
             'remember_token' => Str::random(10),
         ]);
     }
