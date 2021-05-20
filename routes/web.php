@@ -33,10 +33,11 @@ Route::middleware(['auth'])->prefix('matricula')->group(function () {
         'anamneses' => 'student'
     ]);
 
-    Route::get('/health/student/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
+    // Route::get('/health/student/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
 
     Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
     Route::put('/students/{student}/registration/{registration}update', [StudentController::class, 'updateRegistration'])->name('students.updateRegistration');
+    Route::get('student_form/{student}/editForm', [StudentController::class, 'editForm'])->name('students.editForm');
 
     Route::get('responsible/{registration}/create', [ResponsiblyController::class, 'create'])->name('responsible.create');
     Route::post('responsible/{registration}/store', [ResponsiblyController::class, 'store'])->name('responsible.store');
@@ -60,7 +61,7 @@ Route::middleware(['auth'])->prefix('matricula')->group(function () {
     // Route::put('/attendedSchools/{student}/active/{addressForActive}', [AttendedSchoolController::class, 'active'])->name('attendedSchools.active');
 });
 
-Route::get('/matricula/', function () {
+Route::get('/matricula', function () {
     return view('layouts.home');
 })->middleware(['auth'])->name('home');
 

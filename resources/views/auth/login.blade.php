@@ -19,7 +19,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="email">Email<span style="font-size:13px; color:red;">*</span></label>
-                                <input class="form-control form-control-rounded" id="email" name="email" type="email" value="{{ old('email') }}" required autofocus >
+                                <input class="form-control form-control-rounded" id="email" name="email" type="email" value="{{ old('email') }}" required autofocus>
                                 <div class="valid-feedback">
                                     Tudo Ok!
                                 </div>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Senha<span style="font-size:13px; color:red;">*</span></label>
-                                <input class="form-control form-control-rounded" id="password" type="password" name="password" required autocomplete="current-password" >
+                                <input class="form-control form-control-rounded" id="password" type="password" name="password" required autocomplete="current-password">
                                 <div class="valid-feedback">
                                     Tudo Ok!
                                 </div>
@@ -44,11 +44,12 @@
                                     <span class="ml-2 text-sm text-gray-600">Lembrar de mim</span>
                                 </label>
                             </div>
-                            <button class="btn btn-rounded btn-primary btn-block mt-2 type="submit" >Entrar</button>
+                            <button class="btn btn-rounded btn-primary btn-block mt-2 type=" submit">Entrar</button>
                         </form>
                         <div class="mt-3 text-center">
-                            <a class="text-muted" href="{{ route('password.request') }}">
-                                <u>Esqueceu sua Senha</u>
+                            {{-- <!-- <a class="text-muted" disabled href="{{ route('password.request') }}"> --> --}}
+                            <a class="text-muted" href="#">
+                                <u>Esqueceu sua Senha(disabilitado)</u>
                             </a>
                         </div>
                     </div>
@@ -56,7 +57,8 @@
                 <div class="col-md-6 text-center img-forms">
                     <div class="pr-3 auth-right">
                         <h6>Não possui cadastro? Se cadastre agora!</h6>
-                        <a class="btn btn-rounded btn-outline-primary btn-outline-email btn-block btn-icon-text" href="{{ route('register') }}">
+                        {{-- <!-- <a class="btn btn-rounded btn-outline-primary btn-outline-email btn-block btn-icon-text" href="{{ route('register') }}"> --> --}}
+                        <a class="btn btn-rounded btn-outline-primary btn-outline-email btn-block btn-icon-text" href="#">
                             <i class="i-Mail-with-At-Sign"></i>
                             Se cadastre com seu email
                         </a>

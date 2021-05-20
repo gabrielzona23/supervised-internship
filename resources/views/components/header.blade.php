@@ -2,9 +2,9 @@
     <!-- Well begun is half done. - Aristotle -->
     <div class="main-header">
         <div class="logo ml-3">
-        <a href="{{ route('home') }}">
-            <span style="font-size:20px"><Strong>Dom Bosco</Strong></span>
-        </a>
+            <a href="{{ route('home') }}">
+                <span style="font-size:20px"><Strong>Dom Bosco</Strong></span>
+            </a>
             {{-- <img src={{asset('image/logo.png')}} alt=""> --}}
         </div>
         <div class="menu-toggle">
@@ -15,8 +15,8 @@
         <div class="d-flex align-items-center">
             <!-- Mega menu -->
             <div class="dropdown mega-menu d-none d-md-block">
-                <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
-                <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton">
+                <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>Menu</a>
+                <!-- <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton">
                     <div class="row m-0">
                         <div class="col-md-4 p-4 bg-img">
                             <h2 class="title">Mega Menu <br> Sidebar</h2>
@@ -54,11 +54,11 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- / Mega menu -->
             <div class="search-bar">
-                <input type="text" placeholder="Search">
+                <input type="text" disabled placeholder="Desabilitado">
                 <i class="search-icon text-muted i-Magnifi-Glass1"></i>
             </div>
         </div>
@@ -85,7 +85,7 @@
                 <div class="user col align-self-end">
                     <i class="i-Administrator text-muted header-icon" role="button" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" style="color: blue; font-weight: bold" >{{ Auth::user()->name }}</a>
+                        <a class="dropdown-item" style="color: blue; font-weight: bold">{{ Auth::user()->name }}</a>
                         <a class="dropdown-item">Configurações da conta</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

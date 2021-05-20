@@ -136,5 +136,9 @@ class Registration extends Model
     {
         return Carbon::parse($this->attributes['school_year'])->format('Y');
     }
+    public function dateFormatCreatedYear()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d/m/Y');
+    }
     use HasFactory;
 }

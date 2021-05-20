@@ -27,7 +27,7 @@ class RegistrationController extends Controller
      */
     public function index(Request $request)
     {
-        $registrations = Registration::paginate(50);
+        $registrations = Registration::paginate(60);
         return view('registrations.index')->with('registrations', $registrations);
     }
 
@@ -50,7 +50,7 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         try {
             $validator = Validator::make($request->all(), Registration::VALIDATORS_STORE);
             if ($validator->fails()) {
@@ -84,7 +84,6 @@ class RegistrationController extends Controller
             $data_registration['student_id'] = $student->id;
             $registrationService = new RegistrationService();
             $registration = $registrationService->store($data_registration);
-
             if ($request->input('job') != null) {
                 $job = new Job();
                 $job->name = $request->input('job');
@@ -128,7 +127,6 @@ class RegistrationController extends Controller
 
             $documentService = new DocumentService();
             $documentService->store($request, $registration);
-
 
             DB::commit();
             Log::info('Successfully registration Estudante');

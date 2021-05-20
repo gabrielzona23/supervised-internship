@@ -64,7 +64,7 @@ class AnamneseController extends Controller
             }
             DB::commit();
             Log::info('Successfully created Estudante');
-            return redirect()->route('students.index')->with('message', 'Anamnese Atualizada com sucesso!');
+            return redirect()->route('students.editForm', compact('student'))->with('message', 'Anamnese Atualizada com sucesso!');
         } catch (ModelNotFoundException $m) {
             DB::rollback();
             Log::error('No query result', ['errors' => $m]);

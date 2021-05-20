@@ -24,5 +24,41 @@ class UserSeeder extends Seeder
             'password' => bcrypt('bunitindaquebrada'), // password
             'remember_token' => Str::random(10),
         ]);
+        DB::table('users')->insertOrIgnore([
+            'name' => 'Natália',
+            'email' => 'natalia.freire@gmail.com',
+            'nickname' => 'Natália',
+            'status' => 'active',
+            'email_verified_at' => now(),
+            'password' => bcrypt('k8dzJh$7W$Yt'), // password
+            'remember_token' => Str::random(10),
+        ]);
+        DB::table('users')->insertOrIgnore([
+            'name' => 'Secretaria1',
+            'email' => 'secretaria1@gmail.com',
+            'nickname' => 'sec1',
+            'status' => 'active',
+            'email_verified_at' => now(),
+            'password' => bcrypt('BBaq#yqcsMIJ'), // password
+            'remember_token' => Str::random(10),
+        ]);
+        DB::table('users')->insertOrIgnore([
+            'name' => 'Secretaria2',
+            'email' => 'Secretaria2@hotmail.com',
+            'nickname' => 'sec2',
+            'status' => 'active',
+            'email_verified_at' => now(),
+            'password' => bcrypt('9%ScPr2dz2XB'), // password
+            'remember_token' => Str::random(10),
+        ]);
+        DB::table('users')->insertOrIgnore([
+            'name' => 'Secretaria3',
+            'email' => 'Secretaria3@gmail.com',
+            'nickname' => 'sec3',
+            'status' => 'active',
+            'email_verified_at' => now(),
+            'password' => bcrypt('qpRxt@Nx0l%M'), // password
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

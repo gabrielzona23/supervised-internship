@@ -228,7 +228,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('students.index') }}" class="btn btn-secondary">Voltar</a>
+                    <a href="{{ route('students.editForm', $student) }}" class="btn btn-secondary">Voltar</a>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
             </div>

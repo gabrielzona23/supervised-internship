@@ -35,7 +35,7 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Name: activate to sort column descending" aria-sort="ascending"
-                                            style="width: 200px;">Nome</th>
+                                            style="width: 300px;">Nome</th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Position: activate to sort column ascending"
@@ -54,7 +54,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Salary: activate to sort column ascending"
-                                            style="width: 350px;">Gerenciamento de informações da matricula</th>
+                                            style="width: 200px;">Gerenciamento da matricula</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,11 +67,11 @@
                                         </td>
                                         <td class="">{{ $registration->student->status }}</td>
                                         <td class="">
-                                            {{ \Carbon\Carbon::parse($registration->created_at)->format('d/m/Y')}}</td>
+                                            {{ $registration->dateFormatCreatedYear()}}</td>
                                         <td class="">
                                             <a class="btn btn-outline-info btn-sm m-1"
                                                 href="{{ route('registrations.edit',$registration) }}"
-                                                type="button">Editar Dados do Aluno</a>
+                                                type="button">Editar Dados do Matriculando</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -84,7 +84,7 @@
                                         <th rowspan="1" colspan="1">Ano Letivo</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1">Data da mátricula</th>
-                                        <th rowspan="1" colspan="1">Gerenciamento de informações da matricula</th>
+                                        <th rowspan="1" colspan="1">Gerenciamento da matricula</th>
                                     </tr>
                                 </tfoot>
                             </table>

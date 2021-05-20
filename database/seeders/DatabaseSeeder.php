@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
             QuestionHealthSeeder::class,
         ]);
         // User::factory()->count(1)->create();
-        School::factory()->count(1)->create();
-        Registration::factory()->count(100)->hasResponsiblies()->create();
+        if (env('APP_ENV') == 'local') {
+            School::factory()->count(1)->create();
+            Registration::factory()->count(100)->hasResponsiblies()->create();
+        }
     }
 }

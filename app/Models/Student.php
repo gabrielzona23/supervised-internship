@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -117,5 +118,9 @@ class Student extends Model
     public function scaleAnswers()
     {
         return $this->belongsToMany(Question::class, 'scale_answers')->withPivot('value')->withTimestamps();
+    }
+    public function dateFormatCreatedYear()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d/m/Y');
     }
 }

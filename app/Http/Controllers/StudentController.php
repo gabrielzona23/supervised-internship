@@ -117,10 +117,18 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        dd('oi');
         return view('students.show')->with('student', $student);
     }
-
+    /**
+     * Undocumented function
+     *
+     * @param Student $student
+     * @return \Illuminate\Http\Response
+     */
+    public function editForm(Student $student)
+    {
+        return view('students.forms', compact('student'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

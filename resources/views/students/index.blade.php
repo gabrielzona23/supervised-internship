@@ -36,7 +36,7 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Name: activate to sort column descending" aria-sort="ascending"
-                                            style="width: 200px;">Nome</th>
+                                            style="width: 300px;">Nome</th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Position: activate to sort column ascending"
@@ -55,7 +55,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Salary: activate to sort column ascending"
-                                            style="width: 350px;">Gerenciamento de informações dos alunos</th>
+                                            style="width: 100px;">Gerenciamento dos alunos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,16 +66,10 @@
                                         <td class="">{{ $student->person->cpf }}</td>
                                         <td class="">{{ $student->born_date }}</td>
                                         <td class="">{{ $student->status }}</td>
-                                        <td class="">{{ $student->created_at }}</td>
+                                        <td class="">{{ $student->dateFormatCreatedYear() }}</td>
                                         <td class="">
-                                            <a class="btn btn-outline-info btn-sm m-1"
-                                                href="{{ route('students.edit',$student) }}" type="button">Informações</a>
-                                            <a class="btn btn-outline-danger btn-sm m-1"
-                                                href="{{ route('anamneses.edit',$student) }}" type="button">Anamnese</a>
-                                            <a class="btn btn-outline-secondary btn-sm m-1"
-                                                href="{{ route('address.createAddressStudent',$student) }}" type="button">Endereço</a>
-                                            <a class="btn btn-outline-primary btn-sm m-1"
-                                                href="{{ route('attendedSchool.create',$student) }}" type="button">Escolas Frequentandas</a>
+                                            <a class="btn btn-outline-info btn-sm m-1" href="{{ route('students.editForm',$student) }}"
+                                                type="button">Editar Dados do Aluno</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -88,7 +82,7 @@
                                         <th rowspan="1" colspan="1">Data da Nascimento</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1">Data da mátricula</th>
-                                        <th rowspan="1" colspan="1">Gerenciamento de informações dos alunos</th>
+                                        <th rowspan="1" colspan="1">Gerenciamento dos alunos</th>
                                     </tr>
                                 </tfoot>
                             </table>
