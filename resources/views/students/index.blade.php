@@ -88,7 +88,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <div class="dataTables_info" id="zero_configuration_table_info" role="status"
                                 aria-live="polite">Mostrando de 1 até {{ $students->count() }} de
@@ -101,7 +101,7 @@
                                 {{ $students->links() }}
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

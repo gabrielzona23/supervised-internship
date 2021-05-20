@@ -3,8 +3,8 @@
 $(document).ready(function () {
     // zero table
     $('#zero_configuration_table').DataTable({
-        "paging": false,
-        "info": false,
+        "paging": true,
+        "info": true,
         "language": {
             "zeroRecords": "Nenhum registro correspondente encontrado nesta página",
             "search": "Pesquisar",
