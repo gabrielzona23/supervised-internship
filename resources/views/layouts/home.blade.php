@@ -12,6 +12,7 @@
     <link href="{{ asset('css/plugins/toastr.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/plugins/smart.wizard/smart_wizard.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/plugins/datatables.min.css') }}" rel="stylesheet">
+    <link rel="sortcut icon" href="{{ asset('image/logo-governo.svg') }}" type="image/x-icon">
 
     <style>
         .span-red {

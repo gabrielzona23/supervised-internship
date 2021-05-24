@@ -16,7 +16,7 @@
             background-image: url("{{asset('image/kids.png')}}");
         }
         </style>
-
+        <link rel="sortcut icon" href="{{ asset('image/logo-governo.svg') }}" type="image/x-icon">
         <link href="{{ asset('css/plugins/perfect-scrollbar.min.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet"> --}}
