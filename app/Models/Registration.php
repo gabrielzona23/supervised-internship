@@ -47,7 +47,7 @@ class Registration extends Model
         'street' => ['bail', 'required', 'string', 'min:6', 'max:64'],
         'city' => ['bail', 'required', 'min:2', 'max:128'],
         'state' => ['bail', 'required', 'min:2', 'max:64'],
-        'neighborhood' => ['bail', 'required', 'min:6', 'max:64'],
+        'neighborhood' => ['bail', 'required', 'min:3', 'max:64'],
         'country' => ['bail', 'required', 'min:6', 'max:64'],
         'cep' => ['bail', 'required', 'min:9', 'max:12'],
         'number' => ['bail', 'required', 'min:2', 'max:32'],
@@ -77,7 +77,7 @@ class Registration extends Model
         'phone4' => ['bail', 'nullable', 'string', 'min:14', 'max:15'],
         'parents_divorced' => ['bail', 'filled', 'boolean'],
         'student_custody' => ['bail', 'required_if:parents_divorced,1', 'nullable', 'string', 'min:14', 'max:32'],
-        'school_year' => ['bail', 'required', 'string', 'min:4', 'max:4', 'date_format:Y', 'before_or_equal:tomorrow'],
+        'school_year' => ['bail', 'required', 'string', 'min:4', 'max:4', 'date_format:Y'],
 
         'document_model' => ['bail', 'required', 'in:new,old,others'],
         'document_number' => ['bail', 'required', 'string', 'max:32'],

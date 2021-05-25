@@ -7,7 +7,7 @@
 
 <div class="col-md-12">
     <div class="card text-left">
-        <form method="POST" action="{{ route('students.update', $student) }}" class="needs-validation" novalidate="novalidate">
+        <form method="POST" action="{{ route('students.update_registration', $registration) }}" class="needs-validation" novalidate="novalidate">
             @method('put')
             @csrf
             <div class="card-body">
@@ -135,7 +135,7 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="job">Profissão</label>
-                                            <input class="form-control form-control-rounded" id="job" name="job" type="text" value="{{ $student->person->job->name }}" placeholder="Digite a profissão"/>
+                                            <input class="form-control form-control-rounded" id="job" name="job" type="text" value="@if($student->person->job!=null) {{ $student->person->job->name }} @endif" placeholder="Digite a profissão"/>
                                         </div>
 
                                         <div class="col-6 form-group">
@@ -150,11 +150,10 @@
                                         <div class="col-6 form-group">
                                             <label for="programs">Programas<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" id="programs" name="programs" required>
-                                                <option value="" selected disabled>----Selecione----</option>
-                                                <option value="0">Nenhum</option>
+                                                <option value="0" selected>Nenhum</option>
                                                 @foreach ($programs as $program)
                                                     <option value="{{ $program->id }}"
-                                                    @if($programsStudent->id==$program->id)
+                                                    @if($programsStudent_id==$program->id)
                                                         selected
                                                     @endif
                                                     >{{ $program->name }}</option>
@@ -182,12 +181,6 @@
                                                     @endif
                                                     >Sim</option>
                                             </select>
-                                            <div class="valid-feedback">
-                                                Tudo Ok!
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                O campo Possui Necessidades Educacionais Especiais não pode ser vazio!
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -216,11 +209,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="image_authorization">O Responsável autoriza a divuldagação de fotos em trabalhos
+                                    <label for="image_authorization">O Responsável autoriza a divulgação de fotos em trabalhos
                                         escolares em redes sociais?</label>
                                     <select class="form-control form-control-rounded" name="image_authorization"
                                         id="image_authorization">
-                                        <option value="" selected disabled>----Selecione----</option>
+                                        <option value="" selected disabled> ----Selecione----</option>
                                         <option value="0"
                                             @if($registration->image_authorization=="0")
                                                 selected

@@ -15,7 +15,7 @@
         <div class="d-flex align-items-center">
             <!-- Mega menu -->
             <div class="dropdown mega-menu d-none d-md-block">
-                <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>Menu</a>
+                {{-- <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>Menu</a> --}}
                 <!-- <div class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton">
                     <div class="row m-0">
                         <div class="col-md-4 p-4 bg-img">
@@ -57,10 +57,10 @@
                 </div> -->
             </div>
             <!-- / Mega menu -->
-            <div class="search-bar">
+            {{-- <div class="search-bar">
                 <input type="text" disabled placeholder="Desabilitado">
                 <i class="search-icon text-muted i-Magnifi-Glass1"></i>
-            </div>
+            </div> --}}
         </div>
         <div style="margin: auto"></div>
         <div class="header-part-right">

@@ -46,7 +46,7 @@ class Student extends Model
         'color' => ['bail', 'nullable', 'string', 'min:2', 'max:32'],
         'breed' => ['bail', 'nullable', 'string', 'min:2', 'max:32'],
         'gender' => ['bail', 'nullable', 'string', 'max:64'],
-        'g_mus' => ['bail', 'nullable', 'string', 'min:2', 'max:64'],
+        'g_mus' => ['bail', 'nullable', 'min:2', 'max:64'],
     ];
 
     const VALIDATORS_UPDATE_REGISTRATION = [

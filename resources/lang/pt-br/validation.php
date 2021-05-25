@@ -135,6 +135,24 @@ return [
         ],
     ],
 
+    'values' => [
+        'has_special_needs' => [
+            '1' => 'sim'
+        ],
+        'parents_divorced' => [
+            '1' => 'sim'
+        ],
+        'rg' => [
+            'null' => 'vazio'
+        ],
+        'document_model' => [
+            'new' => 'Modelo Novo',
+            'old' => 'Modelo Antigo',
+            'others' => 'Outros Modelos',
+        ]
+
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

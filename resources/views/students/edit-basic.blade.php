@@ -157,8 +157,8 @@
                                     <div class="row">
                                         <div class="col-6 form-group">
                                             <label for="job">Profissão</label>
-                                            <input class="form-control form-control-rounded" id="job" name="job"
-                                                type="text" value="{{ $student->person->job->name }}" />
+                                            <input class="form-control form-control-rounded" id="job" name="job" placeholder="Digite a profissão"
+                                                type="text" value="@if($student->person->job!=null) {{ $student->person->job->name }} @endif" />
                                         </div>
 
                                         <div class="col-6 form-group">
@@ -175,11 +175,10 @@
                                         <div class="col-6 form-group">
                                             <label for="programs">Programas<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" id="programs" name="programs" required>
-                                                <option value="" selected disabled>----Selecione----</option>
-                                                <option value="0">Nenhum</option>
+                                                <option value="0" selected>Nenhum</option>
                                                 @foreach ($programs as $program)
                                                     <option value="{{ $program->id }}"
-                                                    @if($programsStudent->id==$program->id)
+                                                    @if($programsStudent_id==$program->id)
                                                         selected
                                                     @endif
                                                     >{{ $program->name }}</option>
@@ -197,21 +196,12 @@
                                                 Especiais<span style="font-size:13px; color:red;">*</span></label>
                                             <select class="form-control form-control-rounded" name="has_special_needs"
                                                 id="has_special_needs" required>
-                                                <option value="" selected disabled>----Selecione----</option>
-                                                <option value=0 @if(old('has_special_needs')==0 ||$student->has_special_needs==0 )
-                                                    selected @endif >Não
-                                                </option>
-                                                <option value=1 @if(old('has_special_needs')==1||$student->
-                                                    has_special_needs==1 )
-                                                    selected @endif>Sim
-                                                </option>
+                                                <option value="" selected disabled> ----Selecione----</option>
+                                                <option value="0" @if(old('has_special_needs')==0 ||$student->has_special_needs==0 )
+                                                    selected @endif >Não </option>
+                                                <option value="1" @if(old('has_special_needs')==1||$student->has_special_needs==1 )
+                                                    selected @endif>Sim </option>
                                             </select>
-                                            <div class="valid-feedback">
-                                                Tudo Ok!
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                O campo Possui Necessidades Educacionais Especiais não pode ser vazio!
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -268,6 +258,4 @@
         </form>
     </div>
 </div>
-
-
 @endsection

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-class StudentHealthController extends Controller
+class VaccineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,7 +32,7 @@ class StudentHealthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createHealthStudent(Registration $registration)
+    public function create(Registration $registration)
     {
         $vaccines = Vaccine::all();
         $healthQuestions = StudentHealthQuestion::all();
@@ -45,7 +45,7 @@ class StudentHealthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeAddressStudent(Request $request, Student $student)
+    public function store(Request $request, Student $student, Registration $registration)
     {
 
         try {

@@ -4,27 +4,9 @@
 <div class="col-md-12 mb-4">
     <div class="card text-left">
         <div class="card-body">
-            <h4 class="card-title mb-3">Lista de matriculas</h4>
-
+            <h4 class="card-title mb-3">Lista de matrículas</h4>
             <div class="table-responsive">
                 <div id="zero_configuration_table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                    {{-- <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_length" id="zero_configuration_table_length"><label>Show <select
-                                        name="zero_configuration_table_length" aria-controls="zero_configuration_table"
-                                        class="form-control form-control-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select> entries</label></div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div id="zero_configuration_table_filter" class="dataTables_filter"><label>Search:<input
-                                        type="search" class="form-control form-control-sm" placeholder=""
-                                        aria-controls="zero_configuration_table"></label></div>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="display table table-striped table-bordered dataTable"
@@ -50,11 +32,11 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Start date: activate to sort column ascending"
-                                            style="width: 160px;">Data da mátricula</th>
+                                            style="width: 160px;">Data da matrícula</th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_configuration_table"
                                             rowspan="1" colspan="1"
                                             aria-label="Salary: activate to sort column ascending"
-                                            style="width: 200px;">Gerenciamento da matricula</th>
+                                            style="width: 200px;">Gerenciamento da matrícula</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,7 +53,7 @@
                                         <td class="">
                                             <a class="btn btn-outline-info btn-sm m-1"
                                                 href="{{ route('registrations.edit',$registration) }}"
-                                                type="button">Editar Dados do Matriculando</a>
+                                                type="button">Editar Dados do Matriculado</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -83,29 +65,13 @@
                                         <th rowspan="1" colspan="1">CPF</th>
                                         <th rowspan="1" colspan="1">Ano Letivo</th>
                                         <th rowspan="1" colspan="1">Status</th>
-                                        <th rowspan="1" colspan="1">Data da mátricula</th>
-                                        <th rowspan="1" colspan="1">Gerenciamento da matricula</th>
+                                        <th rowspan="1" colspan="1">Data da matrícula</th>
+                                        <th rowspan="1" colspan="1">Gerenciamento da matrícula</th>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="zero_configuration_table_info" role="status"
-                                aria-live="polite">Mostrando de 1 até {{ $registrations->count() }} de
-                                {{ $registrations->total() }}
-                                {{ $registrations->total() == 1 ? 'registro' : 'registros' }}
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers"
-                                id="zero_configuration_table_paginate">
-                                {{$registrations->links()}}
-
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

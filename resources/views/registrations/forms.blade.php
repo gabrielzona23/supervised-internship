@@ -10,10 +10,9 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="{{ route('students.editRegistrationStudent', ['student' => $registration->student, 'registration' => $registration]) }}">
+                        <a href="{{ route('students.editRegistrationStudent', $registration) }}">
                             <div class="card-body text-center"><i class="i-File-Edit"></i>
-                                <p class="text-muted mt-3 mb-0">Edição</p>
-                                <p class="text-primary text-18 line-height-1 mb-2">Dados Principais do Aluno</p>
+                                <p class="text-primary text-16 line-height-1 mb-2">Dados do Aluno</p>
                             </div>
                         </a>
                     </div>
@@ -22,65 +21,22 @@
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
                         <a href="{{ route('responsible.create', $registration) }}">
                             <div class="card-body text-center"><i class="i-Business-ManWoman"></i>
-                                <p class="text-muted mt-2 mb-0">Gerenciar</p>
-                                <p class="text-primary text-18 line-height-1 mb-2"> Responsáveis</p>
+                                <p class="text-primary text-16 line-height-1 mb-2">Responsáveis</p>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                {{-- <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a href="">
+                        <a href="{{ route('vaccine.create',$registration) }}">
                             <div class="card-body text-center"><i class="i-Clinic"></i>
-                                <p class="text-muted mt-2 mb-0">Gerenciar</p>
-                                <p class="text-primary text-18 line-height-1 mb-2"> Saúde do aluno</p>
+                                <p class="text-primary text-16 line-height-1 mb-2">Vacinas</p>
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            {{-- <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-                        <a
-                        {{-- href="{{ route('students.editRegistrationStudent',['student' => $student, 'registration'=> $registration]) }}">
-
-            <div class="card-body text-center"><i class="i-Add-User"></i>
-                <p class="text-muted mt-3 mb-0">Edição</p>
-                <p class="text-primary text-18 line-height-1 mb-2">Dados Principais do Aluno</p>
-            </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-            <div class="card-body text-center"><i class="i-Financial"></i>
-                <div class="content">
-                    <p class="text-muted mt-2 mb-0">Sales</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">$4021</p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-            <div class="card-body text-center"><i class="i-Checkout-Basket"></i>
-                <div class="content">
-                    <p class="text-muted mt-2 mb-0">Orders</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">80</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
-            <div class="card-body text-center"><i class="i-Money-2"></i>
-                <div class="content">
-                    <p class="text-muted mt-2 mb-0">Expense</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">$1200</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+</div>
 @endsection

@@ -8,6 +8,8 @@ use App\Http\Controllers\AnamneseController;
 use App\Http\Controllers\AttendedSchoolController;
 use App\Http\Controllers\ResponsiblyController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\VaccineController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,10 +35,12 @@ Route::middleware(['auth'])->prefix('matricula')->group(function () {
         'anamneses' => 'student'
     ]);
 
-    // Route::get('/health/student/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
+    Route::get('/vaccine/{registration}/create', [VaccineController::class, 'create'])->name('vaccine.create');
+    Route::post('/vaccine/{registration}/student', [VaccineController::class, 'vaccineStudent'])->name('vaccine.vaccineStudent');
+    Route::post('/vaccine', [VaccineController::class, 'store'])->name('vaccine.store');
 
-    Route::get('/students/{student}/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
-    Route::put('/students/{student}/registration/{registration}update', [StudentController::class, 'updateRegistration'])->name('students.updateRegistration');
+    Route::get('/students/registration/{registration}', [StudentController::class, 'editRegistrationStudent'])->name('students.editRegistrationStudent');
+    Route::put('/students/registration/{registration}', [StudentController::class, 'update_registration'])->name('students.update_registration');
     Route::get('student_form/{student}/editForm', [StudentController::class, 'editForm'])->name('students.editForm');
 
     Route::get('responsible/{registration}/create', [ResponsiblyController::class, 'create'])->name('responsible.create');
