@@ -26,6 +26,8 @@ services:
             - ./:/var/www
         depends_on:
             - "app"
+        ports:
+            - 3000:80
         networks:
           - dombosco-network
 
