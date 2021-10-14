@@ -1,15 +1,13 @@
-FROM php:7.4-fpm
+FROM php:8.0.11-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
 ARG uid
 
-ADD ./php/www.conf /usr/local/etc/php-fpm.d/www.conf
-
+COPY  ./docker/php.ini "$PHP_INI_DIR/php.ini"
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git curl libpng-dev libonig-dev libxml2-dev zip unzip
-
 
 # Install PHP extensions
 RUN docker-php-ext-install mbstring exif pcntl bcmath gd
@@ -34,3 +32,9 @@ RUN mkdir -p /home/$user/.composer && \
 WORKDIR /var/www
 
 USER $user
+
+# se não rodar, remover esse comando
+# RUN composer install && \
+#     cp .env.example .env && \
+#     php artisan key:generate && \
+#     php artisan config:cache

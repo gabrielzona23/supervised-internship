@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+    # Application
+    app:
+        build:
+            args:
+              uid: 1000
+              user: laravel
+            context: .
+            dockerfile: ./docker/app.dockerfile
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        networks:
+          - dombosco-network
+        depends_on:
+            - "redis"
+    # Web Server
+    web:
+        build:
+            context: .
+            dockerfile: ./docker/web-prod.dockerfile
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - "app"
+        ports:
+            - 8000:80
+        networks:
+          - dombosco-network
+
+    redis:
+        container_name: dombosco-redis
+        image: 'redis:alpine'
+        ports:
+          - '16379:6379'
+        networks:
+          - dombosco-network
+        healthcheck:
+          test: ["CMD", "redis-cli", "ping"]
+          retries: 3
+          timeout: 5s
+
+    postgres:
+        container_name: dombosco-db
+        image: postgres:13-alpine
+        volumes:
+          - postgres-dombosco_data:/var/lib/postgresql/data/
+        environment:
+          - POSTGRES_DB=dombosco
+          - POSTGRES_USER=dombosco-user
+          - POSTGRES_PASSWORD=dombosco-F245Aab1
+          - POSTGRES_HOST_AUTH_METHOD=trust
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U dombosco-user -d dombosco"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
+        ports:
+          - 15432:5432
+        networks:
+          - dombosco-network
+
+networks:
+    dombosco-network:
+        driver: bridge
+        external: true
+
+volumes:
+  postgres-dombosco_data:
+

@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  # Application
+  app:
+    container_name: evaluation-app
+    image: 'kooldev/php:8.0-nginx'
+    ports:
+      - 3000:80
+    volumes:
+      - ./:/app/
+    environment:
+      ASUSER: "1000"
+      PHP_MEMORY_LIMIT: -1
+      ENABLE_XDEBUG: 'true'
+    networks:
+      - laravel-network
+
+networks:
+  laravel-network:
+    # driver: bridge
+    external: true
