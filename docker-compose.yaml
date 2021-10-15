@@ -14,22 +14,24 @@ services:
             - ./:/var/www
         networks:
           - dombosco-network
+        ports:
+          - 9000:9000
         depends_on:
             - "redis"
-    # Web Server
-    web:
-        build:
-            context: .
-            dockerfile: ./docker/web-prod.dockerfile
-        working_dir: /var/www
-        volumes:
-            - ./:/var/www
-        depends_on:
-            - "app"
-        ports:
-            - 3000:80
-        networks:
-          - dombosco-network
+    # # Web Server
+    # web:
+    #     build:
+    #         context: .
+    #         dockerfile: ./docker/web-prod.dockerfile
+    #     working_dir: /var/www
+    #     volumes:
+    #         - ./:/var/www
+    #     depends_on:
+    #         - "app"
+    #     ports:
+    #         - 3000:80
+    #     networks:
+    #       - dombosco-network
 
     redis:
         container_name: dombosco-redis
